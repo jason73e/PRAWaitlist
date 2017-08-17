@@ -1,0 +1,25 @@
+﻿@model PRAWaitList.Models.IntentToEnrollViewModel
+
+@{
+    ViewBag.Title = "Confirmation";
+}
+
+<h2>Confirmation</h2>
+
+@using (Html.BeginForm("Confirm", "IntentToEnroll", FormMethod.Post, new { @id = "frmConfirm" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @Html.Partial("ConfirmFamily", new ViewDataDictionary(ViewData) { TemplateInfo = new TemplateInfo() { HtmlFieldPrefix = "Family" } })
+        @Html.Partial("ConfirmStudent", new ViewDataDictionary(ViewData) { TemplateInfo = new TemplateInfo() { HtmlFieldPrefix = "Student" } })
+        @Html.Partial("ConfirmParents", new ViewDataDictionary(ViewData) { TemplateInfo = new TemplateInfo() { HtmlFieldPrefix = "Parents" } })
+        @Html.Partial("ConfirmSiblings", new ViewDataDictionary(ViewData) { TemplateInfo = new TemplateInfo() { HtmlFieldPrefix = "Siblings" } })
+    </div>
+</div>
+    <p>
+        <input type="submit" value="Submit" class="btn btn-default" />
+        @Html.ActionLink("Make Corrections", "Index", null, new { @class = "btn btn-default" })
+    </p>
+}
