@@ -251,6 +251,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdAuthenticationService.cs" />
     <Compile Include="Models\ConfigurationSettingsModel.cs" />
+    <Compile Include="Models\EmailQueueModel.cs" />
     <Compile Include="Models\FamilyModel.cs" />
     <Compile Include="Models\HearAboutPRAModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />

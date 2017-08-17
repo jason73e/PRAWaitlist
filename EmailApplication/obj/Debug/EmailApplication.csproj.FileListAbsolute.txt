@@ -1,0 +1,6 @@
+C:\Users\Jason\Documents\GitHub\PRAWaitlist\EmailApplication\bin\Debug\EmailApplication.exe.config
+C:\Users\Jason\Documents\GitHub\PRAWaitlist\EmailApplication\bin\Debug\EmailApplication.exe
+C:\Users\Jason\Documents\GitHub\PRAWaitlist\EmailApplication\bin\Debug\EmailApplication.pdb
+C:\Users\Jason\Documents\GitHub\PRAWaitlist\EmailApplication\obj\Debug\EmailApplication.csprojResolveAssemblyReference.cache
+C:\Users\Jason\Documents\GitHub\PRAWaitlist\EmailApplication\obj\Debug\EmailApplication.exe
+C:\Users\Jason\Documents\GitHub\PRAWaitlist\EmailApplication\obj\Debug\EmailApplication.pdb
