@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Security.Principal;
+using Microsoft.AspNet.Identity;
+using System.Net.Mail;
 
 namespace PRAWaitList.DAL
 {
@@ -444,6 +446,72 @@ namespace PRAWaitList.DAL
             enrollCaptcha.ImageSize = new System.Drawing.Size(255, 50);
 
             return enrollCaptcha;
+        }
+
+        public static void SendMail(MailMessage m)
+        {
+            PRAWaitListContext db = new PRAWaitListContext();
+            EmailQueueModel eq = new EmailQueueModel();
+            eq.MessageBCC = GetDelimitedString(m.Bcc.ToList());
+            eq.MessageBody = m.Body;
+            eq.MessageCC = GetDelimitedString(m.CC.ToList());
+            eq.MessageIsHtml = m.IsBodyHtml;
+            eq.MessageSubject = m.Subject;
+            eq.MessageTo = GetDelimitedString(m.To.ToList());
+            eq.QueueDate = DateTime.Now;
+            eq.StatusDate = DateTime.Now;
+            eq.StatusModel = "Ready";
+            eq.RecipientCount = GetRecipientCount(eq.MessageBCC, eq.MessageCC, eq.MessageTo);
+            db.EmailQueues.Add(eq);
+            db.SaveChanges();
+        }
+
+        private static int GetRecipientCount(string messageBCC, string messageCC, string messageTo)
+        {
+            int iTotalCount = 0;
+            int iCCCount = 0;
+            int iBCCCount = 0;
+            int iToCount = 0;
+            if (messageBCC == string.Empty)
+            {
+                iBCCCount = 0;
+            }
+            else
+            {
+                iBCCCount = messageBCC.Split(',').Length;
+            }
+            if (messageCC == string.Empty)
+            {
+                iCCCount = 0;
+            }
+            else
+            {
+                iCCCount = messageCC.Split(',').Length;
+            }
+            if (messageTo == string.Empty)
+            {
+                iToCount = 0;
+            }
+            else
+            {
+                iToCount = messageTo.Split(',').Length;
+            }
+            iTotalCount = iCCCount + iBCCCount + iToCount;
+            return iTotalCount;
+        }
+
+        public static string GetDelimitedString(List<MailAddress> ls)
+        {
+            string rtv = string.Empty;
+            foreach(MailAddress ma in ls)
+            {
+                rtv += ma.Address + ",";
+            }
+            if(rtv.EndsWith(","))
+            {
+                rtv = rtv.Substring(0, rtv.Length - 1);
+            }
+            return rtv;
         }
     }
 }

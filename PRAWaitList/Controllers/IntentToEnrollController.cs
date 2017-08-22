@@ -429,10 +429,7 @@ namespace PRAWaitList.Controllers
 
         private ActionResult SendEmail(MailMessage m)
         {
-            using (var smtp = new SmtpClient())
-            {
-                smtp.Send(m);
-            }
+            Utility.SendMail(m);
             return View();
         }
 

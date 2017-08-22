@@ -250,19 +250,7 @@ namespace PRAWaitList.Controllers
         {
             try
             {
-                using (var smtp = new SmtpClient())
-                {
-                    try
-                    {
-                        smtp.Send(m);
-                        smtp.Dispose();
-                    }
-                    catch (Exception e)
-                    {
-                        smtp.Dispose();
-                        return false;
-                    }
-                }
+                Utility.SendMail(m);
                 return true;
             }
             catch(Exception e)
