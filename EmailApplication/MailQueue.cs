@@ -11,12 +11,14 @@ namespace EmailApplication
     public class MailQueue
     {
         public SmtpClient smtp;
-        public EmailControl ec;
+        public EmailControlModel ec;
         public MailQueue()
         {
             //setup smtp object with info from database
+            EmailClassesDataContext dc = new EmailClassesDataContext();
             smtp = new SmtpClient();
-            switch(ec.DeliveryMethod.toLower())
+            ec = dc.EmailControlModels.Where(x => x.SMTPisActive == true).Single();
+            switch(ec.SMTPDeliveryMethod.ToLower())
             {
                 case "network":
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
@@ -28,44 +30,28 @@ namespace EmailApplication
                     smtp.DeliveryMethod = SmtpDeliveryMethod.SpecifiedPickupDirectory;
                     break;
             }
-            smtp.EnableSsl = ec.smtpEnableSSL;
-            smtp.Host = ec.smtpHost;
-            smtp.Port = ec.smtpPort;
-            smtp.Credentials = new System.Net.NetworkCredential(ec.smtpUser, ec.smtpPass);
+            smtp.EnableSsl = ec.SMTPEnableSSL;
+            smtp.Host = ec.SMTPHost;
+            smtp.Port = ec.SMTPPort;
+            smtp.Credentials = new System.Net.NetworkCredential(ec.SMTPUser, ec.SMTPPassword);
 
 
         }
-
-
-
-
-        public static void sendMail(string sFrom, string sTo, string sSubject, string sBody, bool bIsHtml)
+        
+        private void sendMail(EmailQueueModel eq)
         {
             MailMessage mail = new MailMessage();
-            mail.From = new MailAddress(sFrom);
-
-            // The important part -- configuring the SMTP client
-            SmtpClient smtp = new SmtpClient();
-            //smtp.Port = 587;   // [1] You can try with 465 also, I always used 587 and got success
-            //smtp.EnableSsl = true;
-            //smtp.DeliveryMethod = SmtpDeliveryMethod.Network; // [2] Added this
-            //smtp.UseDefaultCredentials = false; // [3] Changed this
-            //smtp.Credentials = new NetworkCredential(mail.From,  "password_here");  // [4] Added this. Note, first parameter is NOT string.
-            smtp.Host = ConfigurationManager.AppSettings["smtphost"].ToString();
-            //recipient address
-            string[] sTos = sTo.Split(',');
-
+            mail.From = new MailAddress(ec.FromAddress);
+            string[] sTos = eq.MessageTo.Split(',');
             foreach (string s in sTos)
             {
                 mail.To.Add(new MailAddress(s));
             }
-
             //Formatted mail body
-            mail.IsBodyHtml = bIsHtml;
-            mail.Subject = sSubject;
-            mail.Body = sBody;
+            mail.IsBodyHtml = eq.MessageIsHtml;
+            mail.Subject = eq.MessageSubject;
+            mail.Body = eq.MessageBody;
             smtp.Send(mail);
-
         }
     }
 }

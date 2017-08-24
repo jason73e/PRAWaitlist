@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PRAWAITLIST" Class="EmailClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=2V7BNK1\SQLEXPRESS;Initial Catalog=PRAWAITLIST;Integrated Security=True" SettingsObjectName="EmailApplication.Properties.Settings" SettingsPropertyName="PRAWAITLISTConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.EmailControlModel" Member="EmailControlModels">
+    <Type Name="EmailControlModel">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FromAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SMTPDeliveryMethod" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SMTPHost" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SMTPPort" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SMTPUser" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SMTPPassword" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SMTPEnableSSL" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SMTPSendLimit" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SMTPisActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EmailQueueModel" Member="EmailQueueModels">
+    <Type Name="EmailQueueModel">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="QueueDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="StatusModel" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="StatusDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RecipientCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MessageTo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MessageSubject" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MessageCC" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MessageBCC" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MessageBody" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MessageIsHtml" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

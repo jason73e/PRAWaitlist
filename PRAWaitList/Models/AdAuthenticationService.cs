@@ -37,9 +37,9 @@ namespace PRAWaitList.Models
         public AuthenticationResult SignIn(String username, String password)
         {
             // authenticates against your local machine - for development time
-            ContextType authenticationType = ContextType.Machine;
+            //ContextType authenticationType = ContextType.Machine;
             // authenticates against your Domain AD
-            //ContextType authenticationType = ContextType.Domain;
+            ContextType authenticationType = ContextType.Domain;
             PrincipalContext principalContext = new PrincipalContext(authenticationType);
             bool isAuthenticated = false;
             UserPrincipal userPrincipal = null;

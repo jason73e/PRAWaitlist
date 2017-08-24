@@ -29,6 +29,8 @@ namespace PRAWaitList.DAL
 
         public DbSet<EmailQueueModel> EmailQueues { get; set; }
 
+        public DbSet<EmailControlModel> EmailControls { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Database.SetInitializer<PRAWaitListContext>(null);

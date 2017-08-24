@@ -119,9 +119,13 @@ namespace PRAWaitList.DAL
         public static List<String> GetHearAboutPRAs()
         {
             PRAWaitListContext db = new PRAWaitListContext();
-            var hearaboutpras = db.HearAboutPRAs.Select(x => x.Text).ToList();
+            List<string> retValue = new List<string>();
+            if (db.HearAboutPRAs.Any())
+            {
+                retValue = db.HearAboutPRAs.Select(x => x.Text).ToList();
+            }
             db.Dispose();
-            return (hearaboutpras);
+            return (retValue);
         }
 
         public static FamilyModel AddFamily(FamilyModel fm)
