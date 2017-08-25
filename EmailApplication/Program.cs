@@ -10,6 +10,8 @@ namespace EmailApplication
     {
         static void Main(string[] args)
         {
+            MailQueue mq = new MailQueue();
+            mq.ProcessQueue();
         }
     }
 }
