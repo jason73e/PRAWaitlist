@@ -4,12 +4,11 @@ C:\Users\Jason\Documents\GitHub\PRAWaitlist\EmailApplication\bin\Debug\EmailAppl
 C:\Users\Jason\Documents\GitHub\PRAWaitlist\EmailApplication\obj\Debug\EmailApplication.csprojResolveAssemblyReference.cache
 C:\Users\Jason\Documents\GitHub\PRAWaitlist\EmailApplication\obj\Debug\EmailApplication.exe
 C:\Users\Jason\Documents\GitHub\PRAWaitlist\EmailApplication\obj\Debug\EmailApplication.pdb
-C:\Users\jengel\Documents\Codelines\GIT\trunk\EmailApplication\obj\Debug\EmailApplication.csprojResolveAssemblyReference.cache
-C:\Users\jengel\Documents\Codelines\GIT\trunk\EmailApplication\obj\Debug\EmailApplication.exe
-C:\Users\jengel\Documents\Codelines\GIT\trunk\EmailApplication\obj\Debug\EmailApplication.pdb
+C:\Users\jengel\Documents\Codelines\GIT\trunk\EmailApplication\bin\Debug\NLog.config
 C:\Users\jengel\Documents\Codelines\GIT\trunk\EmailApplication\bin\Debug\EmailApplication.exe.config
 C:\Users\jengel\Documents\Codelines\GIT\trunk\EmailApplication\bin\Debug\EmailApplication.exe
 C:\Users\jengel\Documents\Codelines\GIT\trunk\EmailApplication\bin\Debug\EmailApplication.pdb
 C:\Users\jengel\Documents\Codelines\GIT\trunk\EmailApplication\bin\Debug\NLog.dll
 C:\Users\jengel\Documents\Codelines\GIT\trunk\EmailApplication\bin\Debug\NLog.xml
-C:\Users\jengel\Documents\Codelines\GIT\trunk\EmailApplication\bin\Debug\NLog.config
+C:\Users\jengel\Documents\Codelines\GIT\trunk\EmailApplication\obj\Debug\EmailApplication.exe
+C:\Users\jengel\Documents\Codelines\GIT\trunk\EmailApplication\obj\Debug\EmailApplication.pdb

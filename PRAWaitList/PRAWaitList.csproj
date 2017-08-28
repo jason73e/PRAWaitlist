@@ -230,12 +230,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\ConfigurationSettingsController.cs" />
+    <Compile Include="Controllers\EmailControlModelsController.cs" />
     <Compile Include="Controllers\HearAboutPRAModelsController.cs" />
     <Compile Include="Controllers\IntentToEnrollController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LotteryBatchModelsController.cs" />
     <Compile Include="Controllers\RenewStudentsController.cs" />
+    <Compile Include="Controllers\SchoolModelsController.cs" />
     <Compile Include="Controllers\SchoolYearModelsController.cs" />
+    <Compile Include="Controllers\StateModelsController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\WaitListAdminController.cs" />
     <Compile Include="DAL\PRAWaitListContext.cs" />
@@ -393,6 +396,21 @@
     <Content Include="Views\IntentToEnroll\ConfirmStudent.cshtml" />
     <Content Include="Views\Login\index.cshtml" />
     <Content Include="Views\RenewStudents\Index.cshtml" />
+    <Content Include="Views\StateModels\Create.cshtml" />
+    <Content Include="Views\StateModels\Delete.cshtml" />
+    <Content Include="Views\StateModels\Details.cshtml" />
+    <Content Include="Views\StateModels\Edit.cshtml" />
+    <Content Include="Views\StateModels\Index.cshtml" />
+    <Content Include="Views\EmailControlModels\Create.cshtml" />
+    <Content Include="Views\EmailControlModels\Delete.cshtml" />
+    <Content Include="Views\EmailControlModels\Details.cshtml" />
+    <Content Include="Views\EmailControlModels\Edit.cshtml" />
+    <Content Include="Views\EmailControlModels\Index.cshtml" />
+    <Content Include="Views\SchoolModels\Create.cshtml" />
+    <Content Include="Views\SchoolModels\Delete.cshtml" />
+    <Content Include="Views\SchoolModels\Details.cshtml" />
+    <Content Include="Views\SchoolModels\Edit.cshtml" />
+    <Content Include="Views\SchoolModels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

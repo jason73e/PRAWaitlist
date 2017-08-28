@@ -286,6 +286,7 @@ C:\Users\jengel\Documents\Codelines\GIT\trunk\PRAWaitList\bin\Microsoft.Owin.Sec
 C:\Users\jengel\Documents\Codelines\GIT\trunk\PRAWaitList\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\jengel\Documents\Codelines\GIT\trunk\PRAWaitList\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\jengel\Documents\Codelines\GIT\trunk\PRAWaitList\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\jengel\Documents\Codelines\GIT\trunk\PRAWaitList\obj\Debug\PRAWaitList.csprojResolveAssemblyReference.cache
 C:\Users\jengel\Documents\Codelines\GIT\trunk\PRAWaitList\obj\Debug\PRAWaitList.Migrations.InitialCreate.resources
 C:\Users\jengel\Documents\Codelines\GIT\trunk\PRAWaitList\obj\Debug\PRAWaitList.Properties.Resources.resources
 C:\Users\jengel\Documents\Codelines\GIT\trunk\PRAWaitList\obj\Debug\PRAWaitList.csproj.GenerateResource.Cache
