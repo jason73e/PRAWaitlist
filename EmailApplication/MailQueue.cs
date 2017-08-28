@@ -63,15 +63,21 @@ namespace EmailApplication
                     {
                         mail.To.Add(new MailAddress(s));
                     }
-                    string[] sCCs = eq.MessageCC.Split(',');
-                    foreach (string s in sCCs)
+                    if (eq.MessageCC != string.Empty)
                     {
-                        mail.CC.Add(new MailAddress(s));
+                        string[] sCCs = eq.MessageCC.Split(',');
+                        foreach (string s in sCCs)
+                        {
+                            mail.CC.Add(new MailAddress(s));
+                        }
                     }
-                    string[] sBCCs = eq.MessageBCC.Split(',');
-                    foreach (string s in sBCCs)
+                    if (eq.MessageBCC != string.Empty)
                     {
-                        mail.Bcc.Add(new MailAddress(s));
+                        string[] sBCCs = eq.MessageBCC.Split(',');
+                        foreach (string s in sBCCs)
+                        {
+                            mail.Bcc.Add(new MailAddress(s));
+                        }
                     }
                     //Formatted mail body
                     mail.IsBodyHtml = eq.MessageIsHtml;
@@ -85,9 +91,12 @@ namespace EmailApplication
                 catch (Exception e)
                 {
                     log(e);
-                    eq.StatusModel = "Error";
-                    eq.StatusDate = DateTime.Now;
-                    dc.SubmitChanges();
+                    if (!e.Message.StartsWith("Service not available,"))
+                    {
+                        eq.StatusModel = "Error";
+                        eq.StatusDate = DateTime.Now;
+                        dc.SubmitChanges();
+                    }
                 }
             }
             catch(Exception e)
@@ -126,7 +135,13 @@ namespace EmailApplication
             {
                 EmailClassesDataContext dc = new EmailClassesDataContext();
                 int iLimit = ec.SMTPSendLimit;
-                int iSent = dc.EmailQueueModels.Where(x => x.StatusDate > DateTime.Now.AddHours(-23) && x.StatusModel != "Ready").Sum(x => x.RecipientCount);
+                int iSent = 0;
+//                if (dc.EmailQueueModels.Where(x => x.StatusDate > DateTime.Now.AddHours(-24) && x.StatusModel != "Ready").Any())
+                if (dc.EmailQueueModels.Where(x => x.StatusDate > DateTime.Now.AddMinutes(-1) && x.StatusModel != "Ready").Any())
+                {
+                    iSent = dc.EmailQueueModels.Where(x => x.StatusDate > DateTime.Now.AddMinutes(-1) && x.StatusModel != "Ready").Sum(x => x.RecipientCount);
+                    //iSent = dc.EmailQueueModels.Where(x => x.StatusDate > DateTime.Now.AddHours(-24) && x.StatusModel != "Ready").Sum(x => x.RecipientCount);
+                }
                 if (iLimit > iSent)
                 {
                     retVal = true;

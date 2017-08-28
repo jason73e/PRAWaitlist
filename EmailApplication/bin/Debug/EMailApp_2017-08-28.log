@@ -1,0 +1,108 @@
+2017-08-28 16:16:36.1445|ERROR|EmailApplication.MailQueue|System.InvalidOperationException: Sequence contains no elements
+   at System.Data.Linq.SqlClient.SqlProvider.Execute(Expression query, QueryInfo queryInfo, IObjectReaderFactory factory, Object[] parentArgs, Object[] userArgs, ICompiledSubQuery[] subQueries, Object lastResult)
+   at System.Data.Linq.SqlClient.SqlProvider.ExecuteAll(Expression query, QueryInfo[] queryInfos, IObjectReaderFactory factory, Object[] userArguments, ICompiledSubQuery[] subQueries)
+   at System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression query)
+   at System.Data.Linq.DataQuery`1.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   at System.Linq.Queryable.Single[TSource](IQueryable`1 source)
+   at EmailApplication.MailQueue..ctor() in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 26
+2017-08-28 16:16:36.2304|ERROR|EmailApplication.MailQueue|System.NullReferenceException: Object reference not set to an instance of an object.
+   at EmailApplication.MailQueue.CanSend() in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 128
+2017-08-28 16:19:35.5810|ERROR|EmailApplication.MailQueue|System.InvalidOperationException: The null value cannot be assigned to a member with type System.Int32 which is a non-nullable value type.
+   at System.Data.Linq.SqlClient.SqlProvider.Execute(Expression query, QueryInfo queryInfo, IObjectReaderFactory factory, Object[] parentArgs, Object[] userArgs, ICompiledSubQuery[] subQueries, Object lastResult)
+   at System.Data.Linq.SqlClient.SqlProvider.ExecuteAll(Expression query, QueryInfo[] queryInfos, IObjectReaderFactory factory, Object[] userArguments, ICompiledSubQuery[] subQueries)
+   at System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression query)
+   at System.Data.Linq.DataQuery`1.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   at System.Linq.Queryable.Sum[TSource](IQueryable`1 source, Expression`1 selector)
+   at EmailApplication.MailQueue.CanSend() in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 129
+2017-08-28 16:25:32.2201|ERROR|EmailApplication.MailQueue|System.InvalidOperationException: The null value cannot be assigned to a member with type System.Int32 which is a non-nullable value type.
+   at System.Data.Linq.SqlClient.SqlProvider.Execute(Expression query, QueryInfo queryInfo, IObjectReaderFactory factory, Object[] parentArgs, Object[] userArgs, ICompiledSubQuery[] subQueries, Object lastResult)
+   at System.Data.Linq.SqlClient.SqlProvider.ExecuteAll(Expression query, QueryInfo[] queryInfos, IObjectReaderFactory factory, Object[] userArguments, ICompiledSubQuery[] subQueries)
+   at System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression query)
+   at System.Data.Linq.DataQuery`1.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   at System.Linq.Queryable.Sum[TSource](IQueryable`1 source, Expression`1 selector)
+   at EmailApplication.MailQueue.CanSend() in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 129
+2017-08-28 16:26:40.7205|ERROR|EmailApplication.MailQueue|System.InvalidOperationException: The null value cannot be assigned to a member with type System.Int32 which is a non-nullable value type.
+   at System.Data.Linq.SqlClient.SqlProvider.Execute(Expression query, QueryInfo queryInfo, IObjectReaderFactory factory, Object[] parentArgs, Object[] userArgs, ICompiledSubQuery[] subQueries, Object lastResult)
+   at System.Data.Linq.SqlClient.SqlProvider.ExecuteAll(Expression query, QueryInfo[] queryInfos, IObjectReaderFactory factory, Object[] userArguments, ICompiledSubQuery[] subQueries)
+   at System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression query)
+   at System.Data.Linq.DataQuery`1.System.Linq.IQueryProvider.Execute[S](Expression expression)
+   at System.Linq.Queryable.Sum[TSource](IQueryable`1 source, Expression`1 selector)
+   at EmailApplication.MailQueue.CanSend() in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 129
+2017-08-28 16:36:38.4726|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: Service not available, closing transmission channel. The server response was: 4.7.0 Try again later, closing connection. (MAIL) c193sm624854ioc.66 - gsmtp
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 86
+2017-08-28 16:36:39.1590|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: Service not available, closing transmission channel. The server response was: 4.7.0 Try again later, closing connection. (MAIL) k28sm636475iod.48 - gsmtp
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 86
+2017-08-28 16:57:05.9571|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: Service not available, closing transmission channel. The server response was: 4.7.0 Try again later, closing connection. (MAIL) m192sm96908itb.14 - gsmtp
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 86
+2017-08-28 16:57:14.8196|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: Service not available, closing transmission channel. The server response was: 4.7.0 Try again later, closing connection. (MAIL) c140sm698330itc.25 - gsmtp
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 86
+2017-08-28 16:57:20.2155|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: Service not available, closing transmission channel. The server response was: 4.7.0 Try again later, closing connection. (MAIL) y1sm707501itb.4 - gsmtp
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 86
+2017-08-28 16:57:26.9558|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: Service not available, closing transmission channel. The server response was: 4.7.0 Try again later, closing connection. (MAIL) b195sm672166itb.35 - gsmtp
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 86
+2017-08-28 16:57:57.9479|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: Service not available, closing transmission channel. The server response was: 4.7.0 Try again later, closing connection. (MAIL) s141sm179452ita.1 - gsmtp
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 86
+2017-08-28 16:57:59.2061|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: Service not available, closing transmission channel. The server response was: 4.7.0 Try again later, closing connection. (MAIL) d184sm101423itd.6 - gsmtp
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 86
+2017-08-28 16:58:00.2532|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: Service not available, closing transmission channel. The server response was: 4.7.0 Try again later, closing connection. (MAIL) k191sm695020ita.21 - gsmtp
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 86
+2017-08-28 16:58:01.4890|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: Service not available, closing transmission channel. The server response was: 4.7.0 Try again later, closing connection. (MAIL) g41sm673163ioj.41 - gsmtp
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 86
+2017-08-28 16:58:46.4485|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: Service not available, closing transmission channel. The server response was: 4.7.0 Try again later, closing connection. (MAIL) d187sm685412iod.7 - gsmtp
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 86
+2017-08-28 16:58:48.2243|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: Service not available, closing transmission channel. The server response was: 4.7.0 Try again later, closing connection. (MAIL) h193sm673473ita.39 - gsmtp
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 86
+2017-08-28 16:58:51.7267|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: Service not available, closing transmission channel. The server response was: 4.7.0 Try again later, closing connection. (MAIL) a68sm638148ioa.69 - gsmtp
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\MailQueue.cs:line 86
