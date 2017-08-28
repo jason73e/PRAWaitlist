@@ -118,14 +118,21 @@ namespace PRAWaitList.DAL
 
         public static List<String> GetHearAboutPRAs()
         {
-            PRAWaitListContext db = new PRAWaitListContext();
             List<string> retValue = new List<string>();
-            if (db.HearAboutPRAs.Any())
+            try
             {
-                retValue = db.HearAboutPRAs.Select(x => x.Text).ToList();
+                PRAWaitListContext db = new PRAWaitListContext();
+                if (db.HearAboutPRAs.Any())
+                {
+                    retValue = db.HearAboutPRAs.Select(x => x.Text).ToList();
+                }
+                db.Dispose();
+                return retValue;
             }
-            db.Dispose();
-            return (retValue);
+            catch(Exception e)
+            {
+                return retValue;
+            }
         }
 
         public static FamilyModel AddFamily(FamilyModel fm)

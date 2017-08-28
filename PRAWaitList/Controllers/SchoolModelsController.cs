@@ -44,8 +44,12 @@ namespace PRAWaitList.Controllers
                         school.StateName = csvReader.GetField<string>("StateName");
                         school.StateAbbr = csvReader.GetField<string>("StateAbbr");
                         school.SchoolID = csvReader.GetField<string>("SchoolID");
+                        school.SchoolID = school.SchoolID.Replace(@"""", "");
+                        school.SchoolID = school.SchoolID.Replace(@"=", "");
                         school.AgencyName = csvReader.GetField<string>("AgencyName");
                         school.AgencyID = csvReader.GetField<string>("AgencyID");
+                        school.AgencyID = school.AgencyID.Replace(@"""", "");
+                        school.AgencyID = school.AgencyID.Replace(@"=", "");
                         schools.Add(school);
                     }
                     db.Schools.AddRange(schools);
