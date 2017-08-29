@@ -14,6 +14,8 @@ namespace PRAWaitList.Models
 
         public string StatusModel { get; set; }
 
+        public string ErrorMessage { get; set;}
+
         public DateTime StatusDate { get; set; }
         public int RecipientCount { get; set; }
         public string MessageTo { get; set; }

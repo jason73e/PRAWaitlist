@@ -37,7 +37,7 @@
     @using (Html.BeginForm("BatchDetails", "LotteryBatchModels", FormMethod.Get))
     {
         <p>
-            <label class="form-control-static">Records Per Page:</label> @Html.DropDownList("PageSize", new SelectList(new Dictionary<string, int> { { "10", 10 }, { "20", 20 }, { "50", 50 }, { "100", 100 } }, "Key", "Value", Model.lsLM.PageSize), new { @class = "pro_pag_tf1", id = "pagesizelist" })
+            <label class="form-control-static">Records Per Page:</label> @Html.DropDownList("PageSize", new SelectList(new Dictionary<string, int> { { "10", 10 }, { "20", 20 }, { "50", 50 }, { "100", 100 } }, "Key", "Value", Model.lsLM.PageSize), new { @class = "pro_pag_tf1", id = "pagesizelist", @onchange = "this.form.submit();" })
         </p>
     }
     @Html.PagedListPager(Model.lsLM, page => Url.Action("BatchDetails", new { page, PageSize = ViewBag.PageSize }))

@@ -57,7 +57,7 @@ namespace PRAWaitList.Controllers
             }
 
             ViewBag.CurrentApplyYear = SearchApplyYear;
-
+            ViewBag.CurrentStatus = SearchStatus;
 
             var students = db.Students.Where(x => x.isActive == true);
 

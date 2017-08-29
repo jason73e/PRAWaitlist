@@ -391,6 +391,8 @@ namespace EmailApplication
 		
 		private bool _MessageIsHtml;
 		
+		private string _ErrorMessage;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -417,6 +419,8 @@ namespace EmailApplication
     partial void OnMessageBodyChanged();
     partial void OnMessageIsHtmlChanging(bool value);
     partial void OnMessageIsHtmlChanged();
+    partial void OnErrorMessageChanging(string value);
+    partial void OnErrorMessageChanged();
     #endregion
 		
 		public EmailQueueModel()
@@ -640,6 +644,26 @@ namespace EmailApplication
 					this._MessageIsHtml = value;
 					this.SendPropertyChanged("MessageIsHtml");
 					this.OnMessageIsHtmlChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorMessage", DbType="NVarChar(MAX)")]
+		public string ErrorMessage
+		{
+			get
+			{
+				return this._ErrorMessage;
+			}
+			set
+			{
+				if ((this._ErrorMessage != value))
+				{
+					this.OnErrorMessageChanging(value);
+					this.SendPropertyChanging();
+					this._ErrorMessage = value;
+					this.SendPropertyChanged("ErrorMessage");
+					this.OnErrorMessageChanged();
 				}
 			}
 		}

@@ -37,16 +37,12 @@
             </td>
         </tr>
     </table>
-                
-            }
-            <label class="form-control-static">Page @(Model.lsStudents.PageCount < Model.lsStudents.PageNumber ? 0 : Model.lsStudents.PageNumber) of @Model.lsStudents.PageCount</label>
-            @using (Html.BeginForm("Index", "WaitListAdmin", FormMethod.Get))
-            {
-                <p>
-                    <label class="form-control-static">Records Per Page: </label>@Html.DropDownList("PageSize", new SelectList(new Dictionary<string, int> { { "10", 10 }, { "20", 20 }, { "50", 50 }, { "100", 100 } }, "Key", "Value", Model.lsStudents.PageSize), new { @class = "pro_pag_tf1", id = "pagesizelist" })
-                </p>
+    <label class="form-control-static">Page @(Model.lsStudents.PageCount < Model.lsStudents.PageNumber ? 0 : Model.lsStudents.PageNumber) of @Model.lsStudents.PageCount</label>
+    <p>
+        <label class="form-control-static">Records Per Page: </label>@Html.DropDownList("PageSize", new SelectList(new Dictionary<string, int> { { "10", 10 }, { "20", 20 }, { "50", 50 }, { "100", 100 } }, "Key", "Value", Model.lsStudents.PageSize), new { @class = "pro_pag_tf1", id = "pagesizelist", @onchange = "this.form.submit();" })
+    </p>
 
-            }
+}
             @Html.PagedListPager(Model.lsStudents, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize=ViewBag.PageSize }))
             <table class="table">
                 <tr>

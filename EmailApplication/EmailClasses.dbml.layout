@@ -8,10 +8,10 @@
         <elementListCompartment Id="9901dbe6-be14-4e85-bd85-710b123b8b2c" absoluteBounds="0.765, 1.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="b9a240fa-9d28-4454-ae56-1de9063ee460" absoluteBounds="3.75, 0.75, 2, 2.9247054036458326">
+    <classShape Id="d638b5b6-0cae-4050-8634-2f4e8d2995c7" absoluteBounds="4.625, 0.625, 2, 3.1170068359375">
       <DataClassMoniker Name="/EmailClassesDataContext/EmailQueueModel" />
       <nestedChildShapes>
-        <elementListCompartment Id="a25d2b87-eab6-4e1d-a966-56394af975cd" absoluteBounds="3.765, 1.21, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="385d699c-1100-497f-afd6-c83eb657a655" absoluteBounds="4.64, 1.085, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

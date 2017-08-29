@@ -91,12 +91,13 @@ namespace EmailApplication
                 catch (Exception e)
                 {
                     log(e);
+                    eq.ErrorMessage = e.Message;
                     if (!e.Message.StartsWith("Service not available,"))
                     {
                         eq.StatusModel = "Error";
                         eq.StatusDate = DateTime.Now;
-                        dc.SubmitChanges();
                     }
+                    dc.SubmitChanges();
                 }
             }
             catch(Exception e)

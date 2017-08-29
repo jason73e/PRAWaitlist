@@ -28,45 +28,41 @@
             </td>
         </tr>
     </table>
-
-}
-<label class="form-control-static">Page @(Model.lsStudents.PageCount < Model.lsStudents.PageNumber ? 0 : Model.lsStudents.PageNumber) of @Model.lsStudents.PageCount</label>
-@using (Html.BeginForm("Index", "RenewStudents", FormMethod.Get))
-{
+    <label class="form-control-static">Page @(Model.lsStudents.PageCount < Model.lsStudents.PageNumber ? 0 : Model.lsStudents.PageNumber) of @Model.lsStudents.PageCount</label>
     <p>
-        <label class="form-control-static">Records Per Page: </label>@Html.DropDownList("PageSize", new SelectList(new Dictionary<string, int> { { "10", 10 }, { "20", 20 }, { "50", 50 }, { "100", 100 } }, "Key", "Value", Model.lsStudents.PageSize), new { @class = "pro_pag_tf1", id = "pagesizelist" })
+        <label class="form-control-static">Records Per Page: </label>@Html.DropDownList("PageSize", new SelectList(new Dictionary<string, int> { { "10", 10 }, { "20", 20 }, { "50", 50 }, { "100", 100 } }, "Key", "Value", Model.lsStudents.PageSize), new { @class = "pro_pag_tf1", id = "pagesizelist", @onchange = "this.form.submit();" })
     </p>
 
 }
-@Html.PagedListPager(Model.lsStudents, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize }))
+@Html.PagedListPager(Model.lsStudents, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize }))
 <table class="table">
     <tr>
         <th nowrap="nowrap">
-            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSortParm, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
         </th>
         <th nowrap="nowrap">
-            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstNameSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstNameSortParm, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
         </th>
         <th nowrap="nowrap">
-            @Html.ActionLink("Birth Date", "Index", new { sortOrder = ViewBag.BirthDateSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            @Html.ActionLink("Birth Date", "Index", new { sortOrder = ViewBag.BirthDateSortParm, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
         </th>
         <th nowrap="nowrap">
-            @Html.ActionLink("Gender", "Index", new { sortOrder = ViewBag.GenderSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            @Html.ActionLink("Gender", "Index", new { sortOrder = ViewBag.GenderSortParm, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
         </th>
         <th nowrap="nowrap">
-            @Html.ActionLink("Current Grade", "Index", new { sortOrder = ViewBag.CurrentGradeSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            @Html.ActionLink("Current Grade", "Index", new { sortOrder = ViewBag.CurrentGradeSortParm, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
         </th>
         <th nowrap="nowrap">
-            @Html.ActionLink("Applying For Grade", "Index", new { sortOrder = ViewBag.ApplyingForGradeSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            @Html.ActionLink("Applying For Grade", "Index", new { sortOrder = ViewBag.ApplyingForGradeSortParm, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
         </th>
         <th nowrap="nowrap">
-            @Html.ActionLink("Applying For Year", "Index", new { sortOrder = ViewBag.ApplyingForYearSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            @Html.ActionLink("Applying For Year", "Index", new { sortOrder = ViewBag.ApplyingForYearSortParm, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
         </th>
         <th nowrap="nowrap">
-            @Html.ActionLink("Status", "Index", new { sortOrder = ViewBag.StatusSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            @Html.ActionLink("Status", "Index", new { sortOrder = ViewBag.StatusSortParm, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
         </th>
         <th nowrap="nowrap">
-            @Html.ActionLink("Is PRA Sibling", "Index", new { sortOrder = ViewBag.IsPRASibling, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            @Html.ActionLink("Is PRA Sibling", "Index", new { sortOrder = ViewBag.IsPRASibling, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
         </th>
     </tr>
 

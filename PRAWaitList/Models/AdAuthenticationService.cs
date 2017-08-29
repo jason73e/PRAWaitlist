@@ -3,7 +3,7 @@ using System.DirectoryServices.AccountManagement;
 using System.Security.Claims;
 using Microsoft.Owin.Security;
 using PRAWaitList;
-
+using System.Configuration;
 
 namespace PRAWaitList.Models
 {
@@ -36,10 +36,15 @@ namespace PRAWaitList.Models
         /// <returns></returns>
         public AuthenticationResult SignIn(String username, String password)
         {
+            string sAuthType = ConfigurationManager.AppSettings["AuthType"];
+
             // authenticates against your local machine - for development time
-            //ContextType authenticationType = ContextType.Machine;
+            ContextType authenticationType = ContextType.Machine;
             // authenticates against your Domain AD
-            ContextType authenticationType = ContextType.Domain;
+            if (sAuthType == "Domain")
+            {
+                authenticationType = ContextType.Domain;
+            } 
             PrincipalContext principalContext = new PrincipalContext(authenticationType);
             bool isAuthenticated = false;
             UserPrincipal userPrincipal = null;
