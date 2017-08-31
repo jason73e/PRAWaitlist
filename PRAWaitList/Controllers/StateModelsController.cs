@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PRAWaitList.DAL;
 using PRAWaitList.Models;
+using PagedList;
 
 namespace PRAWaitList.Controllers
 {
@@ -17,9 +18,23 @@ namespace PRAWaitList.Controllers
         private PRAWaitListContext db = new PRAWaitListContext();
 
         // GET: StateModels
-        public ActionResult Index()
+        public ActionResult Index(int? page, int? PageSize)
         {
-            return View(db.States.ToList());
+            TempData["MySLModel"] = null;
+            int DefaultPageSize = 10;
+            int currentPageIndex = page.HasValue ? page.Value - 1 : 0;
+            if (PageSize != null)
+            {
+                DefaultPageSize = (int)PageSize;
+            }
+            ViewBag.PageSize = DefaultPageSize;
+            int pageNumber = (page ?? 1);
+            ViewBag.Page = page;
+            var statelist = db.States.ToList();
+            StateListViewModel m = new StateListViewModel();
+            m.lsStates = statelist.ToPagedList(pageNumber, DefaultPageSize);
+            TempData["MySLModel"] = m;
+            return View(m);
         }
 
         // GET: StateModels/Details/5
@@ -119,6 +134,7 @@ namespace PRAWaitList.Controllers
 
         public ActionResult Seed()
         {
+            var AddStates = new List<StateModel>();
             var states = new List<StateModel>
             {
                 new StateModel() { Name="Alabama", StateID="AL"},
@@ -173,8 +189,18 @@ namespace PRAWaitList.Controllers
                 new StateModel() { Name="Wisconsin", StateID="WI"},
                 new StateModel() { Name="Wyoming", StateID="WY"}
             };
-            states.ForEach(s => db.States.Add(s));
-            db.SaveChanges();
+            foreach(StateModel s in states)
+            {
+                if(!db.States.Any(x=> x.StateID==s.StateID))
+                {
+                    AddStates.Add(s);
+                }
+            }
+            if (AddStates.Count > 0)
+            {
+                AddStates.ForEach(s => db.States.Add(s));
+                db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 

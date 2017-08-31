@@ -267,6 +267,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NotifyViewModel.cs" />
     <Compile Include="Models\ParentModel.cs" />
+    <Compile Include="Models\StateListViewModel.cs" />
     <Compile Include="Models\RenewStudentsViewModel.cs" />
     <Compile Include="Models\SchoolModel.cs" />
     <Compile Include="Models\SchoolYearModel.cs" />

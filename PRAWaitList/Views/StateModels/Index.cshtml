@@ -1,4 +1,6 @@
-﻿@model IEnumerable<PRAWaitList.Models.StateModel>
+﻿@model PRAWaitList.Models.StateListViewModel
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
@@ -9,15 +11,25 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm("Index", "StateModels", FormMethod.Get))
+{
+    <label class="form-control-static">Page @(Model.lsStates.PageCount < Model.lsStates.PageNumber ? 0 : Model.lsStates.PageNumber) of @Model.lsStates.PageCount</label>
+    <p>
+        <label class="form-control-static">Records Per Page: </label>@Html.DropDownList("PageSize", new SelectList(new Dictionary<string, int> { { "10", 10 }, { "20", 20 }, { "50", 50 }, { "100", 100 } }, "Key", "Value", Model.lsStates.PageSize), new { @class = "pro_pag_tf1", id = "pagesizelist", @onchange = "this.form.submit();" })
+    </p>
+
+}
+@Html.PagedListPager(Model.lsStates, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize }))
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            State Name
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.lsStates) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -29,9 +41,10 @@
         </td>
     </tr>
 }
-    @if (Model.Count() == 0)
-    {
-        @Html.ActionLink("Add Seed Values", "Seed", null, new { @class = "btn btn-primary" })
-    }
-
+    <tr>
+        <td>
+            @Html.ActionLink("Add Seed Values", "Seed", null, new { @class = "btn btn-primary btn-success" })
+        </td>
+        <td></td>
+    </tr>
 </table>

@@ -21,3 +21,4 @@ C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\bin\Debug\Ema
 C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\bin\Debug\NLog.dll
 C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\bin\Debug\NLog.xml
 C:\Users\Jason\Documents\GitHub\PRAWaitlist\trunk\EmailApplication\obj\Debug\EmailApplication.csprojResolveAssemblyReference.cache
+C:\Users\jengel\Documents\Codelines\GIT\trunk\EmailApplication\obj\Debug\EmailApplication.csprojResolveAssemblyReference.cache
