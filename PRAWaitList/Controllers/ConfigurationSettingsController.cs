@@ -116,6 +116,29 @@ namespace PRAWaitList.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult Seed()
+        {
+            var AddSettings = new List<ConfigurationSettingsModel>();
+            var settings = new List<ConfigurationSettingsModel>
+            {
+                new ConfigurationSettingsModel() { key="NotifyExpireHours" , value="48"},
+                new ConfigurationSettingsModel() { key="HomeState",value="CO" },
+                new ConfigurationSettingsModel() { key="HomeDistrict",value="Douglas County School District No. Re 1"}
+            };
+            foreach (ConfigurationSettingsModel s in settings)
+            {
+                if (!db.ConfigurationSettings.Any(x => x.key == s.key))
+                {
+                    AddSettings.Add(s);
+                }
+            }
+            if (AddSettings.Count > 0)
+            {
+                AddSettings.ForEach(s => db.ConfigurationSettings.Add(s));
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
 
         protected override void Dispose(bool disposing)
         {

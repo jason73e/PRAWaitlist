@@ -4,7 +4,6 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using PRAWaitList.DAL;
 using PRAWaitList.Models;
@@ -12,6 +11,7 @@ using System.Reflection;
 using System.IO;
 using CsvHelper;
 using System.Text;
+using PagedList;
 
 namespace PRAWaitList.Controllers
 {
@@ -21,13 +21,29 @@ namespace PRAWaitList.Controllers
         private PRAWaitListContext db = new PRAWaitListContext();
 
         // GET: SchoolModels
-        public ActionResult Index()
+        public ActionResult Index(int? page, int? PageSize)
         {
-            return View(db.Schools.ToList());
+            TempData["MySchoolModel"] = null;
+            int DefaultPageSize = 10;
+            int currentPageIndex = page.HasValue ? page.Value - 1 : 0;
+            if (PageSize != null)
+            {
+                DefaultPageSize = (int)PageSize;
+            }
+            ViewBag.PageSize = DefaultPageSize;
+            int pageNumber = (page ?? 1);
+            ViewBag.Page = page;
+            var schoollist = db.Schools.ToList();
+            SchoolViewModel svm = new SchoolViewModel();
+            svm.lsSchools = schoollist.ToPagedList(pageNumber, DefaultPageSize);
+            TempData["MySchoolModel"] = svm;
+            return View(svm);
         }
 
         public ActionResult Seed()
         {
+            List<SchoolModel> schools = new List<SchoolModel>();
+            List<SchoolModel> Addschools = new List<SchoolModel>();
             Assembly assembly = Assembly.GetExecutingAssembly();
             string resourceName = "PRAWaitList.App_Data.USSchoolList.csv";
             using (Stream stream = assembly.GetManifestResourceStream(resourceName))
@@ -36,7 +52,6 @@ namespace PRAWaitList.Controllers
                 {
                     CsvReader csvReader = new CsvReader(reader);
                     csvReader.Configuration.WillThrowOnMissingField = false;
-                    List<SchoolModel> schools = new List<SchoolModel>();
                     while (csvReader.Read())
                     {
                         SchoolModel school = new SchoolModel();
@@ -52,11 +67,21 @@ namespace PRAWaitList.Controllers
                         school.AgencyID = school.AgencyID.Replace(@"=", "");
                         schools.Add(school);
                     }
-                    db.Schools.AddRange(schools);
+
                 }
             }
-            db.SaveChanges();
-
+            foreach (SchoolModel s in schools)
+            {
+                if (!db.Schools.Any(x => x.SchoolID == s.SchoolID && x.AgencyID == s.AgencyID))
+                {
+                    Addschools.Add(s);
+                }
+            }
+            if (Addschools.Count > 0)
+            {
+                db.Schools.AddRange(Addschools);
+                db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
         // GET: SchoolModels/Details/5

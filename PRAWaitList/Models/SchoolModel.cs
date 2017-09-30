@@ -19,8 +19,10 @@ namespace PRAWaitList.Models
         [Required]
         public String SchoolID { get; set; }
         [Required]
+        [Display(Name ="District")]
         public String AgencyName { get; set; }
         [Required]
+        [Display(Name = "DistrictID")]
         public String AgencyID { get; set; }
     }
 }

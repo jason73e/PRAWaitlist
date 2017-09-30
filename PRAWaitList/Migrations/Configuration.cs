@@ -9,9 +9,7 @@ namespace PRAWaitList.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
-            ContextKey = "PRAWaitList.DAL.PRAWaitListContext";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(PRAWaitList.DAL.PRAWaitListContext context)

@@ -117,6 +117,33 @@ namespace PRAWaitList.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult Seed()
+        {
+            var AddStatus = new List<StatusModel>();
+            var status = new List<StatusModel>
+            {
+                new StatusModel() { Status="Submitted" },
+                new StatusModel() { Status="Verified"},
+                new StatusModel() { Status="Notified"},
+                new StatusModel() { Status="Accepted"},
+                new StatusModel() { Status="Declined"},
+                new StatusModel() { Status="Renewal"},
+                new StatusModel() { Status="Expired"}
+            };
+            foreach (StatusModel s in status)
+            {
+                if (!db.StatusModels.Any(x => x.Status == s.Status))
+                {
+                    AddStatus.Add(s);
+                }
+            }
+            if (AddStatus.Count > 0)
+            {
+                AddStatus.ForEach(s => db.StatusModels.Add(s));
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
 
         protected override void Dispose(bool disposing)
         {

@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <ApplicationInsightsResourceId>/subscriptions/adc7c1e0-8e3a-4d40-b149-b673a5797098/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/PRAWaitList</ApplicationInsightsResourceId>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -247,9 +248,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702141802541_InitialCreate.cs" />
-    <Compile Include="Migrations\201702141802541_InitialCreate.Designer.cs">
-      <DependentUpon>201702141802541_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201709130631377_init.cs" />
+    <Compile Include="Migrations\201709130631377_init.Designer.cs">
+      <DependentUpon>201709130631377_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdAuthenticationService.cs" />
@@ -267,6 +268,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NotifyViewModel.cs" />
     <Compile Include="Models\ParentModel.cs" />
+    <Compile Include="Models\SchoolViewModel.cs" />
     <Compile Include="Models\StateListViewModel.cs" />
     <Compile Include="Models\RenewStudentsViewModel.cs" />
     <Compile Include="Models\SchoolModel.cs" />
@@ -425,8 +427,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702141802541_InitialCreate.resx">
-      <DependentUpon>201702141802541_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709130631377_init.resx">
+      <DependentUpon>201709130631377_init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

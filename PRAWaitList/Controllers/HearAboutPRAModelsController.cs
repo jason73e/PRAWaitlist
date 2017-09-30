@@ -116,6 +116,34 @@ namespace PRAWaitList.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult Seed()
+        {
+            var Addhearaboutpras = new List<HearAboutPRAModel>();
+            var hearaboutpras = new List<HearAboutPRAModel>
+            {
+                new HearAboutPRAModel() { Text="School Website", IsChecked = false, Value=1},
+                new HearAboutPRAModel() { Text="District Website", IsChecked = false, Value=2},
+                new HearAboutPRAModel() { Text="Friend recommendation", IsChecked = false, Value=3},
+                new HearAboutPRAModel() { Text="Live in the neighborhood", IsChecked = false, Value=4},
+                new HearAboutPRAModel() { Text="PRA parent recommendation", IsChecked = false, Value=5},
+                new HearAboutPRAModel() { Text="General Internet research", IsChecked = false, Value=6},
+                new HearAboutPRAModel() { Text="Other", IsChecked = false, Value=7}
+            };
+
+            foreach (HearAboutPRAModel s in hearaboutpras)
+            {
+                if (!db.HearAboutPRAs.Any(x => x.Value == s.Value))
+                {
+                    Addhearaboutpras.Add(s);
+                }
+            }
+            if (Addhearaboutpras.Count > 0)
+            {
+                Addhearaboutpras.ForEach(s => db.HearAboutPRAs.Add(s));
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
 
         protected override void Dispose(bool disposing)
         {
