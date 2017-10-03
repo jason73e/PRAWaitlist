@@ -21,9 +21,28 @@ namespace PRAWaitList.Controllers
         private PRAWaitListContext db = new PRAWaitListContext();
 
         // GET: SchoolModels
-        public ActionResult Index(int? page, int? PageSize)
+        public ActionResult Index(string currentDistrict,string SearchDistrict, string currentState, string SearchState, int? page, int? PageSize)
         {
             TempData["MySchoolModel"] = null;
+            if (SearchDistrict != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchDistrict = currentDistrict;
+            }
+            if (SearchState != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchState = currentState;
+            }
+            ViewBag.CurrentDistrict = SearchDistrict;
+            ViewBag.CurrentState = SearchState;
+
             int DefaultPageSize = 10;
             int currentPageIndex = page.HasValue ? page.Value - 1 : 0;
             if (PageSize != null)
@@ -34,12 +53,30 @@ namespace PRAWaitList.Controllers
             int pageNumber = (page ?? 1);
             ViewBag.Page = page;
             var schoollist = db.Schools.ToList();
+            if (!String.IsNullOrEmpty(SearchDistrict))
+            {
+                schoollist = schoollist.Where(s => s.AgencyID==SearchDistrict).ToList();
+            }
+            if (!String.IsNullOrEmpty(SearchState))
+            {
+                schoollist = schoollist.Where(s => s.StateAbbr.Trim() == SearchState).ToList();
+            }
             SchoolViewModel svm = new SchoolViewModel();
             svm.lsSchools = schoollist.ToPagedList(pageNumber, DefaultPageSize);
+            svm.StateList = Utility.GetStateList();
+            svm.DistrictList = Utility.GetDistrictListByState(SearchState);
             TempData["MySchoolModel"] = svm;
             return View(svm);
         }
 
+        public JsonResult GetDistricts(string sStateCode)
+        {
+            SchoolViewModel ivm = (SchoolViewModel)TempData["MySchoolModel"];
+            SelectList sl = Utility.GetDistrictListByState(sStateCode);
+            ivm.DistrictList = sl;
+            TempData["MyIEVMModel"] = ivm;
+            return Json(sl, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Seed()
         {
             List<SchoolModel> schools = new List<SchoolModel>();
