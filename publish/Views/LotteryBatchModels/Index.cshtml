@@ -1,0 +1,53 @@
+﻿@model PRAWaitList.Models.LotteryBatchViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lottery Batches</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create",null, new { @class = "btn btn-primary btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.lbms[0].BatchName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lbms[0].SchoolYearID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lbms[0].BatchType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lbms[0].CreateDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.lbms) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BatchName)
+        </td>
+        <td>
+            @{
+                var sSchoolYearText = Model.SchoolYears.Where(c => c.Value == item.SchoolYearID.ToString()).Single().Text;
+            }
+            @Html.DisplayFor(modelItem => sSchoolYearText)
+        </td>
+        <td>
+                @Html.DisplayFor(modelItem => item.BatchType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.ActionLink("Batch Details", "BatchDetails", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,51 @@
+﻿@model PRAWaitList.Models.LotteryBatchViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Lottery Batch</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Lottery Batch</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.lbms[0].BatchName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.lbms[0].BatchName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.lbms[0].BatchName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.lbms[0].SchoolYearID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.lbms[0].SchoolYearID, Model.SchoolYears, "- Select School Year -", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.lbms[0].SchoolYearID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.lbms[0].BatchType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.lbms[0].BatchType, "- Select a Batch Type - ", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.lbms[0].BatchType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

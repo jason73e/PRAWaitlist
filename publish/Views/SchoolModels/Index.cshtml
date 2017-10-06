@@ -1,0 +1,99 @@
+﻿@model PRAWaitList.Models.SchoolViewModel
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Index", "SchoolModels", FormMethod.Get))
+{
+    <table class="table">
+        <tr>
+            <td>
+                <label class="form-control-static">State:</label>
+            </td>
+            <td>@Html.DropDownListFor(model => model.SearchState,Model.StateList, "- Select a State -", htmlAttributes: new { @class = "form-control" })
+            </td>
+            <td>
+                <label class="form-control-static">District:</label>
+            </td>
+            <td>
+                @Html.DropDownListFor(model => model.SearchDistrict, Model.DistrictList, "- Select a District -", htmlAttributes: new { @class = "form-control" })
+            </td>
+            <td>
+                <input type="submit" value="Search" class="btn btn-primary btn-success" />
+            </td>
+        </tr>
+    </table>
+    <label class="form-control-static">Page @(Model.lsSchools.PageCount < Model.lsSchools.PageNumber ? 0 : Model.lsSchools.PageNumber) of @Model.lsSchools.PageCount</label>
+    <p>
+        <label class="form-control-static">Records Per Page: </label>@Html.DropDownList("PageSize", new SelectList(new Dictionary<string, int> { { "10", 10 }, { "20", 20 }, { "50", 50 }, { "100", 100 } }, "Key", "Value", Model.lsSchools.PageSize), new { @class = "pro_pag_tf1", id = "pagesizelist", @onchange = "this.form.submit();" })
+    </p>
+
+}
+@Html.PagedListPager(Model.lsSchools, page => Url.Action("Index", new { page, PageSize = ViewBag.PageSize }))
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.lsSchools.FirstOrDefault().SchoolName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lsSchools.FirstOrDefault().StateName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lsSchools.FirstOrDefault().AgencyName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.lsSchools) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SchoolName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StateName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgencyName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+    <tr>
+        <td>
+            @Html.ActionLink("Add Seed Values", "Seed", null, new { @class = "btn btn-primary btn-success" })
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+</table>
+@section Scripts {
+    @if (ViewBag.DisplayMessage != null)
+    {
+        <script>
+
+            $(document).ready(function () {
+
+                alert('@ViewBag.DisplayMessage');
+
+            });
+
+        </script>
+
+    }
+    @Scripts.Render("~/Scripts/SchoolsIndex.js")
+}
+
+

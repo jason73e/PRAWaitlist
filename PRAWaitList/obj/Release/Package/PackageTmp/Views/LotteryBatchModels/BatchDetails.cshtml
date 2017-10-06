@@ -1,0 +1,123 @@
+﻿@model PRAWaitList.Models.LotteryViewModel
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+<style type="text/css">
+    .Notified {
+        background-color: lightyellow;
+    }
+
+    .Expired {
+        background-color: lightskyblue;
+    }
+
+    .Declined {
+        background-color: lightsalmon;
+    }
+
+    .Accepted {
+        background-color: lightgreen;
+    }
+</style>
+
+<h2>Batch Details</h2>
+@using (Html.BeginForm("BatchDetails", "LotteryBatchModels", FormMethod.Get))
+{
+<p>
+@if (Model.lsLM.Count == 0)
+{
+    @Html.ActionLink("Draw Lottery", "Draw", new { id = Model.LotteryBatchID }, new { @class = "btn btn-primary" })
+}
+</p>
+}
+<label class="form-control-static">Page @(Model.lsLM.PageCount < Model.lsLM.PageNumber ? 0 : Model.lsLM.PageNumber) of @Model.lsLM.PageCount</label>
+    @using (Html.BeginForm("BatchDetails", "LotteryBatchModels", FormMethod.Get))
+    {
+        <p>
+            <label class="form-control-static">Records Per Page:</label> @Html.DropDownList("PageSize", new SelectList(new Dictionary<string, int> { { "10", 10 }, { "20", 20 }, { "50", 50 }, { "100", 100 } }, "Key", "Value", Model.lsLM.PageSize), new { @class = "pro_pag_tf1", id = "pagesizelist", @onchange = "this.form.submit();" })
+        </p>
+    }
+    @Html.PagedListPager(Model.lsLM, page => Url.Action("BatchDetails", new { page, PageSize = ViewBag.PageSize }))
+    <table class="table">
+        <tr>
+            <th>
+                Student Last Name
+            </th>
+            <th>
+                Student First Name
+            </th>
+            <th>
+                Gender
+            </th>
+            <th>
+                Apply Grade
+            </th>
+            <th>
+                Apply Year
+            </th>
+            <th>
+                Birth Date
+            </th>
+            <th>
+                Is PRA Sibling
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Lottery ID
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.lsLM)
+        {
+            PRAWaitList.Models.StudentModel student = Model.lsSM.Where(x => x.Id == item.StudentId).Single();
+            Boolean isExpired = (item.NotifyDate < DateTime.Now.AddDays(Model.NotifyExpireHours) && item.Status == "Notified");
+            if (isExpired)
+            { item.Status = "Expired";
+            }
+            <tr class="@item.Status">
+                <td>
+                    @Html.DisplayFor(modelItem => student.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => student.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => student.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApplyGrade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApplyYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => student.BirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => student.isPRASibling)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RandomID)
+                </td>
+                <td>
+                    @Html.ActionLink("Notify", "Notify", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+ @section scripts {
+    @Scripts.Render("~/Scripts/LotteryBatchModels.js")
+}

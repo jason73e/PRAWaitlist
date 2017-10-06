@@ -1,0 +1,153 @@
+﻿@model PRAWaitList.Models.IntentToEnrollViewModel
+
+
+<div class="form-horizontal  col-md-12">
+    <h4>Parents</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @for(int iParentCounter=0; iParentCounter< Model.lsParents.Count; iParentCounter++)
+    {
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-horizontal  col-md-6">
+
+                    @Html.HiddenFor(model => Model.lsParents[iParentCounter].Id)
+                    @Html.HiddenFor(model => Model.lsParents[iParentCounter].CreateDate)
+                    @Html.HiddenFor(model => Model.lsParents[iParentCounter].UpdateDate)
+                    @Html.HiddenFor(model => Model.lsParents[iParentCounter].UpdateUserID)
+                    @Html.HiddenFor(model => Model.lsParents[iParentCounter].isActive)
+                    @Html.HiddenFor(model => Model.lsParents[iParentCounter].FamilyID)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => Model.lsParents[iParentCounter].pType, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EnumDropDownListFor(model => Model.lsParents[iParentCounter].pType, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].pType, "", new { @class = "text-danger" })
+                        </div> 
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => Model.lsParents[iParentCounter].LastName, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => Model.lsParents[iParentCounter].LastName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].LastName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => Model.lsParents[iParentCounter].FirstName, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => Model.lsParents[iParentCounter].FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].FirstName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => Model.lsParents[iParentCounter].Phone1, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => Model.lsParents[iParentCounter].Phone1, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].Phone1, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => Model.lsParents[iParentCounter].Phone1Type, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EnumDropDownListFor(model => Model.lsParents[iParentCounter].Phone1Type, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].Phone1Type, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => Model.lsParents[iParentCounter].Phone2, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => Model.lsParents[iParentCounter].Phone2, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].Phone2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => Model.lsParents[iParentCounter].Phone2Type, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EnumDropDownListFor(model => Model.lsParents[iParentCounter].Phone2Type, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].Phone2Type, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-horizontal  col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => Model.lsParents[iParentCounter].Address1, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => Model.lsParents[iParentCounter].Address1, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].Address1, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => Model.lsParents[iParentCounter].Address2, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => Model.lsParents[iParentCounter].Address2, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].Address2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => Model.lsParents[iParentCounter].City, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => Model.lsParents[iParentCounter].City, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].City, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => Model.lsParents[iParentCounter].StateID, null, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.DropDownListFor(model => Model.lsParents[iParentCounter].StateID, new SelectList(Model.States,"Value","Text", Model.lsParents[iParentCounter].StateID), "- Select a State -", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].StateID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => Model.lsParents[iParentCounter].ZipCode, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => Model.lsParents[iParentCounter].ZipCode, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].ZipCode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => Model.lsParents[iParentCounter].EmailAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => Model.lsParents[iParentCounter].EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].EmailAddress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => Model.lsParents[iParentCounter].isPreferredContact, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => Model.lsParents[iParentCounter].isPreferredContact)
+                                @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].isPreferredContact, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @if (Model.lsParents.Count == 1)
+            {
+                <input id="btnAddParent" type="submit" name="AddParent" value="Add Parent" formnovalidate="formnovalidate" class="btn btn-primary btn-success" />
+                <input id="btnRemoveParent" type="submit" name="RemoveParent" formnovalidate="formnovalidate" value="Remove Parent" class="btn btn-primary btn-success disabled" />
+            }
+            else
+            {
+                <input id="btnAddParent" type="submit" name="AddParent" value="Add Parent" formnovalidate="formnovalidate" class="btn btn-primary btn-success disabled" />
+                <input id="btnRemoveParent" type="submit" name="RemoveParent" value="Remove Parent" class="btn btn-primary btn-success" formnovalidate="formnovalidate" onclick="return confirm('Are you sure you wish to delete the last parent?');" />
+            }
+        </div>
+    </div>
+</div>

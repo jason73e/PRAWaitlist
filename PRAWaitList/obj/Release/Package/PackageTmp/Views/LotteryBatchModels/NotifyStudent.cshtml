@@ -1,0 +1,158 @@
+﻿@model PRAWaitList.Models.NotifyViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="col-md-6">
+    <h4>Student Information</h4>
+    <hr />
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-horizontal  col-md-12">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ievm.sm.FamilyID):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ievm.sm.FamilyID)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ievm.sm.LastName):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ievm.sm.LastName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ievm.sm.FirstName):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ievm.sm.FirstName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ievm.sm.BirthDate):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ievm.sm.BirthDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ievm.sm.Gender):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ievm.sm.Gender)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ievm.sm.CurrentGrade):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ievm.sm.CurrentGrade)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ievm.sm.ApplyGrade):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ievm.sm.ApplyGrade)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ievm.sm.ApplyYear):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ievm.sm.ApplyYear)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ievm.sm.LocalSchool):
+                    </dt>
+
+                    <dd>
+                        @{
+                            string sSchoolName = PRAWaitList.DAL.Utility.GetSchoolName(Model.ievm.sm.LocalSchool);
+                        }
+                        @Html.Raw(sSchoolName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ievm.sm.LocalDistrict):
+                    </dt>
+
+                    <dd>
+                        @{
+                            string sDistrictName = PRAWaitList.DAL.Utility.GetDistrictName(Model.ievm.sm.LocalDistrict);
+                        }
+                        @Html.Raw(sDistrictName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ievm.sm.Status):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ievm.sm.Status)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ievm.sm.LearnAboutPRA):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ievm.sm.LearnAboutPRA)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ievm.sm.CreateDate):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ievm.sm.CreateDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ievm.sm.UpdateDate):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ievm.sm.UpdateDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ievm.sm.UpdateUserID):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ievm.sm.UpdateUserID)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ievm.sm.isActive):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ievm.sm.isActive)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ievm.sm.isPRASibling):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ievm.sm.isPRASibling)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

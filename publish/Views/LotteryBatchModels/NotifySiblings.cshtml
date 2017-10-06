@@ -1,0 +1,93 @@
+﻿@model PRAWaitList.Models.NotifyViewModel
+
+<div>
+    <h4>Siblings</h4>
+    <hr />
+    @foreach (var sibling in Model.ievm.lsSiblings)
+    {
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-horizontal  col-md-6">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => sibling.FamilyID):
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => sibling.FamilyID)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => sibling.LastName):
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => sibling.LastName)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => sibling.FirstName):
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => sibling.FirstName)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => sibling.BirthDate):
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => sibling.BirthDate)
+                        </dd>
+
+                    </dl>
+                </div>
+                <div class="form-horizontal  col-md-6">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => sibling.isPRAStudent):
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => sibling.isPRAStudent)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => sibling.CreateDate):
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => sibling.CreateDate)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => sibling.UpdateDate):
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => sibling.UpdateDate)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => sibling.UpdateUserID):
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => sibling.UpdateUserID)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => sibling.isActive):
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => sibling.isActive)
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+    }
+</div>

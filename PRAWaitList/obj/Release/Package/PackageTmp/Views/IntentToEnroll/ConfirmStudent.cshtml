@@ -1,0 +1,104 @@
+﻿@model PRAWaitList.Models.IntentToEnrollViewModel
+
+@{
+    ViewBag.Title = "Confirmation";
+}
+
+<div class="col-md-6">
+    <h4>Student Information</h4>
+    <hr />
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-horizontal  col-md-12">
+                <dl class="dl-horizontal">
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.sm.LastName):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.sm.LastName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.sm.FirstName):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.sm.FirstName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.sm.BirthDate):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.sm.BirthDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.sm.Gender):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.sm.Gender)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.sm.CurrentGrade):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.sm.CurrentGrade)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.sm.ApplyGrade):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.sm.ApplyGrade)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.sm.ApplyYear):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.sm.ApplyYear)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.sm.LocalSchool):
+                    </dt>
+
+                    <dd>
+                        @{
+                            string sSchoolName = PRAWaitList.DAL.Utility.GetSchoolName(Model.sm.LocalSchool);
+                        }
+                        @Html.Raw(sSchoolName)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.sm.LocalDistrict):
+                    </dt>
+
+                    <dd>
+                        @{
+                            string sDistrictName = PRAWaitList.DAL.Utility.GetDistrictName(Model.sm.LocalDistrict);
+                        }
+                        @Html.Raw(sDistrictName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.sm.LearnAboutPRA):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.sm.LearnAboutPRA)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
