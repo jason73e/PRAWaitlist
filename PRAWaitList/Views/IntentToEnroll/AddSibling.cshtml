@@ -50,12 +50,12 @@
                                 @Html.EditorFor(model => Model.lsSiblings[iSiblingCounter].isPRAStudent)
                                 @Html.ValidationMessageFor(model => Model.lsSiblings[iSiblingCounter].isPRAStudent, "", new { @class = "text-danger" })
                             </div>
-                            <input id="btnRemoveSibling" type="submit" name="RemoveSibling" formnovalidate="formnovalidate" value="Remove Sibling @(iSiblingCounter + 1)" class="btn btn-primary" />
+                            <input id="btnRemoveSibling" type="submit" name="RemoveSibling" formnovalidate="formnovalidate" value="Remove Sibling @(iSiblingCounter + 1)" class="btn btn-primary btn-success" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     }
-    <input id="btnAddSibling" type="submit" name="AddSibling" value="Add Sibling" formnovalidate="formnovalidate" class="btn btn-primary" />
+    <input id="btnAddSibling" type="submit" name="AddSibling" value="Add Sibling" formnovalidate="formnovalidate" class="btn btn-primary btn-success" />
 </div>

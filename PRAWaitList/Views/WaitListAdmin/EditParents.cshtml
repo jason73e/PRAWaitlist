@@ -140,13 +140,13 @@
         <div class="col-md-offset-2 col-md-10">
             @if (Model.lsParents.Count == 1)
             {
-                <input id="btnAddParent" type="submit" name="AddParent" value="Add Parent" formnovalidate="formnovalidate" class="btn btn-primary" />
-                <input id="btnRemoveParent" type="submit" name="RemoveParent" formnovalidate="formnovalidate" value="Remove Parent" class="btn btn-primary disabled" />
+                <input id="btnAddParent" type="submit" name="AddParent" value="Add Parent" formnovalidate="formnovalidate" class="btn btn-primary btn-success" />
+                <input id="btnRemoveParent" type="submit" name="RemoveParent" formnovalidate="formnovalidate" value="Remove Parent" class="btn btn-primary btn-success disabled" />
             }
             else
             {
-                <input id="btnAddParent" type="submit" name="AddParent" value="Add Parent" formnovalidate="formnovalidate" class="btn btn-primary disabled" />
-                <input id="btnRemoveParent" type="submit" name="RemoveParent" value="Remove Parent" class="btn btn-primary" formnovalidate="formnovalidate" onclick="return confirm('Are you sure you wish to delete the last parent?');" />
+                <input id="btnAddParent" type="submit" name="AddParent" value="Add Parent" formnovalidate="formnovalidate" class="btn btn-primary btn-success disabled" />
+                <input id="btnRemoveParent" type="submit" name="RemoveParent" value="Remove Parent" class="btn btn-primary btn-success" formnovalidate="formnovalidate" onclick="return confirm('Are you sure you wish to delete the last parent?');" />
             }
         </div>
     </div>
