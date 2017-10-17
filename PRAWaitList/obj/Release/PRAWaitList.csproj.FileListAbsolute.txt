@@ -1,16 +1,4 @@
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\ApplicationInsights.config
-C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\roslyn\csc.exe
-C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\roslyn\vbc.exe
-C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\roslyn\VBCSCompiler.exe
-C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\PRAWaitList.dll.config
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\PRAWaitList.dll
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\PRAWaitList.pdb
@@ -32,7 +20,6 @@ C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.A
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.AspNet.Identity.Owin.dll
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.AspNet.SignalR.Core.dll
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
-C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.Owin.dll
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.Owin.Host.SystemWeb.dll
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.Owin.Security.Cookies.dll
@@ -64,7 +51,6 @@ C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.A
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.ApplicationInsights.xml
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.AspNet.SignalR.Core.xml
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
-C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\PagedList.xml
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\PagedList.Mvc.xml
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\System.Web.Helpers.xml
@@ -97,3 +83,8 @@ C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\obj\Release\PRA
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\obj\Release\PRAWaitList.csproj.CoreCompileInputs.cache
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\obj\Release\PRAWaitList.dll
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\obj\Release\PRAWaitList.pdb
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\CsvHelper.pdb
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\System.Diagnostics.DiagnosticSource.xml

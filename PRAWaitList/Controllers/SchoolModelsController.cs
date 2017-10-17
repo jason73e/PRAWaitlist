@@ -88,7 +88,6 @@ namespace PRAWaitList.Controllers
                 using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
                 {
                     CsvReader csvReader = new CsvReader(reader);
-                    csvReader.Configuration.WillThrowOnMissingField = false;
                     while (csvReader.Read())
                     {
                         SchoolModel school = new SchoolModel();
