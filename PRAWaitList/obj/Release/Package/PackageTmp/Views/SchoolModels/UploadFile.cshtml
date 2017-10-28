@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Upload New File";
+}
+
+<h2>Upload Schools File</h2>
+
+@using (Html.BeginForm("Upload", "SchoolModels", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="file" name="file" />
+            </div>
+            <input type="submit" value="Load" class="btn btn-primary btn-success" />
+        </div>
+}
+
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

@@ -24,5 +24,23 @@ namespace PRAWaitList.Models
         [Required]
         [Display(Name = "DistrictID")]
         public String AgencyID { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            SchoolModel schoolmodel = obj as SchoolModel;
+            if (schoolmodel != null)
+            {
+                if (schoolmodel.SchoolName.Equals(this.SchoolName) && schoolmodel.SchoolID.Equals(this.SchoolID))
+                {
+                    return true;
+                }
+            }
+            return false;
+    }
+
+        public override int GetHashCode()
+        {
+            return SchoolName.GetHashCode() + 3 * SchoolID.GetHashCode(); // you might use any alghorithm you see fit
+        }
     }
 }

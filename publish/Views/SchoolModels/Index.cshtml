@@ -3,13 +3,15 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Schools List";
 }
 
-<h2>Index</h2>
+<h2>Schools List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add School", "Create") | @Html.ActionLink("Upload Schools File", "UploadFile")
+
+
 </p>
 @using (Html.BeginForm("Index", "SchoolModels", FormMethod.Get))
 {
@@ -30,6 +32,11 @@
                 <input type="submit" value="Search" class="btn btn-primary btn-success" />
             </td>
         </tr>
+        <tr>
+            <td colspan="5">
+                <label class="text-danger">@ViewBag.ErrorMessage</label>
+            </td>
+        </tr>
     </table>
     <label class="form-control-static">Page @(Model.lsSchools.PageCount < Model.lsSchools.PageNumber ? 0 : Model.lsSchools.PageNumber) of @Model.lsSchools.PageCount</label>
     <p>
@@ -37,7 +44,7 @@
     </p>
 
 }
-@Html.PagedListPager(Model.lsSchools, page => Url.Action("Index", new { page, PageSize = ViewBag.PageSize }))
+@Html.PagedListPager(Model.lsSchools, page => Url.Action("Index", new { page, PageSize = ViewBag.PageSize, SearchDistrict = ViewBag.SearchDistrict, SearchState = ViewBag.SearchState }))
 <table class="table">
     <tr>
         <th>
@@ -69,14 +76,6 @@
         </td>
     </tr>
 }
-    <tr>
-        <td>
-            @Html.ActionLink("Add Seed Values", "Seed", null, new { @class = "btn btn-primary btn-success" })
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
 
 </table>
 @section Scripts {

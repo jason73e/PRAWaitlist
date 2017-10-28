@@ -32,3 +32,13 @@ C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\obj\Debug\
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\obj\Debug\EmailApplication.csproj.CoreCompileInputs.cache
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\obj\Debug\EmailApplication.exe
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\obj\Debug\EmailApplication.pdb
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\bin\Debug\NLog.config
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\bin\Debug\EmailApplication.exe.config
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\bin\Debug\EmailApplication.exe
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\bin\Debug\EmailApplication.pdb
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\bin\Debug\NLog.dll
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\bin\Debug\NLog.xml
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\obj\Debug\EmailApplication.csprojResolveAssemblyReference.cache
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\obj\Debug\EmailApplication.csproj.CoreCompileInputs.cache
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\obj\Debug\EmailApplication.exe
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\obj\Debug\EmailApplication.pdb

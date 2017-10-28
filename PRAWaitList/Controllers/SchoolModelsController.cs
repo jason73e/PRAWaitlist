@@ -12,37 +12,35 @@ using System.IO;
 using CsvHelper;
 using System.Text;
 using PagedList;
+using Microsoft.AspNet.SignalR;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace PRAWaitList.Controllers
 {
-    [Authorize]
+    [System.Web.Mvc.Authorize]
     public class SchoolModelsController : Controller
     {
         private PRAWaitListContext db = new PRAWaitListContext();
 
         // GET: SchoolModels
-        public ActionResult Index(string currentDistrict,string SearchDistrict, string currentState, string SearchState, int? page, int? PageSize)
+        public ActionResult Index(string SearchDistrict, string SearchState, int? page, int? PageSize)
         {
             TempData["MySchoolModel"] = null;
-            if (SearchDistrict != null)
+            SchoolViewModel svm = new SchoolViewModel();
+            SendProgress("Loading...", 1, 8);
+            svm.StateList = Utility.GetStateList();
+            SendProgress("Loading...", 2, 8);
+            svm.DistrictList = Utility.GetDistrictListByState(SearchState);
+            SendProgress("Loading...", 3, 8);
+            TempData["MySchoolModel"] = svm;
+            SendProgress("Loading...", 4, 8);
+            if(SearchDistrict=="0")
             {
-                page = 1;
+                SearchDistrict = string.Empty;
             }
-            else
-            {
-                SearchDistrict = currentDistrict;
-            }
-            if (SearchState != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                SearchState = currentState;
-            }
-            ViewBag.CurrentDistrict = SearchDistrict;
-            ViewBag.CurrentState = SearchState;
-
+            ViewBag.SearchDistrict = SearchDistrict;
+            ViewBag.SearchState = SearchState;
             int DefaultPageSize = 10;
             int currentPageIndex = page.HasValue ? page.Value - 1 : 0;
             if (PageSize != null)
@@ -52,19 +50,28 @@ namespace PRAWaitList.Controllers
             ViewBag.PageSize = DefaultPageSize;
             int pageNumber = (page ?? 1);
             ViewBag.Page = page;
-            var schoollist = db.Schools.ToList();
+            List<SchoolModel> schoollist = new List<SchoolModel>();
+            if (String.IsNullOrEmpty(SearchDistrict) && String.IsNullOrEmpty(SearchState))
+            {
+                svm.lsSchools = schoollist.ToPagedList(pageNumber, DefaultPageSize);
+                TempData["MySchoolModel"] = svm;
+                ViewBag.ErrorMessage = "Select a State and District to see the list of schools.";
+                SendProgress("Complete...", 8, 8);
+                return View(svm);
+            }
+            SendProgress("Loading...", 5, 8);
             if (!String.IsNullOrEmpty(SearchDistrict))
             {
-                schoollist = schoollist.Where(s => s.AgencyID==SearchDistrict).ToList();
+                schoollist = db.Schools.Where(s => s.AgencyID==SearchDistrict).ToList();
             }
-            if (!String.IsNullOrEmpty(SearchState))
+            SendProgress("Loading...", 6, 8);
+            if (!String.IsNullOrEmpty(SearchState) && String.IsNullOrEmpty(SearchDistrict))
             {
-                schoollist = schoollist.Where(s => s.StateAbbr.Trim() == SearchState).ToList();
+                schoollist = db.Schools.Where(s => s.StateAbbr.Trim() == SearchState).ToList();
             }
-            SchoolViewModel svm = new SchoolViewModel();
+            SendProgress("Loading...", 7, 8);
             svm.lsSchools = schoollist.ToPagedList(pageNumber, DefaultPageSize);
-            svm.StateList = Utility.GetStateList();
-            svm.DistrictList = Utility.GetDistrictListByState(SearchState);
+            SendProgress("Complete...", 8, 8);
             TempData["MySchoolModel"] = svm;
             return View(svm);
         }
@@ -77,49 +84,66 @@ namespace PRAWaitList.Controllers
             TempData["MyIEVMModel"] = ivm;
             return Json(sl, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult Seed()
+        public ActionResult Seed(string sPath)
         {
             List<SchoolModel> schools = new List<SchoolModel>();
             List<SchoolModel> Addschools = new List<SchoolModel>();
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string resourceName = "PRAWaitList.App_Data.USSchoolList.csv";
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(sPath, Encoding.UTF8))
             {
-                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                SendProgress("Reading File " + Path.GetFileName(sPath) + " ...", 0, 3);
+                CsvReader csvReader = new CsvReader(reader);
+                IEnumerable<SchoolRecord> record = csvReader.GetRecords<SchoolRecord>();
+                csvReader.Configuration.BadDataFound = null;
+                foreach (var rec in record) // Each record will be fetched and printed on the screen
                 {
-                    CsvReader csvReader = new CsvReader(reader);
-                    csvReader.Configuration.WillThrowOnMissingField = false;
-                    while (csvReader.Read())
-                    {
-                        SchoolModel school = new SchoolModel();
-                        school.SchoolName = csvReader.GetField<string>("SchoolName");
-                        school.StateName = csvReader.GetField<string>("StateName");
-                        school.StateAbbr = csvReader.GetField<string>("StateAbbr");
-                        school.SchoolID = csvReader.GetField<string>("SchoolID");
-                        school.SchoolID = school.SchoolID.Replace(@"""", "");
-                        school.SchoolID = school.SchoolID.Replace(@"=", "");
-                        school.AgencyName = csvReader.GetField<string>("AgencyName");
-                        school.AgencyID = csvReader.GetField<string>("AgencyID");
-                        school.AgencyID = school.AgencyID.Replace(@"""", "");
-                        school.AgencyID = school.AgencyID.Replace(@"=", "");
-                        schools.Add(school);
-                    }
-
+                    SchoolModel school = new SchoolModel();
+                    school.SchoolName = rec.SchoolName;
+                    school.StateName = rec.StateName;
+                    school.StateAbbr = rec.StateAbbr;
+                    school.SchoolID = rec.SchoolID;
+                    school.SchoolID = school.SchoolID.Replace(@"""", "");
+                    school.SchoolID = school.SchoolID.Replace(@"=", "");
+                    school.AgencyName = rec.AgencyName;
+                    school.AgencyID = rec.AgencyID;
+                    school.AgencyID = school.AgencyID.Replace(@"""", "");
+                    school.AgencyID = school.AgencyID.Replace(@"=", "");
+                    schools.Add(school);
                 }
             }
-            foreach (SchoolModel s in schools)
-            {
-                if (!db.Schools.Any(x => x.SchoolID == s.SchoolID && x.AgencyID == s.AgencyID))
-                {
-                    Addschools.Add(s);
-                }
-            }
+            SendProgress("Getting Database School Records...", 1, 3);
+            List<SchoolModel> lsDBSchools = db.Schools.ToList();
+            SendProgress("Comparing File Records to DataBase Records...", 2, 3);
+            Addschools = schools.Except(lsDBSchools).ToList();
             if (Addschools.Count > 0)
             {
-                db.Schools.AddRange(Addschools);
-                db.SaveChanges();
+                using (SqlConnection sc = new SqlConnection(ConfigurationManager.ConnectionStrings["PRAWaitlistConnection"].ConnectionString))
+                {
+                    SendProgress("Adding New Schools to Database...", Addschools.Count / 2, Addschools.Count);
+                    sc.Open();
+                    InsertSchools(sc, schools);
+                    sc.Close();
+                }
             }
+            SendProgress("Complete...", 1, 1);
             return RedirectToAction("Index");
+        }
+        public void InsertSchools(SqlConnection sqlConnection, IEnumerable<SchoolModel> schools)
+        {
+            var tableName = "SchoolModel";
+            var bufferSize = 5000;
+            var inserter = new BulkInserter<SchoolModel>(sqlConnection, tableName, bufferSize);
+            inserter.Insert(schools);
+        }
+        public static void SendProgress(string progressMessage, int progressCount, int totalItems)
+        {
+            //IN ORDER TO INVOKE SIGNALR FUNCTIONALITY DIRECTLY FROM SERVER SIDE WE MUST USE THIS
+            var hubContext = GlobalHost.ConnectionManager.GetHubContext<ProgressHub>();
+
+            //CALCULATING PERCENTAGE BASED ON THE PARAMETERS SENT
+            var percentage = (progressCount * 100) / totalItems;
+
+            //PUSHING DATA TO ALL CLIENTS
+            hubContext.Clients.All.AddProgress(progressMessage, percentage + "%");
         }
         // GET: SchoolModels/Details/5
         public ActionResult Details(int? id)
@@ -159,6 +183,29 @@ namespace PRAWaitList.Controllers
             return View(schoolModel);
         }
 
+        // GET: SchoolModels/Upload
+        public ActionResult UploadFile()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Upload()
+        {
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Uploads/"), fileName);
+                    file.SaveAs(path);
+                    Seed(path);
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
         // GET: SchoolModels/Edit/5
         public ActionResult Edit(int? id)
         {

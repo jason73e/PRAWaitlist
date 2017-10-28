@@ -1,0 +1,10 @@
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\bin\Release\NLog.config
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\bin\Release\EmailApplication.exe.config
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\bin\Release\EmailApplication.exe
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\bin\Release\EmailApplication.pdb
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\bin\Release\NLog.dll
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\bin\Release\NLog.xml
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\obj\Release\EmailApplication.csprojResolveAssemblyReference.cache
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\obj\Release\EmailApplication.csproj.CoreCompileInputs.cache
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\obj\Release\EmailApplication.exe
+C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\obj\Release\EmailApplication.pdb
