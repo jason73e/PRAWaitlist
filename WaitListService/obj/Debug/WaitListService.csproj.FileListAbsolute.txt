@@ -1,0 +1,7 @@
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Debug\WaitListService.exe.config
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Debug\WaitListService.exe
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Debug\WaitListService.pdb
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\obj\Debug\WaitListService.csprojResolveAssemblyReference.cache
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\obj\Debug\WaitListService.csproj.CoreCompileInputs.cache
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\obj\Debug\WaitListService.exe
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\obj\Debug\WaitListService.pdb
