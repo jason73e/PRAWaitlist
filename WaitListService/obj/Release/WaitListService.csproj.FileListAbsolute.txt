@@ -1,0 +1,11 @@
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Release\WaitListService.exe.config
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Release\WaitListService.exe
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Release\WaitListService.pdb
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Release\EntityFramework.dll
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Release\EntityFramework.xml
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\obj\Release\WaitListService.csprojResolveAssemblyReference.cache
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\obj\Release\WaitListService.csproj.CoreCompileInputs.cache
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\obj\Release\WaitListService.exe
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\obj\Release\WaitListService.pdb

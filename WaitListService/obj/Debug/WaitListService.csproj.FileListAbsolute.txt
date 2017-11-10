@@ -5,3 +5,7 @@ C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\obj\Debug\W
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\obj\Debug\WaitListService.csproj.CoreCompileInputs.cache
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\obj\Debug\WaitListService.exe
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\obj\Debug\WaitListService.pdb
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Debug\EntityFramework.dll
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Debug\EntityFramework.xml
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Debug\EntityFramework.SqlServer.xml
