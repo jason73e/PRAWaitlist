@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PRAWaitList.DAL;
 using PRAWaitList.Models;
+using System.Net.Mail;
 
 namespace PRAWaitList.Controllers
 {
@@ -115,6 +116,19 @@ namespace PRAWaitList.Controllers
             db.EmailControls.Remove(emailControlModel);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        // GET: EmailControlModels/EmailTest
+        public ActionResult EmailTest()
+        {
+            var body = "This is a test email.";
+            var message = new MailMessage();
+            message.To.Add(new MailAddress("engel.j@gmail.com")); //replace with valid value
+            message.Subject = "Test Email.";
+            message.Body = body;
+            message.IsBodyHtml = true;
+            Utility.SendMail(message);
+            return RedirectToAction("index");
         }
 
         protected override void Dispose(bool disposing)

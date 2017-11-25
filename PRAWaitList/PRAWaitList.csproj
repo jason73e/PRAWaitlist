@@ -147,6 +147,8 @@
     </Reference>
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -242,6 +244,10 @@
     <Compile Include="Migrations\201709130631377_init.Designer.cs">
       <DependentUpon>201709130631377_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711250404035_create.cs" />
+    <Compile Include="Migrations\201711250404035_create.Designer.cs">
+      <DependentUpon>201711250404035_create.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdAuthenticationService.cs" />
     <Compile Include="Models\ConfigurationSettingsModel.cs" />
@@ -258,6 +264,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NotifyViewModel.cs" />
     <Compile Include="Models\ParentModel.cs" />
+    <Compile Include="Models\Results.cs" />
     <Compile Include="Models\SchoolRecord.cs" />
     <Compile Include="Models\SchoolViewModel.cs" />
     <Compile Include="Models\StateListViewModel.cs" />
@@ -284,6 +291,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap_sandstone.css" />
+    <Content Include="Content\Images\PRA_logo_P_H.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -424,6 +432,7 @@
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <Content Include="Views\SchoolModels\UploadFile.cshtml" />
+    <Content Include="Views\WaitListAdmin\ImportStudents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />
@@ -438,10 +447,16 @@
     <EmbeddedResource Include="Migrations\201709130631377_init.resx">
       <DependentUpon>201709130631377_init.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711250404035_create.resx">
+      <DependentUpon>201711250404035_create.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

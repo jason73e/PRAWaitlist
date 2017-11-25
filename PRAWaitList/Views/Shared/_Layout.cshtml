@@ -55,47 +55,67 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Platte River Academy - Waitlist", "Index", "IntentToEnroll", new { area = "" }, new { @class = "navbar-brand" })
+            <div class="navbar-headerPRAGreen navbar-extend">
+                <div class="container navebar-link" style="text-align:right;">
+                    <a href="http://www.prak8.org/blog1">News</a>&nbsp;&nbsp;&nbsp;
+                    <a href="http://www.prak8.org/get-involved/donate">Donate</a>&nbsp;&nbsp;&nbsp;
+                    <a href="https://appsadp.dcsdk12.org/apex/f?p=214:LOGIN:1185557814048420" target="_blank">Express Checkin</a>&nbsp;&nbsp;&nbsp;
+                    <a href="https://platteriveracademy.revtrak.net/" target="_blank">Payments</a>&nbsp;&nbsp;&nbsp;
+                    <a href="http://www.prak8.org/parents/schoology">Schoology</a>&nbsp;&nbsp;&nbsp;
+                    <a href="http://www.prak8.org/parents/lunch">Lunch</a>&nbsp;&nbsp;&nbsp;
+                    <a href="http://www.prak8.org/parents/student-directory">Student Directory</a>&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Intent To Enroll", "Index", "IntentToEnroll")</li>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Wait List<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li>@Html.ActionLink("WaitList Administration", "Index", "WaitListAdmin")</li>
-                                <li>@Html.ActionLink("Renew Administration", "Index", "RenewStudents")</li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lottery<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li>@Html.ActionLink("Lottery Administration", "Index", "LotteryBatchModels")</li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuration Settings<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li>@Html.ActionLink("Configuration Settings", "Index", "ConfigurationSettings")</li>
-                                <li>@Html.ActionLink("Email Control", "Index", "EmailControlModels")</li>
-                                <li>@Html.ActionLink("Hear About PRA", "Index", "HearaboutPRAModels")</li>
-                                <li>@Html.ActionLink("Schools", "Index", "SchoolModels")</li>
-                                <li>@Html.ActionLink("School Years", "Index", "SchoolYearModels")</li>
-                                <li>@Html.ActionLink("States", "Index", "StateModels")</li>
-                                <li>@Html.ActionLink("Status", "Index", "Status")</li>
-                            </ul>
-                        </li>
-                    }
-                </ul>
-                @Html.Partial("_LoginPartial")
+        </div>
+        <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="@Url.Action("Index", "IntentToEnroll")">
+                        <img src="@Url.Content("~/Content/Images/PRA_logo_P_H.png")" alt="PRA WaitList">
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Intent To Enroll", "Index", "IntentToEnroll")</li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Wait List<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("WaitList Administration", "Index", "WaitListAdmin")</li>
+                                    <li>@Html.ActionLink("Renew Administration", "Index", "RenewStudents")</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lottery<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Lottery Administration", "Index", "LotteryBatchModels")</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuration Settings<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Configuration Settings", "Index", "ConfigurationSettings")</li>
+                                    <li>@Html.ActionLink("Email Control", "Index", "EmailControlModels")</li>
+                                    <li>@Html.ActionLink("Hear About PRA", "Index", "HearaboutPRAModels")</li>
+                                    <li>@Html.ActionLink("Schools", "Index", "SchoolModels")</li>
+                                    <li>@Html.ActionLink("School Years", "Index", "SchoolYearModels")</li>
+                                    <li>@Html.ActionLink("States", "Index", "StateModels")</li>
+                                    <li>@Html.ActionLink("Status", "Index", "Status")</li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        <div class="container">
+            <div class="navbar-headerPRAGreen navbar-extend">&nbsp;
             </div>
         </div>
     </div>

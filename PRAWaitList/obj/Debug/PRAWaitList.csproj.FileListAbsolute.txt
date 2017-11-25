@@ -570,3 +570,4 @@ C:\Users\jengel\Documents\CodeLines\PRAWaitlist\PRAWaitList\obj\Debug\PRAWaitLis
 C:\Users\jengel\Documents\CodeLines\PRAWaitlist\PRAWaitList\obj\Debug\PRAWaitList.csproj.CoreCompileInputs.cache
 C:\Users\jengel\Documents\CodeLines\PRAWaitlist\PRAWaitList\obj\Debug\PRAWaitList.dll
 C:\Users\jengel\Documents\CodeLines\PRAWaitlist\PRAWaitList\obj\Debug\PRAWaitList.pdb
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\obj\Debug\PRAWaitList.Migrations.create.resources

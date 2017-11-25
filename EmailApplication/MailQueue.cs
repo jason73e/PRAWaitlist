@@ -21,7 +21,8 @@ namespace EmailApplication
             try
             {
                 //setup smtp object with info from database
-                EmailClassesDataContext dc = new EmailClassesDataContext();
+                string sConnString = ConfigurationManager.ConnectionStrings["PRAWaitlistConnection"].ConnectionString.ToString();
+                EmailClassesDataContext dc = new EmailClassesDataContext(sConnString);
                 smtp = new SmtpClient();
                 ec = dc.EmailControlModels.Where(x => x.SMTPisActive == true).Single();
                 switch (ec.SMTPDeliveryMethod.ToLower())
@@ -52,7 +53,8 @@ namespace EmailApplication
         {
             try
             {
-                EmailClassesDataContext dc = new EmailClassesDataContext();
+                string sConnString = ConfigurationManager.ConnectionStrings["PRAWaitlistConnection"].ConnectionString.ToString();
+                EmailClassesDataContext dc = new EmailClassesDataContext(sConnString);
                 eq = dc.EmailQueueModels.Where(x => x.ID == eq.ID).Single();
                 try
                 {
@@ -108,8 +110,9 @@ namespace EmailApplication
 
         public void ProcessQueue()
         {
-            EmailClassesDataContext dc = new EmailClassesDataContext();
-            if(!CanSend())
+            string sConnString = ConfigurationManager.ConnectionStrings["PRAWaitlistConnection"].ConnectionString.ToString();
+            EmailClassesDataContext dc = new EmailClassesDataContext(sConnString);
+            if (!CanSend())
             {
                 return;
             }
@@ -134,7 +137,8 @@ namespace EmailApplication
             bool retVal = false;
             try
             {
-                EmailClassesDataContext dc = new EmailClassesDataContext();
+                string sConnString = ConfigurationManager.ConnectionStrings["PRAWaitlistConnection"].ConnectionString.ToString();
+                EmailClassesDataContext dc = new EmailClassesDataContext(sConnString);
                 int iLimit = ec.SMTPSendLimit;
                 int iSent = 0;
 //                if (dc.EmailQueueModels.Where(x => x.StatusDate > DateTime.Now.AddHours(-24) && x.StatusModel != "Ready").Any())

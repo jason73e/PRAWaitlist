@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 90px;
     padding-bottom: 20px;
 }
 
@@ -14,5 +14,102 @@
 */
 .dl-horizontal dt {
     white-space: normal;
+}
+
+.navbar-inverse
+{
+    background-color:#ffffff;
+    border-color:#ffffff;
+}
+.navbar-brand {
+    padding: 0px;
+}
+
+.navbar-brand > img {
+    height: 100%;
+    padding: 1px;
+    width: auto;
+}
+
+.navbar-headerPRAGreen {
+    background-color: #006648;
+    color: #ffffff;
+}
+.navbar-extend{
+    margin-left:-100%;
+    margin-right:-100%;
+}
+.navebar-link > a,
+.navebar-link > a:hover,
+.navebar-link > a:focus {
+    color: #ffffff;
+    text-decoration: none;
+    font-size:x-small;
+    font-weight:bold;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #000000;
+}
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+    color: #000000;
+    background-color: transparent;
+}
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 12px 16px;
+    font-size: 14px;
+    line-height: 1.0;
+    border-radius: 24px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.btn-success {
+    color: #ffffff;
+    background-color: #0076BB;
+    border-color:#ffffff;
+    border-width:2px;
+}
+
+    .btn-success:focus,
+    .btn-success.focus {
+        color: #ffffff;
+        background-color: #006648;
+        border-color: rgba(0, 0, 0, 0);
+    }
+
+    .btn-success:hover {
+        color: #ffffff;
+        background-color: #006648;
+        border-color: rgba(0, 0, 0, 0);
+    }
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+a {
+    color: #0076BB;
+    text-decoration: none;
+}
+a:hover, a:focus {
+    color: #00B3E3;
+    text-decoration: none;
 }
 

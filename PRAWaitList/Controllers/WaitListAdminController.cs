@@ -631,6 +631,43 @@ namespace PRAWaitList.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult ImportStudents()
+        {
+            List<Results> lsr = db.Results.Where(x => x.imported==false).ToList();
+            IntentToEnrollViewModel ivm = new IntentToEnrollViewModel();
+            foreach(Results r in lsr)
+            {
+                ivm = new IntentToEnrollViewModel();
+                FamilyModel f = new FamilyModel();
+                f.Address1 = r.Address;
+                f.Address2 = r.Apt_Unit_No;
+                f.City = r.City;
+                f.CreateDate = Convert.ToDateTime(r.Timestamp == null ? DateTime.Now : r.Timestamp);
+                f.FamilyName = r.Lastname;
+                f.IsActive = true;
+                f.StateID = r.State;
+                f.ZipCode = r.Zip;
+                ivm.fm = f;
+                StudentModel s = new StudentModel();
+                s.ApplyGrade = (Grade) Convert.ToInt32(r.Student_Current_Grade);
+                s.ApplyYear = r.Current_School_Year;
+                s.BirthDate = Convert.ToDateTime(r.Student_DOB);
+                s.CreateDate = Convert.ToDateTime(r.Timestamp == null ? DateTime.Now : r.Timestamp);
+                s.CurrentGrade = (Grade)Convert.ToInt32(r.Student_Current_Grade);
+                s.FirstName = r.Firstname;
+                s.Gender = r.Sex;
+                s.isActive = true;
+                s.LastName = r.Lastname;
+                s.LearnAboutPRA = r.How_did_you_learn_about_PRA + "," + r.How_did_you_learn_about_PRA_choices;
+                s.LocalDistrict = r.District_Data.ToUpper() == "IN" ? "0803450" : "Other";
+                s.LocalSchool = "Other";
+                ivm.sm = s;
+
+
+            }
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

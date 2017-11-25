@@ -23,14 +23,16 @@ namespace EmailApplication.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=2V7BNK1\\SQLEXPRESS;Initial Catalog=PRAWAITLIST;Integrated Security=Tr" +
-            "ue")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost\\sqlexpress;Initial Catalog=PRAWAITLIST;Integrated Security=" +
+            "true;MultipleActiveResultSets=true")]
         public string PRAWAITLISTConnectionString {
             get {
                 return ((string)(this["PRAWAITLISTConnectionString"]));
+            }
+            set {
+                this["PRAWAITLISTConnectionString"] = value;
             }
         }
     }
