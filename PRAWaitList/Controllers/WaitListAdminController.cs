@@ -9,10 +9,12 @@ using System.Web.Mvc;
 using PagedList;
 using PRAWaitList.DAL;
 using PRAWaitList.Models;
+using System.Text.RegularExpressions;
+using Microsoft.AspNet.SignalR;
 
 namespace PRAWaitList.Controllers
 {
-    [Authorize]
+    [System.Web.Mvc.Authorize]
     public class WaitListAdminController : Controller
     {
         private PRAWaitListContext db = new PRAWaitListContext();
@@ -635,37 +637,206 @@ namespace PRAWaitList.Controllers
         {
             List<Results> lsr = db.Results.Where(x => x.imported==false).ToList();
             IntentToEnrollViewModel ivm = new IntentToEnrollViewModel();
+            int icounter = 0;
+            SendProgress("Importing Students...", icounter, lsr.Count);
+            ivm.lsParents = new List<ParentModel>();
+            ivm.lsSiblings = new List<SiblingModel>();
             foreach(Results r in lsr)
             {
-                ivm = new IntentToEnrollViewModel();
-                FamilyModel f = new FamilyModel();
-                f.Address1 = r.Address;
-                f.Address2 = r.Apt_Unit_No;
-                f.City = r.City;
-                f.CreateDate = Convert.ToDateTime(r.Timestamp == null ? DateTime.Now : r.Timestamp);
-                f.FamilyName = r.Lastname;
-                f.IsActive = true;
-                f.StateID = r.State;
-                f.ZipCode = r.Zip;
-                ivm.fm = f;
-                StudentModel s = new StudentModel();
-                s.ApplyGrade = (Grade) Convert.ToInt32(r.Student_Current_Grade);
-                s.ApplyYear = r.Current_School_Year;
-                s.BirthDate = Convert.ToDateTime(r.Student_DOB);
-                s.CreateDate = Convert.ToDateTime(r.Timestamp == null ? DateTime.Now : r.Timestamp);
-                s.CurrentGrade = (Grade)Convert.ToInt32(r.Student_Current_Grade);
-                s.FirstName = r.Firstname;
-                s.Gender = r.Sex;
-                s.isActive = true;
-                s.LastName = r.Lastname;
-                s.LearnAboutPRA = r.How_did_you_learn_about_PRA + "," + r.How_did_you_learn_about_PRA_choices;
-                s.LocalDistrict = r.District_Data.ToUpper() == "IN" ? "0803450" : "Other";
-                s.LocalSchool = "Other";
-                ivm.sm = s;
-
-
+                try
+                {
+                    ivm = new IntentToEnrollViewModel();
+                    ivm.lsParents = new List<ParentModel>();
+                    ivm.lsSiblings = new List<SiblingModel>();
+                    FamilyModel f = new FamilyModel();
+                    f.Address1 = r.Address;
+                    f.Address2 = r.Apt_Unit_No;
+                    f.City = r.City;
+                    f.CreateDate = Convert.ToDateTime(r.Timestamp == null ? DateTime.Now : r.Timestamp);
+                    f.FamilyName = r.Lastname;
+                    f.IsActive = true;
+                    f.StateID = r.State;
+                    f.ZipCode = r.Zip;
+                    ivm.fm = f;
+                    ivm.fm = Utility.AddFamily(ivm.fm);
+                    StudentModel s = new StudentModel();
+                    s.ApplyGrade = (Grade)Convert.ToInt32(r.Student_Current_Grade);
+                    s.ApplyYear = r.Current_School_Year;
+                    s.BirthDate = Convert.ToDateTime(r.Student_DOB);
+                    s.CreateDate = Convert.ToDateTime(r.Timestamp == null ? DateTime.Now : r.Timestamp);
+                    s.CurrentGrade = (Grade)Convert.ToInt32(r.Student_Current_Grade);
+                    s.FirstName = r.Firstname;
+                    s.Gender = r.Sex;
+                    s.isActive = true;
+                    s.LastName = r.Lastname;
+                    s.LearnAboutPRA = r.How_did_you_learn_about_PRA + "," + r.How_did_you_learn_about_PRA_choices;
+                    s.LocalDistrict = r.District_Data.ToUpper() == "IN" ? "0803450" : "Other";
+                    s.LocalSchool = "Other";
+                    ivm.sm = s;
+                    ivm.sm.FamilyID = ivm.fm.Id;
+                    ivm.sm.UStudentID = Regex.Replace(Convert.ToBase64String(Guid.NewGuid().ToByteArray()), "[/+=]", "");
+                    ivm.sm.Status = "Submitted";
+                    if (r.Mother_Firstname.Trim().Length > 0)
+                    {
+                        ParentModel p = new ParentModel();
+                        p.Address1 = r.Mother_Address;
+                        p.Address2 = r.Mother_Apt_Unit_No;
+                        p.City = r.Mother_City;
+                        p.CreateDate = Convert.ToDateTime(r.Timestamp == null ? DateTime.Now : r.Timestamp);
+                        p.EmailAddress = r.Mother_Email;
+                        p.FamilyID = ivm.fm.Id;
+                        p.FirstName = r.Mother_Firstname;
+                        p.isActive = true;
+                        p.isPreferredContact = false;
+                        p.LastName = r.Mother_Lastname;
+                        p.Phone1 = r.Mother_Home_Phone;
+                        p.Phone1Type = PhoneType.Home;
+                        p.Phone2 = r.Mother_Cell_Phone;
+                        p.Phone2Type = PhoneType.Cell;
+                        p.pType = ParentType.Mother;
+                        p.StateID = r.Mother_State;
+                        p.ZipCode = r.Mother_Zip;
+                        ivm.lsParents.Add(p);
+                    }
+                    if (r.Father_Firstname.Trim().Length > 0)
+                    {
+                        ParentModel p = new ParentModel();
+                        p.Address1 = r.Father_Address;
+                        p.Address2 = r.Father_Apt_Unit_No;
+                        p.City = r.Father_City;
+                        p.CreateDate = Convert.ToDateTime(r.Timestamp == null ? DateTime.Now : r.Timestamp);
+                        p.EmailAddress = r.Father_Email;
+                        p.FamilyID = ivm.fm.Id;
+                        p.FirstName = r.Father_Firstname;
+                        p.isActive = true;
+                        p.isPreferredContact = false;
+                        p.LastName = r.Father_Lastname;
+                        p.Phone1 = r.Father_Home_Phone;
+                        p.Phone1Type = PhoneType.Home;
+                        p.Phone2 = r.Father_Cell_Phone;
+                        p.Phone2Type = PhoneType.Cell;
+                        p.pType = ParentType.Father;
+                        p.StateID = r.Father_State;
+                        p.ZipCode = r.Father_Zip;
+                        ivm.lsParents.Add(p);
+                    }
+                    if (r.Sib1_Name.Trim().Length > 0 && r.Sib1_DOB.HasValue)
+                    {
+                        SiblingModel sibmod = new SiblingModel();
+                        sibmod.BirthDate = r.Sib1_DOB;
+                        sibmod.CreateDate = Convert.ToDateTime(r.Timestamp == null ? DateTime.Now : r.Timestamp);
+                        sibmod.FamilyID = ivm.fm.Id;
+                        sibmod.FirstName = r.Sib1_Name;
+                        sibmod.isActive = true;
+                        sibmod.isPRAStudent = r.Sib1_atPRA == "Y" ? true : false;
+                        sibmod.LastName = r.Sib1_Name;
+                        ivm.lsSiblings.Add(sibmod);
+                    }
+                    if (r.Sib2_Name.Trim().Length > 0 && r.Sib2_DOB.HasValue)
+                    {
+                        SiblingModel sibmod = new SiblingModel();
+                        sibmod.BirthDate = r.Sib2_DOB;
+                        sibmod.CreateDate = Convert.ToDateTime(r.Timestamp == null ? DateTime.Now : r.Timestamp);
+                        sibmod.FamilyID = ivm.fm.Id;
+                        sibmod.FirstName = r.Sib2_Name;
+                        sibmod.isActive = true;
+                        sibmod.isPRAStudent = r.Sib2_atPRA == "Y" ? true : false;
+                        sibmod.LastName = r.Sib2_Name;
+                        ivm.lsSiblings.Add(sibmod);
+                    }
+                    if (r.Sib3_Name.Trim().Length > 0 && r.Sib3_DOB!= null)
+                    {
+                        SiblingModel sibmod = new SiblingModel();
+                        sibmod.BirthDate = Convert.ToDateTime(r.Sib3_DOB);
+                        sibmod.CreateDate = Convert.ToDateTime(r.Timestamp == null ? DateTime.Now : r.Timestamp);
+                        sibmod.FamilyID = ivm.fm.Id;
+                        sibmod.FirstName = r.Sib3_Name;
+                        sibmod.isActive = true;
+                        sibmod.isPRAStudent = r.Sib3_atPRA == "Y" ? true : false;
+                        sibmod.LastName = r.Sib3_Name;
+                        ivm.lsSiblings.Add(sibmod);
+                    }
+                    if (r.Sib4_Name.Trim().Length > 0 && r.Sib4_DOB!=null)
+                    {
+                        SiblingModel sibmod = new SiblingModel();
+                        sibmod.BirthDate = Convert.ToDateTime(r.Sib4_DOB);
+                        sibmod.CreateDate = Convert.ToDateTime(r.Timestamp == null ? DateTime.Now : r.Timestamp);
+                        sibmod.FamilyID = ivm.fm.Id;
+                        sibmod.FirstName = r.Sib4_Name;
+                        sibmod.isActive = true;
+                        sibmod.isPRAStudent = r.Sib4_atPRA == "Y" ? true : false;
+                        sibmod.LastName = r.Sib4_Name;
+                        ivm.lsSiblings.Add(sibmod);
+                    }
+                    if (r.Sib5_Name5.Trim().Length > 0 && r.Sib5_DOB!=null)
+                    {
+                        SiblingModel sibmod = new SiblingModel();
+                        sibmod.BirthDate = Convert.ToDateTime(r.Sib5_DOB);
+                        sibmod.CreateDate = Convert.ToDateTime(r.Timestamp == null ? DateTime.Now : r.Timestamp);
+                        sibmod.FamilyID = ivm.fm.Id;
+                        sibmod.FirstName = r.Sib5_Name5;
+                        sibmod.isActive = true;
+                        sibmod.isPRAStudent = r.Sib5_atPRA == "Y" ? true : false;
+                        sibmod.LastName = r.Sib5_Name5;
+                        ivm.lsSiblings.Add(sibmod);
+                    }
+                    Boolean isPRASibling = false;
+                    foreach (SiblingModel sib in ivm.lsSiblings)
+                    {
+                        if (sib.isPRAStudent == true)
+                        {
+                            isPRASibling = true;
+                        }
+                        sib.FamilyID = ivm.fm.Id;
+                    }
+                    ivm.sm.isPRASibling = isPRASibling;
+                    ivm.sm = Utility.AddStudent(ivm.sm);
+                    List<ParentModel> lsDBParents = db.Parents.Where(x => x.FamilyID == ivm.fm.Id).ToList();
+                    foreach (ParentModel p in lsDBParents)
+                    {
+                        if (!ivm.lsParents.Any(x => x.Id == p.Id))
+                        {
+                            db.Parents.Remove(p);
+                            db.SaveChanges();
+                        }
+                    }
+                    if (db.Siblings.Any(x => x.FamilyID == ivm.fm.Id))
+                    {
+                        List<SiblingModel> lsDBSiblings = db.Siblings.Where(x => x.FamilyID == ivm.fm.Id).ToList();
+                        foreach (SiblingModel sm in lsDBSiblings)
+                        {
+                            if (!ivm.lsSiblings.Any(x => x.Id == sm.Id))
+                            {
+                                db.Siblings.Remove(sm);
+                                db.SaveChanges();
+                            }
+                        }
+                    }
+                    if (ivm.lsParents.Count > 0)
+                    {
+                        ivm.lsParents = Utility.AddParents(ivm.lsParents);
+                    }
+                    if (ivm.lsSiblings.Count > 0)
+                    {
+                        ivm.lsSiblings = Utility.AddSiblings(ivm.lsSiblings);
+                    }
+                    Utility.UpdateIsPraSibling(ivm.sm.Id);
+                    r.imported = true;
+                    db.SaveChanges();
+                    icounter++;
+                    SendProgress("Importing Students...", icounter, lsr.Count);
+                }
+                catch (Exception e)
+                {
+                    r.ImportErrorMsg = e.Message;
+                    db.SaveChanges();
+                    icounter++;
+                    SendProgress("Importing Students...", icounter, lsr.Count);
+                }
             }
-            return View();
+            icounter++;
+            SendProgress("Importing Students...", lsr.Count, lsr.Count);
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
@@ -675,6 +846,17 @@ namespace PRAWaitList.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public static void SendProgress(string progressMessage, int progressCount, int totalItems)
+        {
+            //IN ORDER TO INVOKE SIGNALR FUNCTIONALITY DIRECTLY FROM SERVER SIDE WE MUST USE THIS
+            var hubContext = GlobalHost.ConnectionManager.GetHubContext<ProgressHub>();
+
+            //CALCULATING PERCENTAGE BASED ON THE PARAMETERS SENT
+            var percentage = (progressCount * 100) / totalItems;
+
+            //PUSHING DATA TO ALL CLIENTS
+            hubContext.Clients.All.AddProgress(progressMessage, percentage + "%");
         }
     }
 }
