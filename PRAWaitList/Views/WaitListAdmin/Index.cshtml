@@ -27,6 +27,9 @@
                 @Html.EnumDropDownListFor(model => model.SearchGrade, "- Select a Grade -", htmlAttributes: new { @class = "form-control" })
             </td>
             <td>
+                @Html.EnumDropDownListFor(model => model.SchoolYearList, "- Select a Year -", htmlAttributes: new { @class = "form-control" })
+            </td>
+            <td>
                 <label class="form-control-static">Status:</label>                 
             </td>
             <td>

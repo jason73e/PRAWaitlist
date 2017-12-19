@@ -196,15 +196,25 @@ namespace PRAWaitList.Controllers
                     iLowSeed = 10000;
                     iHighSeed = 19999;
                 }
-                else if(s.LocalDistrict== sLocalDistrict)
+                else if(s.isParentStaff())
                 {
                     iLowSeed = 20000;
                     iHighSeed = 29999;
                 }
-                else
+                else if (s.isParentSAC())
                 {
                     iLowSeed = 30000;
                     iHighSeed = 39999;
+                }
+                else if (s.LocalDistrict== sLocalDistrict)
+                {
+                    iLowSeed = 40000;
+                    iHighSeed = 49999;
+                }
+                else
+                {
+                    iLowSeed = 50000;
+                    iHighSeed = 59999;
 
                 }
                 int iRandomID = r.Next(iLowSeed, iHighSeed);

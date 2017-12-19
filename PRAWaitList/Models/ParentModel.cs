@@ -77,5 +77,9 @@ namespace PRAWaitList.Models
         public DateTime UpdateDate { get; set; }
         public string UpdateUserID { get; set; }
         public Boolean isActive { get; set; }
+        [DisplayName("Staff Member")]
+        public Boolean isStaff { get; set; }
+        [DisplayName("SAC Member")]
+        public Boolean isSAC { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRAWaitList.DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -61,5 +62,36 @@ namespace PRAWaitList.Models
         [Required]
         [Display(Name = "Has Sibling at PRA?")]
         public Boolean isPRASibling { get; set; }
+
+        private PRAWaitListContext db = new PRAWaitListContext();
+
+        public Boolean isParentStaff()
+        {
+            Boolean retValue = false;
+            List<ParentModel> lsParents = db.Parents.Where(x => x.FamilyID == this.FamilyID).ToList();
+            foreach(ParentModel p in lsParents)
+            {
+                if(p.isStaff)
+                {
+                    retValue = true;
+                }
+            }
+            return retValue;
+        }
+
+        public Boolean isParentSAC()
+        {
+            Boolean retValue = false;
+            List<ParentModel> lsParents = db.Parents.Where(x => x.FamilyID == this.FamilyID).ToList();
+            foreach (ParentModel p in lsParents)
+            {
+                if (p.isSAC)
+                {
+                    retValue = true;
+                }
+            }
+            return retValue;
+        }
+
     }
 }

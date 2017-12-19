@@ -317,6 +317,8 @@ namespace PRAWaitList.DAL
             parentModel.ZipCode = m.ZipCode;
             parentModel.UpdateDate = DateTime.Now;
             parentModel.UpdateUserID = HttpContext.Current.User.Identity.Name;
+            parentModel.isSAC = m.isSAC;
+            parentModel.isStaff = m.isStaff;
             db.SaveChanges();
 
             ParentModel rm = db.Parents.Find(m.Id);

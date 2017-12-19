@@ -20,7 +20,7 @@ namespace PRAWaitList.Controllers
         private PRAWaitListContext db = new PRAWaitListContext();
 
         // GET: WaitListAdmin
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, string currentStatus, string SearchStatus,Grade? currentGrade, Grade? SearchGrade, int? page, int? PageSize)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, string currentStatus, string SearchStatus,Grade? currentGrade, Grade? SearchGrade, string currentYear, string SearchYear, int? page, int? PageSize)
         {
             TempData["MyWLAModel"] = null;
             ViewBag.CurrentSort = sortOrder;
@@ -62,10 +62,19 @@ namespace PRAWaitList.Controllers
             {
                 SearchGrade = currentGrade;
             }
+            if (SearchYear != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchYear = currentYear;
+            }
 
             ViewBag.CurrentFilter = searchString;
             ViewBag.CurrentStatus = SearchStatus;
             ViewBag.CurrentGrade = SearchGrade;
+            ViewBag.CurrentYear = SearchYear;
             
 
             var students = db.Students.Where(x => x.isActive == true);
@@ -82,6 +91,11 @@ namespace PRAWaitList.Controllers
             if (SearchGrade!=null)
             {
                 students = students.Where(s => s.ApplyGrade==SearchGrade);
+            }
+
+            if (SearchYear != null)
+            {
+                students = students.Where(s => s.ApplyYear == SearchYear);
             }
 
             switch (sortOrder)
@@ -171,8 +185,10 @@ namespace PRAWaitList.Controllers
             WaitlistAdminViewModel m = new WaitlistAdminViewModel();
             m.lsStudents = students.ToPagedList(pageNumber, DefaultPageSize);
             m.StatusList = Utility.GetStatusList();
+            m.SchoolYearList = Utility.GetSchoolYearList();
             m.SearchGrade = SearchGrade;
             m.SearchStatus = SearchStatus;
+            m.SearchYear = SearchYear;
             return View(m);
         }
 
