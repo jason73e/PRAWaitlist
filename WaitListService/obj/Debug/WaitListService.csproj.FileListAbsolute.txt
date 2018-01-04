@@ -9,3 +9,14 @@ C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Debug\E
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Debug\EntityFramework.xml
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jengel\Documents\CodeLines\WaitListService\bin\Debug\WaitListService.exe.config
+C:\Users\jengel\Documents\CodeLines\WaitListService\bin\Debug\WaitListService.exe
+C:\Users\jengel\Documents\CodeLines\WaitListService\bin\Debug\WaitListService.pdb
+C:\Users\jengel\Documents\CodeLines\WaitListService\bin\Debug\EntityFramework.dll
+C:\Users\jengel\Documents\CodeLines\WaitListService\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jengel\Documents\CodeLines\WaitListService\bin\Debug\EntityFramework.xml
+C:\Users\jengel\Documents\CodeLines\WaitListService\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jengel\Documents\CodeLines\WaitListService\obj\Debug\WaitListService.csprojResolveAssemblyReference.cache
+C:\Users\jengel\Documents\CodeLines\WaitListService\obj\Debug\WaitListService.csproj.CoreCompileInputs.cache
+C:\Users\jengel\Documents\CodeLines\WaitListService\obj\Debug\WaitListService.exe
+C:\Users\jengel\Documents\CodeLines\WaitListService\obj\Debug\WaitListService.pdb

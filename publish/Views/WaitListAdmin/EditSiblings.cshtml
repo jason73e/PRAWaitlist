@@ -38,7 +38,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => Model.lsSiblings[iSiblingCounter].BirthDate, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            @Html.EditorFor(model => Model.lsSiblings[iSiblingCounter].BirthDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => Model.lsSiblings[iSiblingCounter].BirthDate, new { htmlAttributes = new { @class = "form-control date-picker" } })
                             @Html.ValidationMessageFor(model => Model.lsSiblings[iSiblingCounter].BirthDate, "", new { @class = "text-danger" })
                         </div>
                     </div>

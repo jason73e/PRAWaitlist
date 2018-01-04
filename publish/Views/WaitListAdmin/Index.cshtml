@@ -27,6 +27,9 @@
                 @Html.EnumDropDownListFor(model => model.SearchGrade, "- Select a Grade -", htmlAttributes: new { @class = "form-control" })
             </td>
             <td>
+                @Html.DropDownListFor(model => model.SearchYear,Model.SchoolYearList, "- Select a Year -", htmlAttributes: new { @class = "form-control" })
+            </td>
+            <td>
                 <label class="form-control-static">Status:</label>                 
             </td>
             <td>
@@ -74,6 +77,12 @@
                         @Html.ActionLink("Is PRA Sibling", "Index", new { sortOrder = ViewBag.IsPRASibling, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
                     </th>
                     <th nowrap="nowrap">
+                        @Html.ActionLink("Is Parent Staff", "Index", new { sortOrder = ViewBag.IsParentStaff, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+                    </th>
+                    <th nowrap="nowrap">
+                        @Html.ActionLink("Is Parent SAC", "Index", new { sortOrder = ViewBag.IsParentSAC, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+                    </th>
+                    <th nowrap="nowrap">
                     </th>
                 </tr>
 
@@ -106,6 +115,16 @@
                         </td>
                         <td nowrap="nowrap">
                             @Html.DisplayFor(modelItem => item.isPRASibling)
+                        </td>
+                        <td nowrap="nowrap">
+                            @{bool isStaff = item.isParentStaff();
+                            }
+                                @Html.DisplayFor(modelItem => isStaff)
+                        </td>
+                        <td nowrap="nowrap">
+                            @{bool isSAC = item.isParentSAC();
+                            }
+                            @Html.DisplayFor(modelItem => isSAC)
                         </td>
                         <td nowrap="nowrap">
                             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

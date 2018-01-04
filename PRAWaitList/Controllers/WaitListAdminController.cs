@@ -20,7 +20,7 @@ namespace PRAWaitList.Controllers
         private PRAWaitListContext db = new PRAWaitListContext();
 
         // GET: WaitListAdmin
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, string currentStatus, string SearchStatus,Grade? currentGrade, Grade? SearchGrade, string currentYear, string SearchYear, int? page, int? PageSize)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, string currentStatus, string SearchStatus,Grade? currentGrade, Grade? SearchGrade, string currentApplyYear, string SearchYear, int? page, int? PageSize)
         {
             TempData["MyWLAModel"] = null;
             ViewBag.CurrentSort = sortOrder;
@@ -70,13 +70,13 @@ namespace PRAWaitList.Controllers
             }
             else
             {
-                SearchYear = currentYear;
+                SearchYear = currentApplyYear;
             }
 
             ViewBag.CurrentFilter = searchString;
             ViewBag.CurrentStatus = SearchStatus;
             ViewBag.CurrentGrade = SearchGrade;
-            ViewBag.CurrentYear = SearchYear;
+            ViewBag.CurrentApplyYear = SearchYear;
             
 
             var students = db.Students.Where(x => x.isActive == true);

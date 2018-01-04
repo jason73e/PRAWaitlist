@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\jengel\Documents\CodeLines\PRAWaitlist\publish</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\jengel\Documents\CodeLines\publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -22,13 +22,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/17/2017 15:55:53</publishTime>
     </File>
     <File Include="bin/BotDetect.dll">
-      <publishTime>04/27/2017 10:40:34</publishTime>
+      <publishTime>11/01/2017 21:56:02</publishTime>
     </File>
     <File Include="bin/BotDetect.Web.Mvc.dll">
-      <publishTime>04/27/2017 10:40:34</publishTime>
+      <publishTime>11/01/2017 21:56:02</publishTime>
     </File>
     <File Include="bin/CsvHelper.dll">
-      <publishTime>10/25/2017 10:21:50</publishTime>
+      <publishTime>12/15/2017 12:36:52</publishTime>
     </File>
     <File Include="bin/CsvHelper.pdb">
       <publishTime>10/25/2017 10:21:50</publishTime>
@@ -88,7 +88,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/05/2017 11:53:40</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
-      <publishTime>04/05/2017 11:53:42</publishTime>
+      <publishTime>11/01/2017 21:56:02</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.dll">
       <publishTime>04/05/2017 11:53:42</publishTime>
@@ -103,7 +103,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/05/2017 11:53:46</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
-      <publishTime>04/05/2017 11:53:46</publishTime>
+      <publishTime>11/01/2017 21:56:02</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
       <publishTime>04/05/2017 11:53:48</publishTime>
@@ -127,10 +127,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/11/2017 17:07:31</publishTime>
     </File>
     <File Include="bin/PRAWaitList.dll">
-      <publishTime>10/28/2017 13:26:36</publishTime>
+      <publishTime>01/03/2018 21:11:22</publishTime>
     </File>
     <File Include="bin/PRAWaitList.pdb">
-      <publishTime>10/28/2017 13:26:36</publishTime>
+      <publishTime>01/03/2018 21:11:22</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>09/11/2017 17:07:30</publishTime>
@@ -220,13 +220,139 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/17/2017 15:55:34</publishTime>
     </File>
     <File Include="Content/bootstrap_sandstone.css">
-      <publishTime>09/11/2017 17:07:09</publishTime>
+      <publishTime>11/22/2017 17:53:21</publishTime>
+    </File>
+    <File Include="Content/Images/PRA_logo_P_H.png">
+      <publishTime>11/21/2017 21:51:41</publishTime>
     </File>
     <File Include="Content/PagedList.css">
       <publishTime>09/11/2017 17:07:09</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>09/11/2017 17:07:09</publishTime>
+      <publishTime>11/24/2017 19:41:18</publishTime>
+    </File>
+    <File Include="Content/themes/base/accordion.css">
+      <publishTime>12/22/2017 09:59:33</publishTime>
+    </File>
+    <File Include="Content/themes/base/all.css">
+      <publishTime>12/22/2017 09:59:33</publishTime>
+    </File>
+    <File Include="Content/themes/base/autocomplete.css">
+      <publishTime>12/22/2017 09:59:33</publishTime>
+    </File>
+    <File Include="Content/themes/base/base.css">
+      <publishTime>12/22/2017 09:59:33</publishTime>
+    </File>
+    <File Include="Content/themes/base/button.css">
+      <publishTime>12/22/2017 09:59:33</publishTime>
+    </File>
+    <File Include="Content/themes/base/core.css">
+      <publishTime>12/22/2017 09:59:33</publishTime>
+    </File>
+    <File Include="Content/themes/base/datepicker.css">
+      <publishTime>12/22/2017 09:59:33</publishTime>
+    </File>
+    <File Include="Content/themes/base/dialog.css">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/draggable.css">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_flat_75_ffffff_40x100.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_55_fbf9ee_1x400.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_65_ffffff_1x400.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_75_dadada_1x400.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_75_e6e6e6_1x400.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_95_fef1ec_1x400.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_222222_256x240.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_2e83ff_256x240.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_444444_256x240.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_454545_256x240.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_555555_256x240.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_777620_256x240.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_777777_256x240.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_888888_256x240.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_cc0000_256x240.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_cd0a0a_256x240.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_ffffff_256x240.png">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery-ui.css">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery-ui.min.css">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/menu.css">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/progressbar.css">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/resizable.css">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/selectable.css">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/selectmenu.css">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/slider.css">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/sortable.css">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/spinner.css">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/tabs.css">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/theme.css">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Content/themes/base/tooltip.css">
+      <publishTime>12/22/2017 09:59:32</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>09/11/2017 17:07:23</publishTime>
@@ -250,7 +376,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/11/2017 17:07:09</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>10/26/2017 23:20:11</publishTime>
+      <publishTime>12/22/2017 09:59:33</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>10/17/2017 15:55:34</publishTime>
@@ -265,7 +391,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/11/2017 17:07:09</publishTime>
     </File>
     <File Include="Scripts/IntentToEnroll.js">
-      <publishTime>09/11/2017 17:07:09</publishTime>
+      <publishTime>12/22/2017 10:10:50</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
       <publishTime>09/11/2017 17:07:10</publishTime>
@@ -293,6 +419,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Scripts/jquery-3.2.1.slim.min.map">
       <publishTime>10/17/2017 15:55:33</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.12.1.js">
+      <publishTime>12/22/2017 09:59:32</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.12.1.min.js">
+      <publishTime>12/22/2017 09:59:32</publishTime>
     </File>
     <File Include="Scripts/jquery.signalR-2.2.2.js">
       <publishTime>09/11/2017 17:07:10</publishTime>
@@ -361,7 +493,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/11/2017 17:07:09</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>10/17/2017 15:55:39</publishTime>
+      <publishTime>12/22/2017 09:59:38</publishTime>
     </File>
     <File Include="Service References/Application Insights/ConnectedService.json">
       <publishTime>09/11/2017 17:07:11</publishTime>
@@ -394,7 +526,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/06/2017 01:11:23</publishTime>
     </File>
     <File Include="Views/EmailControlModels/Index.cshtml">
-      <publishTime>09/11/2017 17:07:11</publishTime>
+      <publishTime>01/03/2018 18:53:00</publishTime>
     </File>
     <File Include="Views/HearAboutPRAModels/Create.cshtml">
       <publishTime>10/06/2017 01:11:23</publishTime>
@@ -418,10 +550,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/06/2017 01:19:06</publishTime>
     </File>
     <File Include="Views/IntentToEnroll/AddSibling.cshtml">
-      <publishTime>10/06/2017 01:19:06</publishTime>
+      <publishTime>12/22/2017 15:29:08</publishTime>
     </File>
     <File Include="Views/IntentToEnroll/AddStudent.cshtml">
-      <publishTime>09/11/2017 17:07:12</publishTime>
+      <publishTime>12/22/2017 10:08:02</publishTime>
     </File>
     <File Include="Views/IntentToEnroll/Confirm.cshtml">
       <publishTime>10/06/2017 01:19:06</publishTime>
@@ -442,7 +574,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/11/2017 17:07:12</publishTime>
     </File>
     <File Include="Views/IntentToEnroll/Index.cshtml">
-      <publishTime>10/06/2017 15:59:58</publishTime>
+      <publishTime>12/19/2017 00:08:48</publishTime>
     </File>
     <File Include="Views/Login/index.cshtml">
       <publishTime>10/06/2017 01:19:06</publishTime>
@@ -476,6 +608,42 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/LotteryBatchModels/NotifyStudent.cshtml">
       <publishTime>09/11/2017 17:07:12</publishTime>
+    </File>
+    <File Include="Views/PortalMenusModels/Create.cshtml">
+      <publishTime>01/03/2018 12:32:56</publishTime>
+    </File>
+    <File Include="Views/PortalMenusModels/Delete.cshtml">
+      <publishTime>01/03/2018 12:32:57</publishTime>
+    </File>
+    <File Include="Views/PortalMenusModels/Details.cshtml">
+      <publishTime>01/03/2018 12:32:58</publishTime>
+    </File>
+    <File Include="Views/PortalMenusModels/Edit.cshtml">
+      <publishTime>01/03/2018 12:32:59</publishTime>
+    </File>
+    <File Include="Views/PortalMenusModels/Index.cshtml">
+      <publishTime>01/03/2018 12:33:00</publishTime>
+    </File>
+    <File Include="Views/PortalMenusModels/_PortalMenu.cshtml">
+      <publishTime>01/03/2018 15:59:01</publishTime>
+    </File>
+    <File Include="Views/PRAMenuModels/Create.cshtml">
+      <publishTime>12/30/2017 15:03:25</publishTime>
+    </File>
+    <File Include="Views/PRAMenuModels/Delete.cshtml">
+      <publishTime>12/28/2017 15:01:49</publishTime>
+    </File>
+    <File Include="Views/PRAMenuModels/Details.cshtml">
+      <publishTime>12/30/2017 15:05:39</publishTime>
+    </File>
+    <File Include="Views/PRAMenuModels/Edit.cshtml">
+      <publishTime>12/30/2017 15:03:56</publishTime>
+    </File>
+    <File Include="Views/PRAMenuModels/Index.cshtml">
+      <publishTime>12/30/2017 15:05:08</publishTime>
+    </File>
+    <File Include="Views/PRAMenuModels/_PRAMenu.cshtml">
+      <publishTime>12/30/2017 15:57:54</publishTime>
     </File>
     <File Include="Views/RenewStudents/Index.cshtml">
       <publishTime>09/11/2017 17:07:12</publishTime>
@@ -526,7 +694,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/11/2017 17:07:12</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>09/11/2017 17:07:12</publishTime>
+      <publishTime>01/03/2018 13:39:27</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>09/11/2017 17:07:12</publishTime>
@@ -586,16 +754,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/11/2017 17:07:13</publishTime>
     </File>
     <File Include="Views/WaitListAdmin/EditParents.cshtml">
-      <publishTime>10/06/2017 15:53:56</publishTime>
+      <publishTime>12/15/2017 12:23:27</publishTime>
     </File>
     <File Include="Views/WaitListAdmin/EditSiblings.cshtml">
-      <publishTime>10/06/2017 15:53:56</publishTime>
+      <publishTime>12/22/2017 15:30:44</publishTime>
     </File>
     <File Include="Views/WaitListAdmin/EditStudent.cshtml">
-      <publishTime>09/11/2017 17:07:13</publishTime>
+      <publishTime>12/22/2017 15:30:17</publishTime>
+    </File>
+    <File Include="Views/WaitListAdmin/ImportStudents.cshtml">
+      <publishTime>11/24/2017 20:19:27</publishTime>
     </File>
     <File Include="Views/WaitListAdmin/Index.cshtml">
-      <publishTime>09/11/2017 17:07:13</publishTime>
+      <publishTime>12/22/2017 14:18:57</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>09/11/2017 17:07:13</publishTime>
@@ -604,7 +775,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/11/2017 17:07:13</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/28/2017 13:26:37</publishTime>
+      <publishTime>01/03/2018 21:18:01</publishTime>
     </File>
   </ItemGroup>
 </Project>
