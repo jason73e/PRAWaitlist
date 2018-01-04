@@ -100,8 +100,12 @@ namespace PRAWaitList.DAL
         }
         public static string GetSchoolName(string sSchoolCode)
         {
+            string SchoolName = string.Empty;
             PRAWaitListContext db = new PRAWaitListContext();
-            string SchoolName = db.Schools.Where(x => x.SchoolID == sSchoolCode).Select(x => new { x.SchoolName }).Distinct().Single().SchoolName.ToString();
+            if (db.Schools.Where(x => x.SchoolID == sSchoolCode).Any())
+            {
+                SchoolName = db.Schools.Where(x => x.SchoolID == sSchoolCode).Select(x => new { x.SchoolName }).Distinct().Single().SchoolName.ToString();
+            }
             db.Dispose();
             return (SchoolName);
         }

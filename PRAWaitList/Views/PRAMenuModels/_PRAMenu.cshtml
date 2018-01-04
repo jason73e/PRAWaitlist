@@ -1,0 +1,15 @@
+﻿@model IEnumerable<PRAWaitList.Models.PRAMenuModel>
+
+<div class="container">
+    <div class="navbar-headerPRAGreen navbar-extend">
+        <div class="container navebar-link" style="text-align:right;">
+            @foreach (var item in Model)
+            {
+                var str = Convert.ToString(@"<a href='" + item.link +"'" + (item.target.Length>0 ?"target='"+item.target+"'":string.Empty) + ">" + item.Name + "</a>&nbsp;&nbsp;&nbsp;");
+                @Html.Raw(str)
+}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    </div>
+</div>
+

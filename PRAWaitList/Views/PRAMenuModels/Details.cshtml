@@ -1,0 +1,49 @@
+﻿@model PRAWaitList.Models.PRAMenuModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PRAMenuModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.target)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.target)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sortorder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sortorder)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

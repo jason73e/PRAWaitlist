@@ -2,7 +2,12 @@
 
 @{
     ViewBag.Title = "Index";
-}
+    if (null != TempData["alertMessage"])
+    {
+        <script type="text/javascript">
+            alert('@TempData["alertMessage"]');
+        </script>
+    }}
 
 <h2>Index</h2>
 

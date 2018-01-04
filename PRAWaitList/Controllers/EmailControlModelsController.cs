@@ -121,13 +121,21 @@ namespace PRAWaitList.Controllers
         // GET: EmailControlModels/EmailTest
         public ActionResult EmailTest()
         {
-            var body = "This is a test email.";
-            var message = new MailMessage();
-            message.To.Add(new MailAddress("engel.j@gmail.com")); //replace with valid value
-            message.Subject = "Test Email.";
-            message.Body = body;
-            message.IsBodyHtml = true;
-            Utility.SendMail(message);
+            try
+            {
+                var body = "This is a test email.";
+                var message = new MailMessage();
+                message.To.Add(new MailAddress("engel.j@gmail.com")); //replace with valid value
+                message.Subject = "Test Email.";
+                message.Body = body;
+                message.IsBodyHtml = true;
+                Utility.SendMail(message);
+                TempData["alertMessage"] = "Email Queued!";
+            }
+            catch (Exception e)
+            {
+                TempData["alertMessage"] = "Error Queueing Email: " + e.Message;
+            }
             return RedirectToAction("index");
         }
 

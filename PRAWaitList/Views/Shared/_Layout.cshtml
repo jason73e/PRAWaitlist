@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Platte River Academy - Waitlist</title>
     @RenderSection("HeadIncludes", required: false)
-    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jqueryuno")
     @Scripts.Render("~/bundles/bootstrap")
@@ -29,6 +29,10 @@
     </script>
     <!-- JavaScript -->
     <script type="text/javascript">
+        $(function () {
+            // This will make every element with the class "date-picker" into a DatePicker element
+            $('.date-picker').datepicker();
+        })
 
         $(function () {
             // Reference the auto-generated proxy for the hub.
@@ -55,20 +59,7 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-headerPRAGreen navbar-extend">
-                <div class="container navebar-link" style="text-align:right;">
-                    <a href="http://www.prak8.org/blog1">News</a>&nbsp;&nbsp;&nbsp;
-                    <a href="http://www.prak8.org/get-involved/donate">Donate</a>&nbsp;&nbsp;&nbsp;
-                    <a href="https://appsadp.dcsdk12.org/apex/f?p=214:LOGIN:1185557814048420" target="_blank">Express Checkin</a>&nbsp;&nbsp;&nbsp;
-                    <a href="https://platteriveracademy.revtrak.net/" target="_blank">Payments</a>&nbsp;&nbsp;&nbsp;
-                    <a href="http://www.prak8.org/parents/schoology">Schoology</a>&nbsp;&nbsp;&nbsp;
-                    <a href="http://www.prak8.org/parents/lunch">Lunch</a>&nbsp;&nbsp;&nbsp;
-                    <a href="http://www.prak8.org/parents/student-directory">Student Directory</a>&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </div>
-            </div>
-        </div>
+        @{Html.RenderAction("_PRAMenu", "PRAMenuModels");}
         <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -81,37 +72,7 @@
                     </a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Intent To Enroll", "Index", "IntentToEnroll")</li>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Wait List<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>@Html.ActionLink("WaitList Administration", "Index", "WaitListAdmin")</li>
-                                    <li>@Html.ActionLink("Renew Administration", "Index", "RenewStudents")</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lottery<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>@Html.ActionLink("Lottery Administration", "Index", "LotteryBatchModels")</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuration Settings<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>@Html.ActionLink("Configuration Settings", "Index", "ConfigurationSettings")</li>
-                                    <li>@Html.ActionLink("Email Control", "Index", "EmailControlModels")</li>
-                                    <li>@Html.ActionLink("Hear About PRA", "Index", "HearaboutPRAModels")</li>
-                                    <li>@Html.ActionLink("Schools", "Index", "SchoolModels")</li>
-                                    <li>@Html.ActionLink("School Years", "Index", "SchoolYearModels")</li>
-                                    <li>@Html.ActionLink("States", "Index", "StateModels")</li>
-                                    <li>@Html.ActionLink("Status", "Index", "Status")</li>
-                                </ul>
-                            </li>
-                        }
-                    </ul>
+                    @{Html.RenderAction("_PortalMenu", "PortalMenusModels");}
                     @Html.Partial("_LoginPartial")
                 </div>
             </div>

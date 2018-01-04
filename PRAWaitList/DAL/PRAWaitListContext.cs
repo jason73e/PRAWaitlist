@@ -15,7 +15,7 @@ namespace PRAWaitList.DAL
         public PRAWaitListContext() : base(ConfigurationManager.ConnectionStrings["PRAWaitlistConnection"].ConnectionString)
         {
             Configuration.ValidateOnSaveEnabled = false;
-
+            
         }
         public DbSet<FamilyModel> Families { get; set; }
         public DbSet<StudentModel> Students { get; set; }
@@ -66,5 +66,9 @@ namespace PRAWaitList.DAL
                 throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
             }
         }
+
+        public System.Data.Entity.DbSet<PRAWaitList.Models.PRAMenuModel> PRAMenuModels { get; set; }
+
+        public System.Data.Entity.DbSet<PRAWaitList.Models.PortalMenusModel> PortalMenusModels { get; set; }
     }
 }

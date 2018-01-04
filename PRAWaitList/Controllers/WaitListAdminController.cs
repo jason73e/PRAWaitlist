@@ -36,6 +36,8 @@ namespace PRAWaitList.Controllers
             ViewBag.StatusSortParm = sortOrder == "Status" ? "Status_desc" : "Status";
             ViewBag.LearnAboutPRASortParm = sortOrder == "LearnAboutPRA" ? "LearnAboutPRA_desc" : "LearnAboutPRA";
             ViewBag.IsPRASibling = sortOrder == "IsPRASibling" ? "IsPRASibling_desc" : "IsPRASibling";
+            ViewBag.IsParentSAC = sortOrder == "IsParentSAC" ? "IsParentSAC_desc" : "IsParentSAC";
+            ViewBag.IsParentStaff = sortOrder == "IsParentStaff" ? "IsParentStaff_desc" : "IsParentStaff";
             if (searchString != null)
             {
                 page = 1;
@@ -168,6 +170,18 @@ namespace PRAWaitList.Controllers
                     break;
                 case "IsPRASibling_desc":
                     students = students.OrderByDescending(s => s.isPRASibling);
+                    break;
+                case "IsParentStaff":
+                    students = students.OrderBy(s => s.isParentStaff());
+                    break;
+                case "IsParentStaff_desc":
+                    students = students.OrderByDescending(s => s.isParentStaff());
+                    break;
+                case "IsParentSAC":
+                    students = students.OrderBy(s => s.isParentSAC());
+                    break;
+                case "IsParentSAC_desc":
+                    students = students.OrderByDescending(s => s.isParentSAC());
                     break;
                 default:
                     students = students.OrderBy(s => s.LastName);

@@ -31,6 +31,7 @@ namespace PRAWaitList
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/themes/base/jquery-ui.min.css",
                       "~/Content/bootstrap_sandstone.css",
                       "~/Content/site.css"));
         }

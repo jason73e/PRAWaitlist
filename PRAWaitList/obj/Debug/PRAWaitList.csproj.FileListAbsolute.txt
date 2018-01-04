@@ -477,7 +477,6 @@ C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\obj\Debug\PRAWa
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\obj\Debug\PRAWaitList.Migrations.init.resources
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.AspNet.TelemetryCorrelation.dll
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\System.Diagnostics.DiagnosticSource.dll
-C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\CsvHelper.pdb
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Users\jengel\Documents\CodeLines\PRAWaitlist\PRAWaitList\bin\ApplicationInsights.config
@@ -571,3 +570,7 @@ C:\Users\jengel\Documents\CodeLines\PRAWaitlist\PRAWaitList\obj\Debug\PRAWaitLis
 C:\Users\jengel\Documents\CodeLines\PRAWaitlist\PRAWaitList\obj\Debug\PRAWaitList.dll
 C:\Users\jengel\Documents\CodeLines\PRAWaitlist\PRAWaitList\obj\Debug\PRAWaitList.pdb
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\obj\Debug\PRAWaitList.Migrations.create.resources
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\obj\Debug\PRAWaitList.Migrations.create1.resources
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\obj\Debug\PRAWaitList.Migrations.init1.resources
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\obj\Debug\PRAWaitList.Migrations.init2.resources
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\obj\Debug\PRAWaitList.Migrations.init3.resources
