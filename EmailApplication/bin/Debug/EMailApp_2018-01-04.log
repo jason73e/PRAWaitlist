@@ -1,0 +1,78 @@
+2018-01-04 19:42:15.7322|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\MailQueue.cs:line 88
+2018-01-04 20:00:52.5769|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. l63sm2842561ita.44 - gsmtp
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\MailQueue.cs:line 88
+2018-01-04 20:05:24.3735|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\MailQueue.cs:line 88
+2018-01-04 20:06:46.2725|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\MailQueue.cs:line 88
+2018-01-04 20:06:47.0605|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\MailQueue.cs:line 88
+2018-01-04 20:06:47.7536|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\MailQueue.cs:line 88
+2018-01-04 20:06:48.4652|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\MailQueue.cs:line 88
+2018-01-04 20:06:49.2386|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\MailQueue.cs:line 88
+2018-01-04 20:06:49.9926|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\MailQueue.cs:line 88
+2018-01-04 20:06:50.7204|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\MailQueue.cs:line 88
+2018-01-04 20:06:51.4030|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\MailQueue.cs:line 88
+2018-01-04 20:06:52.1039|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\MailQueue.cs:line 88
+2018-01-04 20:06:52.8470|ERROR|EmailApplication.MailQueue|System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at EmailApplication.MailQueue.sendMail(EmailQueueModel eq) in C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\MailQueue.cs:line 88
