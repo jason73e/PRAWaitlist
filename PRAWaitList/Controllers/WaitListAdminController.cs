@@ -19,8 +19,13 @@ namespace PRAWaitList.Controllers
     {
         private PRAWaitListContext db = new PRAWaitListContext();
 
-        // GET: WaitListAdmin
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, string currentStatus, string SearchStatus,Grade? currentGrade, Grade? SearchGrade, string currentApplyYear, string SearchYear, int? page, int? PageSize)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, string currentStatus, string SearchStatus, Grade? currentGrade, Grade? SearchGrade, string currentApplyYear, string SearchYear, int? page, int? PageSize)
+        {
+            WaitlistAdminViewModel m = IndexProcess(sortOrder, currentFilter, searchString, currentStatus, SearchStatus, currentGrade, SearchGrade, currentApplyYear, SearchYear, page, PageSize);
+            return View(m);
+        }
+
+        private WaitlistAdminViewModel IndexProcess(string sortOrder, string currentFilter, string searchString, string currentStatus, string SearchStatus, Grade? currentGrade, Grade? SearchGrade, string currentApplyYear, string SearchYear, int? page, int? PageSize)
         {
             TempData["MyWLAModel"] = null;
             ViewBag.CurrentSort = sortOrder;
@@ -36,9 +41,9 @@ namespace PRAWaitList.Controllers
             ViewBag.StatusSortParm = sortOrder == "Status" ? "Status_desc" : "Status";
             ViewBag.LearnAboutPRASortParm = sortOrder == "LearnAboutPRA" ? "LearnAboutPRA_desc" : "LearnAboutPRA";
             ViewBag.IsPRASibling = sortOrder == "IsPRASibling" ? "IsPRASibling_desc" : "IsPRASibling";
-            ViewBag.IsParentSAC = sortOrder == "IsParentSAC" ? "IsParentSAC_desc" : "IsParentSAC";
-            ViewBag.IsParentStaff = sortOrder == "IsParentStaff" ? "IsParentStaff_desc" : "IsParentStaff";
-            if (searchString != null)
+            //ViewBag.IsParentSAC = sortOrder == "IsParentSAC" ? "IsParentSAC_desc" : "IsParentSAC";
+            //ViewBag.IsParentStaff = sortOrder == "IsParentStaff" ? "IsParentStaff_desc" : "IsParentStaff";
+            if (!string.IsNullOrEmpty(searchString))
             {
                 page = 1;
             }
@@ -47,13 +52,13 @@ namespace PRAWaitList.Controllers
                 searchString = currentFilter;
             }
 
-            if (SearchStatus != null)
+            if (!string.IsNullOrEmpty(SearchStatus))
             {
                 page = 1;
             }
             else
             {
-                SearchStatus= currentStatus;
+                SearchStatus = currentStatus;
             }
 
             if (SearchGrade != null)
@@ -64,7 +69,7 @@ namespace PRAWaitList.Controllers
             {
                 SearchGrade = currentGrade;
             }
-            if (SearchYear != null)
+            if (!string.IsNullOrEmpty(SearchYear))
             {
                 page = 1;
             }
@@ -77,25 +82,25 @@ namespace PRAWaitList.Controllers
             ViewBag.CurrentStatus = SearchStatus;
             ViewBag.CurrentGrade = SearchGrade;
             ViewBag.CurrentApplyYear = SearchYear;
-            
+
 
             var students = db.Students.Where(x => x.isActive == true);
-            if(!String.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(searchString))
             {
-                students = students.Where(s => s.LastName.Contains(searchString) || s.FirstName.Contains(searchString));
+                students = students.Where(s => s.LastName.ToLower().Contains(searchString.ToLower()) || s.FirstName.ToLower().Contains(searchString.ToLower()));
             }
 
             if (!String.IsNullOrEmpty(SearchStatus))
             {
-                students = students.Where(s => s.Status== SearchStatus);
+                students = students.Where(s => s.Status == SearchStatus);
             }
 
-            if (SearchGrade!=null)
+            if (SearchGrade != null)
             {
-                students = students.Where(s => s.ApplyGrade==SearchGrade);
+                students = students.Where(s => s.ApplyGrade == SearchGrade);
             }
 
-            if (SearchYear != null)
+            if (!string.IsNullOrEmpty(SearchYear))
             {
                 students = students.Where(s => s.ApplyYear == SearchYear);
             }
@@ -171,18 +176,18 @@ namespace PRAWaitList.Controllers
                 case "IsPRASibling_desc":
                     students = students.OrderByDescending(s => s.isPRASibling);
                     break;
-                case "IsParentStaff":
-                    students = students.OrderBy(s => s.isParentStaff());
-                    break;
-                case "IsParentStaff_desc":
-                    students = students.OrderByDescending(s => s.isParentStaff());
-                    break;
-                case "IsParentSAC":
-                    students = students.OrderBy(s => s.isParentSAC());
-                    break;
-                case "IsParentSAC_desc":
-                    students = students.OrderByDescending(s => s.isParentSAC());
-                    break;
+                //case "IsParentStaff":
+                //    students = students.OrderBy(s => s.isParentStaff());
+                //    break;
+                //case "IsParentStaff_desc":
+                //    students = students.OrderByDescending(s => s.isParentStaff());
+                //    break;
+                //case "IsParentSAC":
+                //    students = students.OrderBy(s => s.isParentSAC());
+                //    break;
+                //case "IsParentSAC_desc":
+                //    students = students.OrderByDescending(s => s.isParentSAC());
+                //    break;
                 default:
                     students = students.OrderBy(s => s.LastName);
                     break;
@@ -203,6 +208,18 @@ namespace PRAWaitList.Controllers
             m.SearchGrade = SearchGrade;
             m.SearchStatus = SearchStatus;
             m.SearchYear = SearchYear;
+            return m;
+        }
+        // GET: WaitListAdmin
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, string currentStatus, string SearchStatus,Grade? currentGrade, Grade? SearchGrade, string currentApplyYear, string SearchYear, int? page, int? PageSize,string submitbutton)
+        {
+            if(submitbutton=="Reset")
+            {
+                return RedirectToAction("Index");
+            }
+            WaitlistAdminViewModel m = IndexProcess(sortOrder, currentFilter, searchString, currentStatus, SearchStatus, currentGrade, SearchGrade, currentApplyYear, SearchYear, page, PageSize);
             return View(m);
         }
 

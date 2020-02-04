@@ -181,7 +181,9 @@ namespace PRAWaitList.Controllers
             }
 
             List<LotteryModel> lsLottery = new List<LotteryModel>();
-            string sLocalDistrict = db.Schools.Where(x => x.StateAbbr == db.ConfigurationSettings.Find("HomeState").value && x.AgencyName == db.ConfigurationSettings.Find("HomeDistrict").value).First().AgencyID;
+            string sHomeState = db.ConfigurationSettings.Find("HomeState").value.ToString();
+            string sHomeDistrict = db.ConfigurationSettings.Find("HomeDistrict").value.ToString();
+            string sLocalDistrict = db.Schools.Where(x => x.StateAbbr == sHomeState && x.AgencyName ==sHomeDistrict).First().AgencyID;
             foreach (StudentModel s in students)
             {
                 LotteryModel l = new LotteryModel();

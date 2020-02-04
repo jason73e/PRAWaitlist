@@ -1,21 +1,47 @@
 ﻿@model IEnumerable<PRAWaitList.Models.ConfigurationSettingsModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Waitlist Configuration";
 }
 
-<h2>Configuration</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div class="jumbotron container">
+    <h2>Waitlist Configuration Settings</h2>
+    <table class="table-borderless" width="100%">
+        <tr>
+            <td>
+                <text class="largeboldblueunderline">
+                    INSTRUCTIONS:
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	These are settings used by the the lottery.
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	HomeDistrict and HomeState are used in the lottery process to determin priority.  Students in the Home District get priority over others.
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	NotifyExpireHours is the number of hours a lottery winner has to respond after being notified.
+                </text>
+                <br />
+            </td>
+        </tr>
+    </table>
+</div>
+<!--
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+-->
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.key)
+            Key
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.value)
+            Value
         </th>
         <th></th>
     </tr>
@@ -29,14 +55,13 @@
             @Html.DisplayFor(modelItem => item.value)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.key }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.key })
+            @Html.ActionLink("Edit", "Edit", new { id=item.key }) <!--| @Html.ActionLink("Delete", "Delete", new { id=item.key })-->
         </td>
     </tr>
 }
     <tr>
         <td>
-            @Html.ActionLink("Add Seed Values", "Seed", null, new { @class = "btn btn-primary btn-success" })
+            <!--@Html.ActionLink("Add Seed Values", "Seed", null, new { @class = "btn btn-primary btn-success" })-->
         </td>
         <td></td>
         <td></td>

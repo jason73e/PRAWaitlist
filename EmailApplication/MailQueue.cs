@@ -8,6 +8,7 @@ using System.Configuration;
 using NLog;
 using NLog.Targets;
 using NLog.Config;
+using System.Threading;
 
 namespace EmailApplication
 {
@@ -122,6 +123,7 @@ namespace EmailApplication
                 if(CanSend())
                 {
                     sendMail(eq);
+                    Thread.Sleep(2000);
                 }
                 else
                 {

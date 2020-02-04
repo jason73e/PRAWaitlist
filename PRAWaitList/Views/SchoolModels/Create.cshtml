@@ -1,17 +1,36 @@
 ﻿@model PRAWaitList.Models.SchoolModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Add School";
 }
 
-<h2>Create</h2>
+<div class="jumbotron container">
+    <h2>Add School</h2>
+    <table class="table-borderless" width="100%">
+        <tr>
+            <td>
+                <text class="largeboldblueunderline">
+                    INSTRUCTIONS:
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	Before Adding a School manually it would be best to try Download a new School List File and upload that and look for the school.
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	When adding a school make sure district info matches exactly to add school to existing District.
+                </text>
+            </td>
+        </tr>
+    </table>
+</div>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>SchoolModel</h4>
+        <h4>School</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

@@ -3,7 +3,39 @@
     ViewBag.Title = "Upload New File";
 }
 
-<h2>Upload Schools File</h2>
+<div class="jumbotron container">
+    <h2>Upload Schools File</h2>
+    <table class="table-borderless" width="100%">
+        <tr>
+            <td>
+                <text class="largeboldblueunderline">
+                    INSTRUCTIONS:
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	Get the school list from here. <a href="https://nces.ed.gov/ccd/elsi/tableGenerator.aspx?savedTableID=54243" target="_blank">https://nces.ed.gov/ccd/elsi/tableGenerator.aspx?savedTableID=54243</a>
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	Export the data as a CSV File
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	Remove header info rows and replace header columns row with this.
+                    SchoolName,StateName,StateAbbr,SchoolID,AgencyName,AgencyID
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	Delete all extra lines after the data ends.
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	Save that CSV File, and upload that file as the school list.  Matching Records will be left alone and new records will be added.
+                </text>
+            </td>
+        </tr>
+    </table>
+</div>
 
 @using (Html.BeginForm("Upload", "SchoolModels", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {

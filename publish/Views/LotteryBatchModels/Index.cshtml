@@ -4,7 +4,34 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Lottery Batches</h2>
+<div class="jumbotron container">
+    <h2>Lottery Batches</h2>
+    <table class="table-borderless" width="100%">
+        <tr>
+            <td>
+                <text class="largeboldblueunderline">
+                    INSTRUCTIONS:
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	This shows you the Lotteries that have been drawn or you can create a new lottery.
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	Create New will setup a new Lottery Batch.
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	Batch Details will show you the Lottery results and let you Draw the Lottery for the batch.
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	Delete will delete the batch(You would delete the batch if it was created by mistake or if all students are were not in a verified status when you Drew the Lottery.)
+                </text>
+            </td>
+        </tr>
+    </table>
+</div>
 
 <p>
     @Html.ActionLink("Create New", "Create",null, new { @class = "btn btn-primary btn-success" })

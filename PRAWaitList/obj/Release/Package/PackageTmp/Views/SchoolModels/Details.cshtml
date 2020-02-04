@@ -1,0 +1,66 @@
+﻿@model PRAWaitList.Models.SchoolModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SchoolModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SchoolName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SchoolName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StateName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StateName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StateAbbr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StateAbbr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SchoolID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SchoolID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AgencyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgencyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AgencyID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgencyID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

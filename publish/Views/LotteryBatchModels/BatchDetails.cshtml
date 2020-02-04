@@ -23,7 +23,52 @@
     }
 </style>
 
-<h2>Batch Details</h2>
+<div class="jumbotron container">
+    <h2>Batch Details</h2>
+    <table class="table-borderless" width="100%">
+        <tr>
+            <td>
+                <text class="largeboldblueunderline">
+                    INSTRUCTIONS:
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	This page Draws the lottery results for the batch.  If the Draw Lottery is visiable, click it to Display the results for this lottery.
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	Lottery ID in the List is their random lottery number.  Students are sorted by their Lottery ID and students with the lowest numbers get first right of refusal.
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	You should go down the list in order clicking Notify to get the details for the notifaction.
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	The rows are color coded to make it easier to keep track of where you are in the list.  If the row is not colored you have not work on it yet. 
+                </text>
+                <br />
+                <text class="Notified">
+                    •	This is Notified.
+                </text>
+                <br />
+                <text class="Expired">
+                    •	This is Expired.
+                </text>
+                <br />
+                <text class="Declined">
+                    •	This is Declined.
+                </text>
+                <br />
+                <text class="Accepted">
+                    •	This is Accepted.
+                </text>
+
+            </td>
+        </tr>
+    </table>
+</div>
+
 @using (Html.BeginForm("BatchDetails", "LotteryBatchModels", FormMethod.Get))
 {
 <p>

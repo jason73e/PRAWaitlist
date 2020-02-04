@@ -113,3 +113,153 @@ a:hover, a:focus {
     text-decoration: none;
 }
 
+.largeboldblueunderline {
+    font-family: Calibri;
+    font-size: large;
+    color: blue;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.mediumblueitalic {
+    font-family: Calibri;
+    font-size: medium;
+    color: blue;
+    font-style: italic;
+}
+
+.mediumboldblueunderline {
+    font-family: Calibri;
+    font-size: medium;
+    color: blue;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.mediumboldblue {
+    font-family: Calibri;
+    font-size: medium;
+    color: blue;
+    font-weight: bold;
+}
+
+.largeboldredunderline {
+    font-family: Calibri;
+    font-size: large;
+    color: red;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.mediumboldreditalic {
+    font-family: Calibri;
+    font-size: medium;
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.mediumboldreditalicunderline {
+    font-family: Calibri;
+    font-size: medium;
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.mediumboldblueitalic {
+    font-family: Calibri;
+    font-size: medium;
+    color: blue;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.mediumboldblueitalicunderline {
+    font-family: Calibri;
+    font-size: medium;
+    color: blue;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.mediumboldblackunderline {
+    font-family: Calibri;
+    font-size: medium;
+    color: black;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.table-bordered {
+    border: 1px solid black;
+}
+
+    .table-bordered th,
+    .table-bordered td {
+        border: 1px solid black;
+    }
+
+.cellCenterGreen {
+    text-align: center;
+    background-color: #A9DFBF;
+}
+
+.mediumblackitalic {
+    font-family: Calibri;
+    font-size: medium;
+    color: black;
+    font-style: italic;
+}
+
+.cellValignTop {
+    vertical-align: top;
+}
+
+.smallblackBold {
+    font-family: Calibri;
+    font-size: small;
+    color: black;
+    font-weight: bold;
+}
+
+.smallblack {
+    font-family: Calibri;
+    font-size: small;
+    color: black;
+}
+
+.smallblackBoldItalic {
+    font-family: Calibri;
+    font-size: small;
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.bluehighlight {
+    background-color: cornflowerblue;
+}
+
+.smallblackboldunderline {
+    font-family: Calibri;
+    font-size: small;
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.largeblack {
+    font-family: Calibri;
+    font-size: large;
+    color: black;
+}
+
+.largeboldblue {
+    font-family: Calibri;
+    font-size: large;
+    color: blue;
+    font-weight: bold;
+}

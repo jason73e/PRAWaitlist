@@ -6,7 +6,22 @@
     ViewBag.Title = "Schools List";
 }
 
-<h2>Schools List</h2>
+<div class="jumbotron container">
+    <h2>Schools List</h2>
+    <table class="table-borderless" width="100%">
+        <tr>
+            <td>
+                <text class="largeboldblueunderline">
+                    INSTRUCTIONS:
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	This is the list of Schools and School Districts in the United States.  You can Edit the existing schools or add new schools manually and upload a csv file that you download from the internet.
+                </text>
+            </td>
+        </tr>
+    </table>
+</div>
 
 <p>
     @Html.ActionLink("Add School", "Create") | @Html.ActionLink("Upload Schools File", "UploadFile")

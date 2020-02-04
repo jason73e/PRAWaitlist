@@ -390,7 +390,6 @@ C:\Users\jengel\Documents\Codelines\GIT\trunk\PRAWaitList\obj\Debug\PRAWaitList.
 C:\Users\jengel\Documents\Codelines\GIT\trunk\PRAWaitList\obj\Debug\PRAWaitList.dll
 C:\Users\jengel\Documents\Codelines\GIT\trunk\PRAWaitList\obj\Debug\PRAWaitList.pdb
 C:\Users\jengel\Documents\Codelines\GIT\trunk\PRAWaitList\obj\Debug\PRAWaitList.csprojResolveAssemblyReference.cache
-C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\ApplicationInsights.config
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\PRAWaitList.dll.config
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\PRAWaitList.dll
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\PRAWaitList.pdb

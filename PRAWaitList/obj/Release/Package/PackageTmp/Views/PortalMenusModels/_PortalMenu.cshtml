@@ -1,0 +1,79 @@
+﻿@model IEnumerable<PRAWaitList.Models.PortalMenusModel>
+
+<ul class="nav navbar-nav">
+    @{ var baseMenu = Model.Where(x => x.ParentID == 0).OrderBy(x => x.Sortorder).ToList();}
+    @foreach (var item in baseMenu)
+    {
+        if (item.RoleName.ToLower() == "all")
+        {
+            if (item.MenuType == "MenuItem")
+            {
+                <li>@Html.ActionLink(item.MenuName, item.ActionName, item.ControllerName)</li>
+            }
+            else
+            {
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">@item.MenuName<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        @{ var childmenus = Model.Where(x => x.ParentID == item.ID).OrderBy(x => x.Sortorder).ToList();}
+                        @foreach (var menu in childmenus)
+                        {
+                            if (menu.RoleName.ToLower() == "all")
+                            {
+                                if (menu.MenuType == "MenuItem")
+                                {
+                                    <li>@Html.ActionLink(menu.MenuName, menu.ActionName, menu.ControllerName)</li>
+                                }
+                            }
+                            else
+                            {
+                                if (User.Identity.IsAuthenticated)// && User.IsInRole(menu.RoleName))
+                                {
+                                    <li>@Html.ActionLink(menu.MenuName, menu.ActionName, menu.ControllerName)</li>
+                                }
+                            }
+                        }
+                    </ul>
+                </li>
+            }
+        }
+        else
+        {
+            if (User.Identity.IsAuthenticated)// && User.IsInRole(item.RoleName))
+            {
+                if (item.MenuType == "MenuItem")
+                {
+                    <li>@Html.ActionLink(item.MenuName, item.ActionName, item.ControllerName)</li>
+                }
+                else
+                {
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@item.MenuName<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                        @{ var childmenus = Model.Where(x => x.ParentID == item.ID).OrderBy(x => x.Sortorder).ToList();}
+                        @foreach (var menu in childmenus)
+                        {
+                            if (menu.RoleName.ToLower() == "all")
+                            {
+                                if (menu.MenuType == "MenuItem")
+                                {
+                                    <li>@Html.ActionLink(menu.MenuName, menu.ActionName, menu.ControllerName)</li>
+                                }
+                            }
+                            else
+                            {
+                                if (User.Identity.IsAuthenticated)// && User.IsInRole(menu.RoleName))
+                                {
+                                    <li>@Html.ActionLink(menu.MenuName, menu.ActionName, menu.ControllerName)</li>
+                                }
+                            }
+                        }
+                        </ul>
+                    </li>
+                }
+            }
+        }
+    }
+</ul>
+
+

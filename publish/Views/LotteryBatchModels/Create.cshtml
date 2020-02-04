@@ -4,7 +4,30 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create Lottery Batch</h2>
+<div class="jumbotron container">
+    <h2>Create Lottery Batch</h2>
+    <table class="table-borderless" width="100%">
+        <tr>
+            <td>
+                <text class="largeboldblueunderline">
+                    INSTRUCTIONS:
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	Type in a name for the batch.  This should be a unique name that can be used to distinguish this batch from all other lottery batches.
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	School Year would be the school year the lottery drawing is for.
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	Batch Type is for the Lottery Type.  Kindergarten lottery draw verified kindergarten students for the selected School Year.  Primary will draw for verified students for all other grades for the selected school year.
+                </text>
+            </td>
+        </tr>
+    </table>
+</div>
 
 @using (Html.BeginForm()) 
 {

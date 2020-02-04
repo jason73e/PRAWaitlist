@@ -5,38 +5,96 @@
     ViewBag.Title = "Waitlist Students";
 }
 
-<h2>Waitlist Students</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-@using (Html.BeginForm("Index", "WaitListAdmin", FormMethod.Get))
-{
-    <table class="table">
+<div class="jumbotron container">
+    <h1>Waitlist Students</h1>
+    <table class="table-borderless" width="100%">
         <tr>
             <td>
+                <text class="largeboldblueunderline">
+                    INSTRUCTIONS:
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	This page allows you to search for and edit students on the waitlist.
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	You can search for students by name, Applied Grade, Applied Year, and Status.  Clicking Add Student Link will direct you to the form to Add a Student.  Edit will allow you to update the student and change the Status.  Details shows you a readonly version of the complete Waitlist Record.
+                </text>
+                <br />
+                <br />
+                <text class="largeboldblueunderline">
+                    STATUS KEY:
+                </text>
+                <br />
+                <text class="smallblack">
+                    1)	Submitted - This is the status that all records will be in after being added or updated using the emailed Linked.  This status will not be included Lottery Drawings.
+                </text>
+                <br />
+                <text class="smallblack">
+                    2)	Verified - This is the status the Registar should set the record to once it has been checked and the record appears Valid.  Verified is the status used for Lottery Drawings.
+                </text>
+                <br />
+                <text class="smallblack">
+                    3)	Notified - This is the status set once you click that you have notified a lottery "winner".
+                </text>
+                <br />
+                <text class="smallblack">
+                    4)	Expired - This gets set after Notifacation waittime expires.  Default setting is 48 hours.
+                </text>
+                <br />
+                <text class="smallblack">
+                    5)	Accepted - This is set when you click that a Lottery "winner" accepts the inventation to school.
+                </text>
+                <br />
+                <text class="smallblack">
+                    6)	Declined - This is set when you click that a Lottery "winner" declined the invatation to school.
+                </text>
+                <br />
+                <text class="smallblack">
+                    7)	Renewal - This status is set when the renewal emails are sent out to the waitlist users.  Renewals should be sent to Verified waitlist records.
+                </text>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<p>
+    @Html.ActionLink("Add Student", "Create")
+</p>
+@using (Html.BeginForm("Index", "WaitListAdmin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <table class="table">
+        <tr>
+            <td nowrap="nowrap">
                 <label class="form-control-static">Find by Name:</label>
             </td>
-            <td>
+            <td nowrap="nowrap">
                 @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
             </td>
-            <td>
-                <label class="form-control-static">Apply Grade:</label>                 
+            <td nowrap="nowrap">
+                <label class="form-control-static">Apply Grade:</label>
             </td>
-            <td>
-                @Html.EnumDropDownListFor(model => model.SearchGrade, "- Select a Grade -", htmlAttributes: new { @class = "form-control" })
+            <td nowrap="nowrap">
+                @Html.EnumDropDownListFor(model => model.SearchGrade, "- Grade -", htmlAttributes: new { @class = "form-control" })
             </td>
-            <td>
-                @Html.DropDownListFor(model => model.SearchYear,Model.SchoolYearList, "- Select a Year -", htmlAttributes: new { @class = "form-control" })
+            <td nowrap="nowrap">
+                <label class="form-control-static">Apply Year:</label>
             </td>
-            <td>
-                <label class="form-control-static">Status:</label>                 
+            <td nowrap="nowrap">
+                @Html.DropDownListFor(model => model.SearchYear, Model.SchoolYearList, "- Year -", htmlAttributes: new { @class = "form-control" })
             </td>
-            <td>
-                @Html.DropDownListFor(model => model.SearchStatus, Model.StatusList, "- Select a Status -", htmlAttributes: new { @class = "form-control" })
+            <td nowrap="nowrap">
+                <label class="form-control-static">Status:</label>
             </td>
-            <td>
-                <input type="submit" value="Search" class="btn btn-primary btn-success" />
+            <td nowrap="nowrap">
+                @Html.DropDownListFor(model => model.SearchStatus, Model.StatusList, "- Status -", htmlAttributes: new { @class = "form-control" })
+            </td>
+            <td nowrap="nowrap">
+                <button type="submit" name="submitbutton" class="btn btn-primary btn-success" value="Search">Search</button>
+                <button type="submit" name="submitbutton" class="btn btn-primary btn-success" value="Reset">Reset</button>
             </td>
         </tr>
     </table>
@@ -46,41 +104,43 @@
     </p>
 
 }
-            @Html.PagedListPager(Model.lsStudents, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize=ViewBag.PageSize }))
+            @Html.PagedListPager(Model.lsStudents, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, currentApplyYear = ViewBag.CurrentApplyYear, PageSize=ViewBag.PageSize }))
             <table class="table">
                 <tr>
                     <th nowrap="nowrap">
-                        @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+                        @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, currentApplyYear = ViewBag.CurrentApplyYear, PageSize = ViewBag.PageSize })
                     </th>
                     <th nowrap="nowrap">
-                        @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstNameSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+                        @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstNameSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, currentApplyYear = ViewBag.CurrentApplyYear, PageSize = ViewBag.PageSize })
                     </th>
                     <th nowrap="nowrap">
-                        @Html.ActionLink("Birth Date", "Index", new { sortOrder = ViewBag.BirthDateSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+                        @Html.ActionLink("Birth Date", "Index", new { sortOrder = ViewBag.BirthDateSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, currentApplyYear = ViewBag.CurrentApplyYear, PageSize = ViewBag.PageSize })
                     </th>
                     <th nowrap="nowrap">
-                        @Html.ActionLink("Gender", "Index", new { sortOrder = ViewBag.GenderSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+                        @Html.ActionLink("Gender", "Index", new { sortOrder = ViewBag.GenderSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, currentApplyYear = ViewBag.CurrentApplyYear, PageSize = ViewBag.PageSize })
                     </th>
                     <th nowrap="nowrap">
-                        @Html.ActionLink("Current Grade", "Index", new { sortOrder = ViewBag.CurrentGradeSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+                        @Html.ActionLink("Current Grade", "Index", new { sortOrder = ViewBag.CurrentGradeSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, currentApplyYear = ViewBag.CurrentApplyYear, PageSize = ViewBag.PageSize })
                     </th>
                     <th nowrap="nowrap">
-                        @Html.ActionLink("Applying For Grade", "Index", new { sortOrder = ViewBag.ApplyingForGradeSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+                        @Html.ActionLink("Applying For Grade", "Index", new { sortOrder = ViewBag.ApplyingForGradeSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, currentApplyYear = ViewBag.CurrentApplyYear, PageSize = ViewBag.PageSize })
                     </th>
                     <th nowrap="nowrap">
-                        @Html.ActionLink("Applying For Year", "Index", new { sortOrder = ViewBag.ApplyingForYearSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+                        @Html.ActionLink("Applying For Year", "Index", new { sortOrder = ViewBag.ApplyingForYearSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, currentApplyYear = ViewBag.CurrentApplyYear, PageSize = ViewBag.PageSize })
                     </th>
                     <th nowrap="nowrap">
-                        @Html.ActionLink("Status", "Index", new { sortOrder = ViewBag.StatusSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+                        @Html.ActionLink("Status", "Index", new { sortOrder = ViewBag.StatusSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, currentApplyYear = ViewBag.CurrentApplyYear, PageSize = ViewBag.PageSize })
                     </th>
                     <th nowrap="nowrap">
-                        @Html.ActionLink("Is PRA Sibling", "Index", new { sortOrder = ViewBag.IsPRASibling, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+                        @Html.ActionLink("Is PRA Sibling", "Index", new { sortOrder = ViewBag.IsPRASibling, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, currentApplyYear = ViewBag.CurrentApplyYear, PageSize = ViewBag.PageSize })
                     </th>
                     <th nowrap="nowrap">
-                        @Html.ActionLink("Is Parent Staff", "Index", new { sortOrder = ViewBag.IsParentStaff, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+                        Is Parent Staff
+                        <!--@Html.ActionLink("Is Parent Staff", "Index", new { sortOrder = ViewBag.IsParentStaff, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, currentApplyYear = ViewBag.CurrentApplyYear, PageSize = ViewBag.PageSize })-->
                     </th>
                     <th nowrap="nowrap">
-                        @Html.ActionLink("Is Parent SAC", "Index", new { sortOrder = ViewBag.IsParentSAC, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+                        Is Parent SAC
+                        <!--@Html.ActionLink("Is Parent SAC", "Index", new { sortOrder = ViewBag.IsParentSAC, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, currentApplyYear = ViewBag.CurrentApplyYear, PageSize = ViewBag.PageSize })-->
                     </th>
                     <th nowrap="nowrap">
                     </th>

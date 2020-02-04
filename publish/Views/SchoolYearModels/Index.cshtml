@@ -4,7 +4,26 @@
     ViewBag.Title = "Index";
 }
 
-<h2>School Year List</h2>
+<div class="jumbotron container">
+    <h2>School Year List</h2>
+    <table class="table-borderless" width="100%">
+        <tr>
+            <td>
+                <text class="largeboldblueunderline">
+                    INSTRUCTIONS:
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	This is the list of school years used to populate the school year dropdown boxes.  You can Edit the existing values or add a new one.
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	Add Seed Values will add new values starting with the current year and incrimenting up to 10 years from the current year.
+                </text>
+            </td>
+        </tr>
+    </table>
+</div>
 
 <p>
     @Html.ActionLink("Create New", "Create")
