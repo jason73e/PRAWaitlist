@@ -15,6 +15,7 @@ using PagedList;
 using Microsoft.AspNet.SignalR;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Globalization;
 
 namespace PRAWaitList.Controllers
 {
@@ -90,8 +91,8 @@ namespace PRAWaitList.Controllers
             List<SchoolModel> Addschools = new List<SchoolModel>();
             using (StreamReader reader = new StreamReader(sPath, Encoding.UTF8))
             {
-                SendProgress("Reading File " + Path.GetFileName(sPath) + " ...", 0, 3);
-                CsvReader csvReader = new CsvReader(reader);
+                SendProgress("Reading File " + Path.GetFileName(sPath) + " ...", 0, 3);                
+                CsvReader csvReader = new CsvReader(reader, CultureInfo.InvariantCulture);
                 IEnumerable<SchoolRecord> record = csvReader.GetRecords<SchoolRecord>();
                 csvReader.Configuration.BadDataFound = null;
                 foreach (var rec in record) // Each record will be fetched and printed on the screen

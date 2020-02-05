@@ -451,6 +451,16 @@
             The built string fragment.
             </returns>
         </member>
+        <member name="M:System.Data.SQLite.SQLite3.GetLimitOpsNames">
+            <summary>
+            Builds an error message string fragment containing the
+            defined values of the <see cref="T:System.Data.SQLite.SQLiteLimitOpsEnum" />
+            enumeration.
+            </summary>
+            <returns>
+            The built string fragment.
+            </returns>
+        </member>
         <member name="M:System.Data.SQLite.SQLite3.GetConfigDbOpsNames">
             <summary>
             Builds an error message string fragment containing the
@@ -482,10 +492,24 @@
             A standard SQLite return code.
             </returns>
         </member>
+        <member name="M:System.Data.SQLite.SQLite3.SetLimitOption(System.Data.SQLite.SQLiteLimitOpsEnum,System.Int32)">
+            <summary>
+            Change a limit value for the database.
+            </summary>
+            <param name="option">
+            The database limit to change.
+            </param>
+            <param name="value">
+            The new value for the specified limit.
+            </param>
+            <returns>
+            The old value for the specified limit -OR- negative one if an error
+            occurs.
+            </returns>
+        </member>
         <member name="M:System.Data.SQLite.SQLite3.SetConfigurationOption(System.Data.SQLite.SQLiteConfigDbOpsEnum,System.Object)">
             <summary>
             Change a configuration option value for the database.
-            connection.
             </summary>
             <param name="option">
             The database configuration option to change.
@@ -1092,6 +1116,21 @@
             </param>
             <returns>
             A standard SQLite return code.
+            </returns>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteBase.SetLimitOption(System.Data.SQLite.SQLiteLimitOpsEnum,System.Int32)">
+            <summary>
+            Change a limit value for the database.
+            </summary>
+            <param name="option">
+            The database limit to change.
+            </param>
+            <param name="value">
+            The new value for the specified limit.
+            </param>
+            <returns>
+            The old value for the specified limit -OR- negative one if an error
+            occurs.
             </returns>
         </member>
         <member name="M:System.Data.SQLite.SQLiteBase.SetConfigurationOption(System.Data.SQLite.SQLiteConfigDbOpsEnum,System.Object)">
@@ -1865,10 +1904,142 @@
             multiple steps to help ensure that it does not happen by accident.
             </summary>
         </member>
+        <member name="F:System.Data.SQLite.SQLiteConfigDbOpsEnum.SQLITE_DBCONFIG_DEFENSIVE">
+            <summary>
+            This option activates or deactivates the "defensive" flag for a
+            database connection.  When the defensive flag is enabled, language
+            features that allow ordinary SQL to deliberately corrupt the database
+            file are disabled.  The disabled features include but are not limited
+            to the following:
+            <![CDATA[<ul>]]>
+            <![CDATA[<li>]]>
+            The PRAGMA writable_schema=ON statement.
+            <![CDATA[</li>]]>
+            <![CDATA[<li>]]>
+            The PRAGMA journal_mode=OFF statement.
+            <![CDATA[</li>]]>
+            <![CDATA[<li>]]>
+            Writes to the sqlite_dbpage virtual table.
+            <![CDATA[</li>]]>
+            <![CDATA[<li>]]>
+            Direct writes to shadow tables.
+            <![CDATA[</li>]]>
+            <![CDATA[</ul>]]>
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteConfigDbOpsEnum.SQLITE_DBCONFIG_WRITABLE_SCHEMA">
+            <summary>
+            This option activates or deactivates the "writable_schema" flag.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteConfigDbOpsEnum.SQLITE_DBCONFIG_LEGACY_ALTER_TABLE">
+            <summary>
+            This option activates or deactivates the legacy behavior of the ALTER
+            TABLE RENAME command such it behaves as it did prior to version 3.24.0
+            (2018-06-04).
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteConfigDbOpsEnum.SQLITE_DBCONFIG_DQS_DML">
+            <summary>
+            This option activates or deactivates the legacy double-quoted string
+            literal misfeature for DML statement only, that is DELETE, INSERT,
+            SELECT, and UPDATE statements.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteConfigDbOpsEnum.SQLITE_DBCONFIG_DQS_DDL">
+            <summary>
+            This option activates or deactivates the legacy double-quoted string
+            literal misfeature for DDL statements, such as CREATE TABLE and CREATE
+            INDEX.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteConfigDbOpsEnum.SQLITE_DBCONFIG_ENABLE_VIEW">
+            <summary>
+            This option is used to enable or disable CREATE VIEW.
+            </summary>
+        </member>
         <member name="T:System.Data.SQLite.SQLiteTraceFlags">
             <summary>
             These constants are used with the sqlite3_trace_v2() API and the
             callbacks registered by it.
+            </summary>
+        </member>
+        <member name="T:System.Data.SQLite.SQLiteLimitOpsEnum">
+            <summary>
+            These constants are used with the sqlite3_limit() API.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteLimitOpsEnum.SQLITE_LIMIT_NONE">
+            <summary>
+            This value represents an unknown (or invalid) limit, do not use it.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteLimitOpsEnum.SQLITE_LIMIT_LENGTH">
+            <summary>
+            The maximum size of any string or BLOB or table row, in bytes.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteLimitOpsEnum.SQLITE_LIMIT_SQL_LENGTH">
+            <summary>
+            The maximum length of an SQL statement, in bytes.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteLimitOpsEnum.SQLITE_LIMIT_COLUMN">
+            <summary>
+            The maximum number of columns in a table definition or in the
+            result set of a SELECT or the maximum number of columns in an
+            index or in an ORDER BY or GROUP BY clause.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteLimitOpsEnum.SQLITE_LIMIT_EXPR_DEPTH">
+            <summary>
+            The maximum depth of the parse tree on any expression.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteLimitOpsEnum.SQLITE_LIMIT_COMPOUND_SELECT">
+            <summary>
+            The maximum number of terms in a compound SELECT statement.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteLimitOpsEnum.SQLITE_LIMIT_VDBE_OP">
+            <summary>
+            The maximum number of instructions in a virtual machine program
+            used to implement an SQL statement. If sqlite3_prepare_v2() or
+            the equivalent tries to allocate space for more than this many
+            opcodes in a single prepared statement, an SQLITE_NOMEM error
+            is returned.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteLimitOpsEnum.SQLITE_LIMIT_FUNCTION_ARG">
+            <summary>
+            The maximum number of arguments on a function.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteLimitOpsEnum.SQLITE_LIMIT_ATTACHED">
+            <summary>
+            The maximum number of attached databases.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteLimitOpsEnum.SQLITE_LIMIT_LIKE_PATTERN_LENGTH">
+            <summary>
+            The maximum length of the pattern argument to the LIKE or GLOB
+            operators.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteLimitOpsEnum.SQLITE_LIMIT_VARIABLE_NUMBER">
+            <summary>
+            The maximum index number of any parameter in an SQL statement.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteLimitOpsEnum.SQLITE_LIMIT_TRIGGER_DEPTH">
+            <summary>
+            The maximum depth of recursion for triggers.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteLimitOpsEnum.SQLITE_LIMIT_WORKER_THREADS">
+            <summary>
+            The maximum number of auxiliary worker threads that a single
+            prepared statement may start.
             </summary>
         </member>
         <member name="T:System.Data.SQLite.SQLiteBlob">
@@ -4589,6 +4760,21 @@
             </param>
             <returns>
             Non-zero upon success; zero on failure.
+            </returns>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteConnection.SetLimitOption(System.Data.SQLite.SQLiteLimitOpsEnum,System.Int32)">
+            <summary>
+            Change a limit value for the database.
+            </summary>
+            <param name="option">
+            The database limit to change.
+            </param>
+            <param name="value">
+            The new value for the specified limit.
+            </param>
+            <returns>
+            The old value for the specified limit -OR- negative one if an error
+            occurs.
             </returns>
         </member>
         <member name="M:System.Data.SQLite.SQLiteConnection.SetConfigurationOption(System.Data.SQLite.SQLiteConfigDbOpsEnum,System.Object)">
@@ -11535,6 +11721,13 @@
             _SQLiteNativeModuleHandle, and processorArchitecturePlatforms fields.
             </summary>
         </member>
+        <member name="F:System.Data.SQLite.UnsafeNativeMethods.targetFrameworkAbbreviations">
+            <summary>
+            This dictionary stores the mappings between target framework names
+            and their associated (NuGet) abbreviations.  These mappings are only
+            used by the <see cref="M:System.Data.SQLite.UnsafeNativeMethods.AbbreviateTargetFramework(System.String)" /> method.
+            </summary>
+        </member>
         <member name="F:System.Data.SQLite.UnsafeNativeMethods.processorArchitecturePlatforms">
             <summary>
             This dictionary stores the mappings between processor architecture
@@ -11703,7 +11896,7 @@
             Accepts a long target framework attribute value and makes it into a
             much shorter version, suitable for use with NuGet packages.
             </summary>
-            <param name="value">
+            <param name="targetFramework">
             The long target framework attribute value to convert.
             </param>
             <returns>
