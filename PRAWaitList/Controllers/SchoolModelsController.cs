@@ -16,6 +16,7 @@ using Microsoft.AspNet.SignalR;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Globalization;
+using CsvHelper.Configuration;
 
 namespace PRAWaitList.Controllers
 {
@@ -91,10 +92,14 @@ namespace PRAWaitList.Controllers
             List<SchoolModel> Addschools = new List<SchoolModel>();
             using (StreamReader reader = new StreamReader(sPath, Encoding.UTF8))
             {
-                SendProgress("Reading File " + Path.GetFileName(sPath) + " ...", 0, 3);                
-                CsvReader csvReader = new CsvReader(reader, CultureInfo.InvariantCulture);
+                SendProgress("Reading File " + Path.GetFileName(sPath) + " ...", 0, 3);
+                var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+                {
+                    BadDataFound = null
+                };
+                CsvReader csvReader = new CsvReader(reader, config);
                 IEnumerable<SchoolRecord> record = csvReader.GetRecords<SchoolRecord>();
-                csvReader.Configuration.BadDataFound = null;
+                //csvReader.Configuration.BadDataFound = null;
                 foreach (var rec in record) // Each record will be fetched and printed on the screen
                 {
                     SchoolModel school = new SchoolModel();

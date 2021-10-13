@@ -8,6 +8,11 @@ namespace PRAWaitList.Models
 {
     public class SiblingModel
     {
+        public SiblingModel()
+        {
+            BirthDate = DateTime.Now.AddYears(-5);
+        }
+
         [Key]
         public int Id { get; set; }
         public int FamilyID { get; set; }

@@ -15,6 +15,11 @@ namespace PRAWaitList.Models
 
     public class StudentModel
     {
+        public StudentModel()
+        {
+            BirthDate = DateTime.Now.AddYears(-5);
+        }
+
         [Key]
         public int Id { get; set; }
         public int FamilyID { get; set; }

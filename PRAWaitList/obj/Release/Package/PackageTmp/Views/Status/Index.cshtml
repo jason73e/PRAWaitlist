@@ -4,7 +4,56 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="jumbotron container">
+    <h1>Status List</h1>
+    <table class="table-borderless" width="100%">
+        <tr>
+            <td>
+                <text class="largeboldblueunderline">
+                    INSTRUCTIONS:
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	Allows you to Add and Update and Delete.  The below Statuses are required for the system.
+                </text>
+                <br />
+                <br />
+                <text class="largeboldblueunderline">
+                    STATUS KEY:
+                </text>
+                <br />
+                <text class="smallblack">
+                    1)	Submitted - This is the status that all records will be in after being added or updated using the emailed Linked.  This status will not be included Lottery Drawings.
+                </text>
+                <br />
+                <text class="smallblack">
+                    2)	Verified - This is the status the Registar should set the record to once it has been checked and the record appears Valid.  Verified is the status used for Lottery Drawings.
+                </text>
+                <br />
+                <text class="smallblack">
+                    3)	Notified - This is the status set once you click that you have notified a lottery "winner".
+                </text>
+                <br />
+                <text class="smallblack">
+                    4)	Expired - This gets set after Notifacation waittime expires.  Default setting is 48 hours.
+                </text>
+                <br />
+                <text class="smallblack">
+                    5)	Accepted - This is set when you click that a Lottery "winner" accepts the inventation to school.
+                </text>
+                <br />
+                <text class="smallblack">
+                    6)	Declined - This is set when you click that a Lottery "winner" declined the invatation to school.
+                </text>
+                <br />
+                <text class="smallblack">
+                    7)	Renewal - This status is set when the renewal emails are sent out to the waitlist users.  Renewals should be sent to Verified waitlist records.
+                </text>
+            </td>
+        </tr>
+    </table>
+</div>
+
 
 <p>
     @Html.ActionLink("Create New", "Create")

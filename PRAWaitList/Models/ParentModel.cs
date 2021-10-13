@@ -46,13 +46,10 @@ namespace PRAWaitList.Models
         [DisplayName("Phone Type 1")]
         [Range(1, (int)PhoneType.Cell, ErrorMessage = "Please select a Phone Type.")]
         public PhoneType Phone1Type { get; set; }
-        [Required]
         [DisplayName("Phone 2")]
         [DataType(DataType.PhoneNumber)]
         public string Phone2 { get; set; }
-        [Required]
         [DisplayName("Phone Type 2")]
-        [Range(1, (int)PhoneType.Cell, ErrorMessage = "Please select a Phone Type.")]
         public PhoneType Phone2Type { get; set; }
         [Required]
         [DisplayName("Address Line 1")]

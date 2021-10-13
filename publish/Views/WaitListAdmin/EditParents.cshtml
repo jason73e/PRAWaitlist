@@ -26,26 +26,29 @@
                         </div> 
                     </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => Model.lsParents[iParentCounter].LastName, htmlAttributes: new { @class = "control-label col-md-4" })
-                        <div class="col-md-8">
-                            @Html.EditorFor(model => Model.lsParents[iParentCounter].LastName, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].LastName, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => Model.lsParents[iParentCounter].FirstName, htmlAttributes: new { @class = "control-label col-md-4" })
-                        <div class="col-md-8">
-                            @Html.EditorFor(model => Model.lsParents[iParentCounter].FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].FirstName, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
+                    <table class="table">
+                        <tr class="no-border">
+                            <td nowrap="nowrap">
+                                @Html.LabelFor(model => model.lsParents[iParentCounter].FirstName, htmlAttributes: new { @class = "control-label" })
+                            </td>
+                            <td nowrap="nowrap">
+                                @Html.LabelFor(model => model.lsParents[iParentCounter].LastName, htmlAttributes: new { @class = "control-label" })
+                            </td>
+                            <td nowrap="nowrap">
+                                @Html.EditorFor(model => model.lsParents[iParentCounter].FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.lsParents[iParentCounter].FirstName, "", new { @class = "text-danger" })
+                            </td>
+                            <td nowrap="nowrap">
+                                @Html.EditorFor(model => model.lsParents[iParentCounter].LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.lsParents[iParentCounter].LastName, "", new { @class = "text-danger" })
+                            </td>
+                        </tr>
+                    </table>
 
                     <div class="form-group">
                         @Html.LabelFor(model => Model.lsParents[iParentCounter].Phone1, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            @Html.EditorFor(model => Model.lsParents[iParentCounter].Phone1, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => Model.lsParents[iParentCounter].Phone1, new { htmlAttributes = new { @class = "form-control phone" } })
                             @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].Phone1, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -61,7 +64,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => Model.lsParents[iParentCounter].Phone2, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            @Html.EditorFor(model => Model.lsParents[iParentCounter].Phone2, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => Model.lsParents[iParentCounter].Phone2, new { htmlAttributes = new { @class = "form-control phone" } })
                             @Html.ValidationMessageFor(model => Model.lsParents[iParentCounter].Phone2, "", new { @class = "text-danger" })
                         </div>
                     </div>
