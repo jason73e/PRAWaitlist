@@ -15,7 +15,7 @@ namespace PRAWaitList.Models
 
         public IEnumerable<SelectListItem> States { get; set; }
 
-        public List<string> lsLearnPRAList { get; set; }
+        public List<HearAboutPRAModel> lsLearnPRAList { get; set; }
 
         public SelectList DistrictList { get; set; }
 

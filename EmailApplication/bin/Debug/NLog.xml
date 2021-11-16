@@ -9970,9 +9970,15 @@
         </member>
         <member name="M:NLog.Internal.PropertiesDictionary.#ctor(System.Collections.Generic.IList{NLog.MessageTemplates.MessageTemplateParameter})">
             <summary>
-            Injects the list of message-template-parameter into the IDictionary-interface
+            Wraps the list of message-template-parameters into the IDictionary-interface
             </summary>
-            <param name="parameterList">Message-template-parameters</param>
+            <param name="messageParameters">Message-template-parameters</param>
+        </member>
+        <member name="M:NLog.Internal.PropertiesDictionary.#ctor(System.Collections.Generic.IReadOnlyList{System.Collections.Generic.KeyValuePair{System.Object,System.Object}})">
+            <summary>
+            Transforms the list of event-properties into IDictionary-interface
+            </summary>
+            <param name="eventProperties">Message-template-parameters</param>
         </member>
         <member name="P:NLog.Internal.PropertiesDictionary.Item(System.Object)">
             <inheritDoc/>
@@ -15750,7 +15756,16 @@
             <param name="level">Log level.</param>
             <param name="loggerName">Logger name.</param>
             <param name="message">Log message including parameter placeholders.</param>
-            <param name="messageTemplateParameters">Log message including parameter placeholders.</param>
+            <param name="messageTemplateParameters">Already parsed message template parameters.</param>
+        </member>
+        <member name="M:NLog.LogEventInfo.#ctor(NLog.LogLevel,System.String,System.String,System.Collections.Generic.IReadOnlyList{System.Collections.Generic.KeyValuePair{System.Object,System.Object}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:NLog.LogEventInfo" /> class.
+            </summary>
+            <param name="level">Log level.</param>
+            <param name="loggerName">Override default Logger name. Default <see cref="P:NLog.Logger.Name"/> is used when <c>null</c></param>
+            <param name="message">Log message.</param>
+            <param name="eventProperties">List of event-properties</param>
         </member>
         <member name="M:NLog.LogEventInfo.#ctor(NLog.LogLevel,System.String,System.IFormatProvider,System.String,System.Object[])">
             <summary>

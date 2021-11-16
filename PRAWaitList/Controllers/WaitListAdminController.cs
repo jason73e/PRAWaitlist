@@ -236,6 +236,7 @@ namespace PRAWaitList.Controllers
             {
                 return HttpNotFound("Student Record Not Found");
             }
+            studentModel.lsLearnAboutPRA = studentModel.GetStudentHearAboutPRALink();
 
             FamilyModel familyModel = db.Families.Find(iFamilyID);
 
@@ -287,6 +288,7 @@ namespace PRAWaitList.Controllers
                 {
                     return HttpNotFound("Student Record Not Found");
                 }
+                studentModel.lsLearnAboutPRA = studentModel.GetStudentHearAboutPRALink();
                 int iFamilyID = studentModel.FamilyID;
 
                 FamilyModel familyModel = db.Families.Find(iFamilyID);
@@ -626,6 +628,8 @@ namespace PRAWaitList.Controllers
             {
                 return HttpNotFound();
             }
+            studentModel.lsLearnAboutPRA = studentModel.GetStudentHearAboutPRALink();
+
             return View(studentModel);
         }
 

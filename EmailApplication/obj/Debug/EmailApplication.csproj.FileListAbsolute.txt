@@ -41,3 +41,4 @@ C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\obj\Debug\Email
 C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\obj\Debug\EmailApplication.csproj.CoreCompileInputs.cache
 C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\obj\Debug\EmailApplication.exe
 C:\Users\jengel\Documents\CodeLines\PRAWaitlist\EmailApplication\obj\Debug\EmailApplication.pdb
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\EmailApplication\obj\Debug\EmailApplication.csprojResolveAssemblyReference.cache

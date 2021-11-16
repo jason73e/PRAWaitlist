@@ -1,15 +1,119 @@
 ﻿@model PRAWaitList.Models.IntentToEnrollViewModel
 <div class="checkbox">
-    @foreach (var LearnPRA in Model.lsLearnPRAList)
+    @foreach (var LearnPRA in Model.lsLearnPRAList.OrderBy(x=>x.iSortOrder))
     {
         var sChecked = "";
-        if (Model.sm.LearnAboutPRA != null && Model.sm.LearnAboutPRA.Contains(LearnPRA))
+        if (Model.sm.lsLearnAboutPRA != null && Model.sm.lsLearnAboutPRA.Any(x=> x.HPRAId== LearnPRA.Value))
         {
             sChecked = "checked";
-            Model.sm.LearnAboutPRA=Model.sm.LearnAboutPRA.Replace(LearnPRA + ",", string.Empty);
+            //Model.sm.LearnAboutPRA=Model.sm.LearnAboutPRA.Replace(LearnPRA + ",", string.Empty);
         }
-        <label>
-            <input type="checkbox" @sChecked name="Student.sm.LearnAboutPRA" id="Student_sm_LearnAboutPRA" value="@LearnPRA">@LearnPRA
-        </label>
+        <label class="control-label">
+            <input class="LearnPRACKB" type="checkbox" @sChecked name="Student.sm.LearnAboutPRA.@LearnPRA.Value" id="Student_sm_LearnAboutPRA_@LearnPRA.Value" value="@LearnPRA.Value">@LearnPRA.Text
+        </label><br />
+        if (LearnPRA.bExtraText)
+        {
+            var refName = string.Empty;
+            var refEmail = string.Empty;
+            var refNameName = "Student.ReferralName." + LearnPRA.Value;
+            var refNameID = "Student_ReferralName_" + LearnPRA.Value;
+            var refEmailName = "Student.ReferralEmail." + LearnPRA.Value;
+            var refEmailID = "Student_ReferralEmail_" + LearnPRA.Value;
+            if (Model.sm.lsLearnAboutPRA.Any(x => x.HPRAId == LearnPRA.Value))
+            {
+                refName = Model.sm.lsLearnAboutPRA.Where(x => x.HPRAId == LearnPRA.Value).SingleOrDefault().ReferralName;
+            }
+            if (Model.sm.lsLearnAboutPRA.Any(x => x.HPRAId == LearnPRA.Value))
+            {
+                refEmail = Model.sm.lsLearnAboutPRA.Where(x => x.HPRAId == LearnPRA.Value).SingleOrDefault().ReferralEmail;
+            }
+
+            <div class="form-group" id="div_@refNameID">
+                <label class="control-label col-md-4" for="@refNameID">Referral Name: </label>
+                <div class="col-md-8">
+                    <input class="form-control text-box single-line" id="@refNameID" name="@refNameName" type="text" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="@refNameName" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group" id="div_@refEmailID">
+                <label class="control-label col-md-4" for="@refEmailID">Referral Email: </label>
+                <div class="col-md-8">
+                    <input class="form-control text-box single-line" id="@refEmailID" name="@refEmailName" type="text" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="@refEmailName" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+        }
+        if (LearnPRA.bOtherText)
+        {
+            var refOther = string.Empty;
+            var refOtherName = "Student.ReferralOther." + LearnPRA.Value;
+            var refOtherID = "Student_ReferralOther_" + LearnPRA.Value;
+            if (Model.sm.lsLearnAboutPRA.Any(x => x.HPRAId == LearnPRA.Value))
+            {
+                refOther = Model.sm.lsLearnAboutPRA.Where(x => x.HPRAId == LearnPRA.Value).SingleOrDefault().OtherText;
+            }
+
+            <div class="form-group" id="div_@refOtherID">
+                <label class="control-label col-md-4" for="@refOtherID">Other: </label>
+                <div class="col-md-8">
+                    <input class="form-control text-box single-line" id="@refOtherID" name="@refOtherName" type="text" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="@refOtherName" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+        }
     }
 </div>
+
+<script type="text/javascript">
+
+$(document).ready(function () {
+
+//Setup CheckBox initially
+    $("input[type='checkbox']").each(function (i, el) {
+        var chk = $(el);
+        var mydiv1 = "div_Student_ReferralName_" + chk.val();
+        var mydiv2 = "div_Student_ReferralEmail_" + chk.val();
+        var mydiv3 = "div_Student_ReferralOther_" + chk.val();
+        if (chk.is(":checked")) {
+            $('#' + mydiv1).show();
+            $('#' + mydiv2).show();
+            $('#' + mydiv3).show();
+        }
+        else {
+            $('#' + mydiv1).hide();
+            $('#' + mydiv2).hide();
+            $('#' + mydiv3).hide();
+        }
+    });
+
+
+    $('.LearnPRACKB').change(function () {
+        var mydiv1 = "div_Student_ReferralName_" + $(this).val();
+        var mydiv2 = "div_Student_ReferralEmail_" + $(this).val();
+        var mydiv3 = "div_Student_ReferralOther_" + $(this).val();
+        if (this.checked) {
+            $('#' + mydiv1).show();
+            $('#' + mydiv2).show();
+            $('#' + mydiv3).show();
+        }
+        else {
+            $('#' + mydiv1).hide();
+            $('#' + mydiv2).hide();
+            $('#' + mydiv3).hide();
+        }
+    });
+
+    //$.validator.addMethod("requiredIfChecked", function (val, ele, arg) {
+    //    if ($("#startClientFromWeb").is(":checked") && ($.trim(val) == '')) { return false; }
+    //    return true;
+    //}, "This field is required if startClientFromWeb is checked...");
+
+
+    //$("#franchiseForm").validate({
+    //    rules: {
+    //        mimeType: { requiredIfChecked: true }
+    //    }
+    //});
+});
+
+</script>

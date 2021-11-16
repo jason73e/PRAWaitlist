@@ -19,22 +19,7 @@ namespace PRAWaitList.Controllers
         // GET: HearAboutPRAModels
         public ActionResult Index()
         {
-            return View(db.HearAboutPRAs.ToList());
-        }
-
-        // GET: HearAboutPRAModels/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            HearAboutPRAModel hearAboutPRAModel = db.HearAboutPRAs.Find(id);
-            if (hearAboutPRAModel == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hearAboutPRAModel);
+            return View(db.HearAboutPRAs.OrderBy(x=>x.iSortOrder).ToList());
         }
 
         // GET: HearAboutPRAModels/Create
@@ -48,7 +33,7 @@ namespace PRAWaitList.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Value,Text,IsChecked")] HearAboutPRAModel hearAboutPRAModel)
+        public ActionResult Create([Bind(Include = "Value,Text,IsChecked,bExtraText,bOtherText,iSortOrder")] HearAboutPRAModel hearAboutPRAModel)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +65,7 @@ namespace PRAWaitList.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Value,Text,IsChecked")] HearAboutPRAModel hearAboutPRAModel)
+        public ActionResult Edit([Bind(Include = "Value,Text,IsChecked,bExtraText,bOtherText,iSortOrder")] HearAboutPRAModel hearAboutPRAModel)
         {
             if (ModelState.IsValid)
             {
@@ -121,13 +106,13 @@ namespace PRAWaitList.Controllers
             var Addhearaboutpras = new List<HearAboutPRAModel>();
             var hearaboutpras = new List<HearAboutPRAModel>
             {
-                new HearAboutPRAModel() { Text="School Website", IsChecked = false, Value=1},
-                new HearAboutPRAModel() { Text="District Website", IsChecked = false, Value=2},
-                new HearAboutPRAModel() { Text="Friend recommendation", IsChecked = false, Value=3},
-                new HearAboutPRAModel() { Text="Live in the neighborhood", IsChecked = false, Value=4},
-                new HearAboutPRAModel() { Text="PRA parent recommendation", IsChecked = false, Value=5},
-                new HearAboutPRAModel() { Text="General Internet research", IsChecked = false, Value=6},
-                new HearAboutPRAModel() { Text="Other", IsChecked = false, Value=7}
+                new HearAboutPRAModel() { Text="School Website", IsChecked = false, Value=1,bExtraText = false,bOtherText=false,iSortOrder=1},
+                new HearAboutPRAModel() { Text="District Website", IsChecked = false, Value=2,bExtraText = false,bOtherText=false,iSortOrder=2},
+                new HearAboutPRAModel() { Text="Personal Referral", IsChecked = false, Value=3,bExtraText = true,bOtherText=false,iSortOrder=3},
+                new HearAboutPRAModel() { Text="Live in the neighborhood", IsChecked = false, Value=4,bExtraText = false,bOtherText=false,iSortOrder=4},
+                new HearAboutPRAModel() { Text="PRA parent recommendation", IsChecked = false, Value=5,bExtraText = true,bOtherText=false,iSortOrder=5},
+                new HearAboutPRAModel() { Text="General Internet research", IsChecked = false, Value=6,bExtraText = false,bOtherText=false,iSortOrder=6},
+                new HearAboutPRAModel() { Text="Other", IsChecked = false, Value=7,bExtraText = false,bOtherText=true,iSortOrder=7}
             };
 
             foreach (HearAboutPRAModel s in hearaboutpras)

@@ -29,6 +29,7 @@ namespace PRAWaitList.DAL
         public DbSet<LotteryModel> Lotteries { get; set; }
         public DbSet<ConfigurationSettingsModel> ConfigurationSettings { get; set; }
         public DbSet<Results> Results { get; set; }
+        public DbSet<StudentHearAboutPRALinkModel> StudentHearAboutPRALinks { get; set; }
 
         public DbSet<EmailQueueModel> EmailQueues { get; set; }
 

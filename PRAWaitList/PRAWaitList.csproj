@@ -264,12 +264,21 @@
     <Compile Include="Migrations\202109280536127_removeRequiredextraphones.designer.cs">
       <DependentUpon>202109280536127_removeRequiredextraphones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110300703577_HearAboutPRAUpdate20211030.cs" />
+    <Compile Include="Migrations\202110300703577_HearAboutPRAUpdate20211030.designer.cs">
+      <DependentUpon>202110300703577_HearAboutPRAUpdate20211030.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111020437190_StudentHearAboutPRALinkModel.cs" />
+    <Compile Include="Migrations\202111020437190_StudentHearAboutPRALinkModel.designer.cs">
+      <DependentUpon>202111020437190_StudentHearAboutPRALinkModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdAuthenticationService.cs" />
     <Compile Include="Models\ConfigurationSettingsModel.cs" />
     <Compile Include="Models\EmailControlModel.cs" />
     <Compile Include="Models\EmailQueueModel.cs" />
     <Compile Include="Models\FamilyModel.cs" />
+    <Compile Include="Models\StudentHearAboutPRALinkModel.cs" />
     <Compile Include="Models\HearAboutPRAModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IntentToEnrollViewModel.cs" />
@@ -540,7 +549,6 @@
     <Content Include="Views\WaitListAdmin\Index.cshtml" />
     <Content Include="Views\HearAboutPRAModels\Create.cshtml" />
     <Content Include="Views\HearAboutPRAModels\Delete.cshtml" />
-    <Content Include="Views\HearAboutPRAModels\Details.cshtml" />
     <Content Include="Views\HearAboutPRAModels\Edit.cshtml" />
     <Content Include="Views\HearAboutPRAModels\Index.cshtml" />
     <Content Include="Views\SchoolYearModels\Create.cshtml" />
@@ -657,6 +665,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109280536127_removeRequiredextraphones.resx">
       <DependentUpon>202109280536127_removeRequiredextraphones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110300703577_HearAboutPRAUpdate20211030.resx">
+      <DependentUpon>202110300703577_HearAboutPRAUpdate20211030.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111020437190_StudentHearAboutPRALinkModel.resx">
+      <DependentUpon>202111020437190_StudentHearAboutPRALinkModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

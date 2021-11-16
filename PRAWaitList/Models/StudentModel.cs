@@ -18,6 +18,7 @@ namespace PRAWaitList.Models
         public StudentModel()
         {
             BirthDate = DateTime.Now.AddYears(-5);
+            lsLearnAboutPRA = GetStudentHearAboutPRALink();
         }
 
         [Key]
@@ -68,6 +69,8 @@ namespace PRAWaitList.Models
         [Display(Name = "Has Sibling at PRA?")]
         public Boolean isPRASibling { get; set; }
 
+        public List<StudentHearAboutPRALinkModel> lsLearnAboutPRA { get; set; }
+
         private PRAWaitListContext db = new PRAWaitListContext();
 
         public Boolean isParentStaff()
@@ -96,6 +99,13 @@ namespace PRAWaitList.Models
                 }
             }
             return retValue;
+        }
+        public List<StudentHearAboutPRALinkModel> GetStudentHearAboutPRALink()
+        {
+
+            List<StudentHearAboutPRALinkModel> retv = new List<StudentHearAboutPRALinkModel>();
+            retv = db.StudentHearAboutPRALinks.Where(x => x.StudentID == this.Id).ToList();
+            return retv;
         }
 
     }

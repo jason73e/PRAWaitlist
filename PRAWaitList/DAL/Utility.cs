@@ -120,15 +120,15 @@ namespace PRAWaitList.DAL
             return (sl);
         }
 
-        public static List<String> GetHearAboutPRAs()
+        public static List<HearAboutPRAModel> GetHearAboutPRAs()
         {
-            List<string> retValue = new List<string>();
+            List<HearAboutPRAModel> retValue = new List<HearAboutPRAModel>();
             try
             {
                 PRAWaitListContext db = new PRAWaitListContext();
                 if (db.HearAboutPRAs.Any())
                 {
-                    retValue = db.HearAboutPRAs.Select(x => x.Text).ToList();
+                    retValue = db.HearAboutPRAs.ToList();
                 }
                 db.Dispose();
                 return retValue;
@@ -276,7 +276,7 @@ namespace PRAWaitList.DAL
             studentModel.isActive = sm.isActive;
             studentModel.isPRASibling = sm.isPRASibling;
             studentModel.LastName = sm.LastName;
-            studentModel.LearnAboutPRA = sm.LearnAboutPRA;
+            //studentModel.LearnAboutPRA = sm.LearnAboutPRA;
             studentModel.LocalDistrict = sm.LocalDistrict;
             studentModel.LocalSchool = sm.LocalSchool;
             studentModel.Status = sm.Status;

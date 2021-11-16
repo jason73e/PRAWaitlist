@@ -15,6 +15,15 @@ namespace PRAWaitList.Models
         public String Text { get; set; }
         [Required]
         public bool IsChecked { get; set; }
+        [Required]
+        [Display(Name = "Show Referral Fields")]
+        public bool bExtraText { get; set; }
+        [Required]
+        [Display(Name ="Show Other Field")]
+        public bool bOtherText { get; set; }
+[Required]
+[Display(Name ="Sort Order")]
+        public int iSortOrder { get; set; }
     }
 
     public class HearAboutPRAModelList

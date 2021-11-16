@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<PRAWaitList.Models.HearAboutPRAModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Hear About PRA List";
 }
 
 <div class="jumbotron container">
@@ -15,6 +15,9 @@
                 <br />
                 <text class="smallblack">
                     •	This is the list of checkboxs used on the Intent to Enroll form.  You can Edit the existing values or add a new one.
+                    •	Checking Show Referral Fields will Require the user to enter values for Referral Name and Email.
+                    •	Checking Show Other Field will Require the user to enter a value for Other Text Box.
+
                 </text>
                 <br />
                 <text class="smallblack">
@@ -26,7 +29,7 @@
 </div>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add New Option", "Create")
 </p>
 <table class="table">
     <tr>
@@ -35,6 +38,15 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IsChecked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bExtraText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bOtherText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.iSortOrder)
         </th>
         <th></th>
     </tr>
@@ -46,6 +58,15 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsChecked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bExtraText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bOtherText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.iSortOrder)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Value }) |
