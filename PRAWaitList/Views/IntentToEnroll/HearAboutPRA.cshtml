@@ -103,17 +103,17 @@ $(document).ready(function () {
         }
     });
 
-    //$.validator.addMethod("requiredIfChecked", function (val, ele, arg) {
-    //    if ($("#startClientFromWeb").is(":checked") && ($.trim(val) == '')) { return false; }
-    //    return true;
-    //}, "This field is required if startClientFromWeb is checked...");
+    $.validator.addMethod("requiredIfChecked", function (val, ele, arg) {
+        if ($("#Student_sm_LearnAboutPRA_14").is(":checked") && ($.trim(val) == '')) { return false; }
+        return true;
+    }, "This field is required if Other is checked...");
 
 
-    //$("#franchiseForm").validate({
-    //    rules: {
-    //        mimeType: { requiredIfChecked: true }
-    //    }
-    //});
+    $("#Student_ReferralOther_14").validate({
+        rules: {
+            Student_ReferralOther_14: { requiredIfChecked: true }
+        }
+    });
 });
 
 </script>

@@ -689,7 +689,10 @@ namespace PRAWaitList.Controllers
             List<Results> lsr = db.Results.Where(x => x.imported==false).ToList();
             IntentToEnrollViewModel ivm = new IntentToEnrollViewModel();
             int icounter = 0;
-            SendProgress("Importing Students...", icounter, lsr.Count);
+            if (lsr.Count > 0)
+            {
+                SendProgress("Importing Students...", icounter, lsr.Count);
+            }
             ivm.lsParents = new List<ParentModel>();
             ivm.lsSiblings = new List<SiblingModel>();
             foreach(Results r in lsr)

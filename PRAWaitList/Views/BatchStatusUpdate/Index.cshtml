@@ -1,0 +1,197 @@
+﻿@model PRAWaitList.Models.BatchStatusUpdateViewModel
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Batch Status Update";
+}
+
+
+<div class="jumbotron container">
+    <h1>Update Students Status</h1>
+    <table class="table-borderless" width="100%">
+        <tr>
+            <td>
+                <text class="largeboldblueunderline">
+                    INSTRUCTIONS:
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	This page allows you to search for students on the waitlist to update students status.
+                </text>
+                <br />
+                <text class="smallblack">
+                    •	All Selected Students in the grid below will get there status changed when you click Update Students Status button below.
+                </text>
+                <br />
+                <br />
+                <text class="largeboldblueunderline">
+                    STATUS KEY:
+                </text>
+                <br />
+                <text class="smallblack">
+                    1)	Submitted - This is the status that all records will be in after being added or updated using the emailed Linked.  This status will not be included Lottery Drawings.
+                </text>
+                <br />
+                <text class="smallblack">
+                    2)	Verified - This is the status the Registar should set the record to once it has been checked and the record appears Valid.  Verified is the status used for Lottery Drawings.
+                </text>
+                <br />
+                <text class="smallblack">
+                    3)	Notified - This is the status set once you click that you have notified a lottery "winner".
+                </text>
+                <br />
+                <text class="smallblack">
+                    4)	Expired - This gets set after Notifacation waittime expires.  Default setting is 48 hours.
+                </text>
+                <br />
+                <text class="smallblack">
+                    5)	Accepted - This is set when you click that a Lottery "winner" accepts the inventation to school.
+                </text>
+                <br />
+                <text class="smallblack">
+                    6)	Declined - This is set when you click that a Lottery "winner" declined the invatation to school.
+                </text>
+                <br />
+                <text class="smallblack">
+                    7)	Renewal - This status is set when the renewal emails are sent out to the waitlist users.  Renewals should be sent to Verified waitlist records.
+                </text>
+            </td>
+        </tr>
+    </table>
+</div>
+
+@using (Html.BeginForm("Index", "BatchStatusUpdate", FormMethod.Get))
+{
+    <table class="table">
+        <tr>
+            <td>
+                <label class="form-control-static">Apply For Year:</label>
+            </td>
+            <td>
+                @Html.DropDownListFor(model => model.SearchApplyYear, Model.ApplyYearList, "- Select an Apply Year -", htmlAttributes: new { @class = "form-control" })
+            </td>
+            <td>
+                <label class="form-control-static">Status:</label>
+            </td>
+            <td>
+                @Html.DropDownListFor(model => model.SearchStatus, Model.StatusList, "- Select a Status -", htmlAttributes: new { @class = "form-control" })
+            </td>
+            <td>
+                <input type="submit" value="Search" class="btn btn-primary btn-success" />
+            </td>
+        </tr>
+    </table>
+    <label class="form-control-static">Page @(Model.lsStudents.PageCount < Model.lsStudents.PageNumber ? 0 : Model.lsStudents.PageNumber) of @Model.lsStudents.PageCount</label>
+    <p>
+        <label class="form-control-static">Records Per Page: </label>@Html.DropDownList("PageSize", new SelectList(new Dictionary<string, int> { { "10", 10 }, { "20", 20 }, { "50", 50 }, { "100", 100 } }, "Key", "Value", Model.lsStudents.PageSize), new { @class = "pro_pag_tf1", id = "pagesizelist", @onchange = "this.form.submit();" })
+    </p>
+}
+@Html.PagedListPager(Model.lsStudents, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize }))
+
+<div id="checkboxes">
+    <table class="table">
+        <tr>
+            <th nowrap="nowrap">
+                Selected
+            </th>
+            <th nowrap="nowrap">
+                @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastNameSortParm, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            </th>
+            <th nowrap="nowrap">
+                @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstNameSortParm, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            </th>
+            <th nowrap="nowrap">
+                @Html.ActionLink("Birth Date", "Index", new { sortOrder = ViewBag.BirthDateSortParm, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            </th>
+            <th nowrap="nowrap">
+                @Html.ActionLink("Gender", "Index", new { sortOrder = ViewBag.GenderSortParm, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            </th>
+            <th nowrap="nowrap">
+                @Html.ActionLink("Current Grade", "Index", new { sortOrder = ViewBag.CurrentGradeSortParm, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            </th>
+            <th nowrap="nowrap">
+                @Html.ActionLink("Applying For Grade", "Index", new { sortOrder = ViewBag.ApplyingForGradeSortParm, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            </th>
+            <th nowrap="nowrap">
+                @Html.ActionLink("Applying For Year", "Index", new { sortOrder = ViewBag.ApplyingForYearSortParm, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            </th>
+            <th nowrap="nowrap">
+                @Html.ActionLink("Status", "Index", new { sortOrder = ViewBag.StatusSortParm, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            </th>
+            <th nowrap="nowrap">
+                @Html.ActionLink("Is PRA Sibling", "Index", new { sortOrder = ViewBag.IsPRASibling, currentApplyYear = ViewBag.CurrentApplyYear, currentStatus = ViewBag.CurrentStatus, PageSize = ViewBag.PageSize })
+            </th>
+        </tr>
+
+        @foreach (var item in Model.lsStudents)
+        {
+            <tr>
+                <td nowrap="nowrap" style="text-align:center">
+                    @Html.CheckBoxFor(modelItem => item.Selected)
+                </td>
+                <td nowrap="nowrap">
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td nowrap="nowrap">
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td nowrap="nowrap">
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td nowrap="nowrap">
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td nowrap="nowrap">
+                    @Html.DisplayFor(modelItem => item.CurrentGrade)
+                </td>
+                <td nowrap="nowrap">
+                    @Html.DisplayFor(modelItem => item.ApplyGrade)
+                </td>
+                <td nowrap="nowrap">
+                    @Html.DisplayFor(modelItem => item.ApplyYear)
+                </td>
+                <td nowrap="nowrap">
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td nowrap="nowrap">
+                    @Html.DisplayFor(modelItem => item.isPRASibling)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<br />
+
+<table class="table">
+    <tr>
+        <td>New Status:</td>
+        <td>@Html.DropDownListFor(model => model.NewStatus, Model.StatusList, "- Select a Status -", htmlAttributes: new { @class = "form-control" })</td>
+        <td><button onclick="UpdateStudentsStatus()" type="button" class="btn btn-primary btn-success">Update Students Status</button> </td>
+    </tr>
+</table>
+
+ 
+
+<script>
+    //CALLING METHOD IN THE CONTROLLER TO DO SOME WORK
+    function UpdateStudentsStatus() {
+
+        $.getJSON("/BatchStatusUpdate/UpdateStudentsStatus",
+        {},
+        function (data) {
+            if (!data) {
+                alert("Complete.");
+                window.location.href = "/BatchStatusUpdate/index";
+            }
+            else
+            {
+                alert(data);
+            }
+        });
+    }
+
+</script>
+@section scripts {
+    @Scripts.Render("~/Scripts/BatchStatusUpdate.js")
+}

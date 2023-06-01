@@ -44,14 +44,15 @@ namespace EmailApplication
                 smtp.Credentials = new System.Net.NetworkCredential(ec.SMTPUser, ec.SMTPPassword);
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 log(e);
             }
         }
-        
-        private void sendMail(EmailQueueModel eq)
+
+        private bool sendMail(EmailQueueModel eq)
         {
+            bool bkeepProcessing = true;
             try
             {
                 string sConnString = ConfigurationManager.ConnectionStrings["PRAWaitlistConnection"].ConnectionString.ToString();
@@ -88,6 +89,7 @@ namespace EmailApplication
                     mail.Body = eq.MessageBody;
                     smtp.Send(mail);
                     eq.StatusModel = "Sent";
+                    eq.ErrorMessage = "";
                     eq.StatusDate = DateTime.Now;
                     dc.SubmitChanges();
                 }
@@ -95,7 +97,15 @@ namespace EmailApplication
                 {
                     log(e);
                     eq.ErrorMessage = e.Message;
-                    if (!e.Message.StartsWith("Service not available,"))
+                    if (e.Message.StartsWith("Service not available,"))
+                    {
+                        bkeepProcessing = false;
+                    }
+                    else if (e.Message.StartsWith("Mailbox unavailable."))
+                    {
+                        bkeepProcessing = false;
+                    }
+                    else
                     {
                         eq.StatusModel = "Error";
                         eq.StatusDate = DateTime.Now;
@@ -103,10 +113,11 @@ namespace EmailApplication
                     dc.SubmitChanges();
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 log(e);
             }
+            return bkeepProcessing;
         }
 
         public void ProcessQueue()
@@ -118,11 +129,12 @@ namespace EmailApplication
                 return;
             }
             List<EmailQueueModel> lseq = dc.EmailQueueModels.Where(x => x.StatusModel == "Ready").OrderBy(x => x.QueueDate).ToList();
-            foreach(EmailQueueModel eq in lseq)
+            bool bkeepProcessing = true;
+            foreach (EmailQueueModel eq in lseq)
             {
-                if(CanSend())
+                if (CanSend() && bkeepProcessing)
                 {
-                    sendMail(eq);
+                    bkeepProcessing = sendMail(eq);
                     Thread.Sleep(2000);
                 }
                 else
@@ -143,10 +155,10 @@ namespace EmailApplication
                 EmailClassesDataContext dc = new EmailClassesDataContext(sConnString);
                 int iLimit = ec.SMTPSendLimit;
                 int iSent = 0;
-//                if (dc.EmailQueueModels.Where(x => x.StatusDate > DateTime.Now.AddHours(-24) && x.StatusModel != "Ready").Any())
-                if (dc.EmailQueueModels.Where(x => x.StatusDate > DateTime.Now.AddMinutes(-1) && x.StatusModel != "Ready").Any())
+                //                if (dc.EmailQueueModels.Where(x => x.StatusDate > DateTime.Now.AddHours(-24) && x.StatusModel != "Ready").Any())
+                if (dc.EmailQueueModels.Where(x => x.StatusDate > DateTime.Now.AddMinutes(-1)).Any())// && x.StatusModel != "Ready").Any())
                 {
-                    iSent = dc.EmailQueueModels.Where(x => x.StatusDate > DateTime.Now.AddMinutes(-1) && x.StatusModel != "Ready").Sum(x => x.RecipientCount);
+                    iSent = dc.EmailQueueModels.Where(x => x.StatusDate > DateTime.Now.AddMinutes(-1)).Sum(x => x.RecipientCount); //&& x.StatusModel != "Ready").Sum(x => x.RecipientCount);
                     //iSent = dc.EmailQueueModels.Where(x => x.StatusDate > DateTime.Now.AddHours(-24) && x.StatusModel != "Ready").Sum(x => x.RecipientCount);
                 }
                 if (iLimit > iSent)
@@ -154,7 +166,7 @@ namespace EmailApplication
                     retVal = true;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 log(e);
             }

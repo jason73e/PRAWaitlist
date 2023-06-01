@@ -69,6 +69,7 @@ namespace PRAWaitList.Controllers
                 ievm.DistrictList = Utility.GetDistrictListByState(ievm.fm.StateID);
                 ievm.SchoolList = Utility.GetSchoolListByDistrict(ievm.sm.LocalDistrict);
                 ievm.StatusList = Utility.GetStatusList();
+                TempData["MyIEVMModel"] = ievm;
 
             }
             if (!(TempData["MyIEVMModel"]==null))

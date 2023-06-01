@@ -198,8 +198,11 @@ namespace PRAWaitList.Controllers
                 }
                 if (sToEmail == string.Empty)
                 {
-                    ParentModel p = parents.First();
-                    sToEmail = p.EmailAddress;
+                    if (parents.Count > 0)
+                    {
+                        ParentModel p = parents.First();
+                        sToEmail = p.EmailAddress;
+                    }
                 }
                 if(SendConfirmationEmail(sFromEmail, sToEmail, s))
                 {
@@ -232,6 +235,14 @@ namespace PRAWaitList.Controllers
             string sContactEmail= ConfigurationManager.AppSettings["WaitListContactEmail"].ToString();
             var body = "<p>Dear Prospective PRA Parent,</p><p><BR> In order to keep your student on the Platte River Academy waitlist you will need to update your student and family information on an annual basis.  Please be sure to update the student grade and application year information.  Use the following link to update your record.</p><p>{0}/intenttoenroll/index?id={1}</p><p>So that you are aware, failure to update your information will result in your student being removed from the wait list.  If you have any questions please contact {2} at {3}.</p>";
             var message = new MailMessage();
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(sToEmail);
+            }
+            catch
+            {
+                return false;
+            }
             message.To.Add(new MailAddress(sToEmail)); //replace with valid value
             message.Subject = "Information update required to stay on Platte River Academy Waitlist.";
             message.Body = string.Format(body, shost,s.UStudentID,sContactName,sContactEmail);

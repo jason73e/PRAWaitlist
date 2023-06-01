@@ -223,6 +223,7 @@
     <Compile Include="Controllers\LotteryBatchModelsController.cs" />
     <Compile Include="Controllers\PortalMenusModelsController.cs" />
     <Compile Include="Controllers\PRAMenuModelsController.cs" />
+    <Compile Include="Controllers\BatchStatusUpdateController.cs" />
     <Compile Include="Controllers\RenewStudentsController.cs" />
     <Compile Include="Controllers\SchoolModelsController.cs" />
     <Compile Include="Controllers\SchoolYearModelsController.cs" />
@@ -278,6 +279,8 @@
     <Compile Include="Models\EmailControlModel.cs" />
     <Compile Include="Models\EmailQueueModel.cs" />
     <Compile Include="Models\FamilyModel.cs" />
+    <Compile Include="Models\BatchStatusUpdateViewModel.cs" />
+    <Compile Include="Models\SelectStudentEditorViewModel.cs" />
     <Compile Include="Models\StudentHearAboutPRALinkModel.cs" />
     <Compile Include="Models\HearAboutPRAModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -302,6 +305,7 @@
     <Compile Include="Models\StateModel.cs" />
     <Compile Include="Models\StatusModel.cs" />
     <Compile Include="Models\StudentModel.cs" />
+    <Compile Include="Models\StudentSelectionViewModel.cs" />
     <Compile Include="Models\WaitlistAdminViewModel.cs" />
     <Compile Include="Hubs\ProgressHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -443,6 +447,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\BatchStatusUpdate.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
@@ -634,6 +639,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.0.min.map" />
+    <Content Include="Views\BatchStatusUpdate\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />

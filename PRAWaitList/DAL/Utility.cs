@@ -94,7 +94,15 @@ namespace PRAWaitList.DAL
         public static string GetDistrictName(string DistrictCode)
         {
             PRAWaitListContext db = new PRAWaitListContext();
-            string DistrictName = db.Schools.Where(x => x.AgencyID == DistrictCode).Select(x => new { x.AgencyName }).Distinct().Single().AgencyName.ToString();
+            string DistrictName = string.Empty;
+            if (db.Schools.Where(x => x.AgencyID == DistrictCode).Any())
+            {
+                DistrictName = db.Schools.Where(x => x.AgencyID == DistrictCode).Select(x => new { x.AgencyName }).Distinct().Single().AgencyName.ToString();
+            }
+            else
+            {
+                DistrictName = DistrictCode;
+            }
             db.Dispose();
             return (DistrictName);
         }
@@ -105,6 +113,10 @@ namespace PRAWaitList.DAL
             if (db.Schools.Where(x => x.SchoolID == sSchoolCode).Any())
             {
                 SchoolName = db.Schools.Where(x => x.SchoolID == sSchoolCode).Select(x => new { x.SchoolName }).Distinct().Single().SchoolName.ToString();
+            }
+            else
+            {
+                SchoolName = sSchoolCode;
             }
             db.Dispose();
             return (SchoolName);
