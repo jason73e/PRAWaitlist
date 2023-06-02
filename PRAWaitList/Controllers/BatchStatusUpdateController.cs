@@ -176,7 +176,9 @@ namespace PRAWaitList.Controllers
                 model.Students.Add(editorViewModel);
             }
             BatchStatusUpdateViewModel m = new BatchStatusUpdateViewModel();
-            m.lsStudents = model.Students.ToPagedList(pageNumber, DefaultPageSize);
+            m.pagedLsStudents = model.Students.ToPagedList(pageNumber, DefaultPageSize);
+            m.displayForPaginglsStudents = m.pagedLsStudents.ToList();
+            m.lsStudents = model.Students;
             m.StatusList = Utility.GetStatusList();
             m.ApplyYearList = Utility.GetFullSchoolYearList();
             m.SearchApplyYear = SearchApplyYear;
@@ -185,10 +187,10 @@ namespace PRAWaitList.Controllers
             return View(m);
         }
 
-
-        public JsonResult UpdateStudentsStatus()
+        [HttpPost]
+        public ActionResult UpdateStudentsStatus(BatchStatusUpdateViewModel m)
         {
-            BatchStatusUpdateViewModel bsuvm = (BatchStatusUpdateViewModel)TempData["MyBSUModel"];
+            BatchStatusUpdateViewModel bsuvm = m;
             var students = db.Students.Where(x => x.isActive == true);
 
             if (!String.IsNullOrEmpty(bsuvm.SearchStatus))
@@ -201,21 +203,21 @@ namespace PRAWaitList.Controllers
                 students = students.Where(s => s.ApplyYear == bsuvm.SearchApplyYear);
             }
             StudentSelectionViewModel ssvm = new StudentSelectionViewModel();
-            ssvm.Students = bsuvm.lsStudents.ToList();
-            List<int> selectedIds = ssvm.getSelectedIds().ToList();
-            students = students.Where(x => selectedIds.Contains(x.Id));
-            
-            int i = 0;
-            int itemsCount = students.Count();
-            foreach (StudentModel s in students)
+            if (bsuvm.displayForPaginglsStudents != null && bsuvm.displayForPaginglsStudents.Count > 0)
             {
-                SendProgress("Updating status for "+ s.FirstName + " " + s.LastName +" ...", i, itemsCount);
-                s.Status = bsuvm.NewStatus;
-                Utility.UpdateStudent(s);
+                ssvm.Students = bsuvm.displayForPaginglsStudents.ToList();
+                List<int> selectedIds = ssvm.getSelectedIds().ToList();
+                students = students.Where(x => selectedIds.Contains(x.Id));
+
+                int i = 0;
+                int itemsCount = students.Count();
+                foreach (StudentModel s in students)
+                {
+                    s.Status = bsuvm.NewStatus;
+                    Utility.UpdateStudent(s);
+                }
             }
-            SendProgress("Done Updating Students...", itemsCount, itemsCount);
-            TempData["MyBSUModel"] = bsuvm;
-            return Json("", JsonRequestBehavior.AllowGet);
+            return RedirectToAction("Index");
         }
         public static void SendProgress(string progressMessage, int progressCount, int totalItems)
         {

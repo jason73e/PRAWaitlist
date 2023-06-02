@@ -1,0 +1,34 @@
+﻿@model PRAWaitList.Models.SelectStudentEditorViewModel
+<tr>
+    <td nowrap="nowrap" style="text-align:center">
+        @Html.CheckBoxFor(model => model.Selected)
+    </td>
+    <td nowrap="nowrap">
+        @Html.DisplayFor(model => model.LastName)
+    </td>
+    <td nowrap="nowrap">
+        @Html.DisplayFor(model => model.FirstName)
+    </td>
+    <td nowrap="nowrap">
+        @Html.DisplayFor(model => model.BirthDate)
+    </td>
+    <td nowrap="nowrap">
+        @Html.DisplayFor(model => model.Gender)
+    </td>
+    <td nowrap="nowrap">
+        @Html.DisplayFor(model => model.CurrentGrade)
+    </td>
+    <td nowrap="nowrap">
+        @Html.DisplayFor(model => model.ApplyGrade)
+    </td>
+    <td nowrap="nowrap">
+        @Html.DisplayFor(model => model.ApplyYear)
+    </td>
+    <td nowrap="nowrap">
+        @Html.DisplayFor(model => model.Status)
+    </td>
+    <td nowrap="nowrap">
+        @Html.DisplayFor(model => model.isPRASibling)
+        @Html.HiddenFor(model => model.Id)
+    </td>
+</tr>
