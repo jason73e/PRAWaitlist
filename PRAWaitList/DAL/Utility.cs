@@ -52,6 +52,14 @@ namespace PRAWaitList.DAL
             return (new SelectList(schoolyears, "ID", "Name"));
         }
 
+        public static SelectList GetNextTenSchoolYearList()
+        {
+            PRAWaitListContext db = new PRAWaitListContext();
+            List<SchoolYearModel> schoolyears = db.SchoolYears.Where(x => x.StartYear >= DateTime.Now.Year).OrderBy(x => x.Name).ToList();
+            //states.Insert(0, new StateModel() { Name = "- Select a State -", StateID = "" });
+            db.Dispose();
+            return (new SelectList(schoolyears, "ID", "Name"));
+        }
         public static SelectList GetSchoolYearList()
         {
             PRAWaitListContext db = new PRAWaitListContext();
@@ -59,6 +67,14 @@ namespace PRAWaitList.DAL
             //states.Insert(0, new StateModel() { Name = "- Select a State -", StateID = "" });
             db.Dispose();
             return (new SelectList(schoolyears, "Name", "Name"));
+        }
+        public static string GetSchoolYear(int i)
+        {
+            PRAWaitListContext db = new PRAWaitListContext();
+            SchoolYearModel schoolyear = db.SchoolYears.Where(x => x.ID == i).Single();
+            //states.Insert(0, new StateModel() { Name = "- Select a State -", StateID = "" });
+            db.Dispose();
+            return (schoolyear.Name);
         }
 
         public static SelectList GetSchoolDistrictList()
@@ -178,7 +194,7 @@ namespace PRAWaitList.DAL
         public static LotteryBatchModel AddLotteryBatch(LotteryBatchModel m)
         {
             PRAWaitListContext db = new PRAWaitListContext();
-            if (!db.LotteryBatches.Any(x => x.BatchName == m.BatchName && x.BatchType == m.BatchType && x.SchoolYearID == m.SchoolYearID))
+            if (!db.LotteryBatches.Any(x => x.BatchName == m.BatchName && x.BatchGrade == m.BatchGrade && x.SchoolYearID == m.SchoolYearID))
             {
                 m.CreateDate = DateTime.Now;
                 m.UpdateDate = DateTime.Now;
@@ -186,7 +202,7 @@ namespace PRAWaitList.DAL
                 db.LotteryBatches.Add(m);
                 db.SaveChanges();
             }
-            LotteryBatchModel rm = db.LotteryBatches.Where(x => x.BatchName == m.BatchName && x.BatchType == m.BatchType && x.SchoolYearID == m.SchoolYearID).Single();
+            LotteryBatchModel rm = db.LotteryBatches.Where(x => x.BatchName == m.BatchName && x.BatchGrade == m.BatchGrade && x.SchoolYearID == m.SchoolYearID).Single();
             db.Dispose();
             return (rm);
         }
@@ -541,6 +557,35 @@ namespace PRAWaitList.DAL
                 rtv = rtv.Substring(0, rtv.Length - 1);
             }
             return rtv;
+        }
+
+        public static void AutoSeed()
+        {
+            PRAWaitListContext db = new PRAWaitListContext();
+            var AddSchoolYear = new List<SchoolYearModel>();
+            var schoolyears = new List<SchoolYearModel>();
+
+            for (int x = DateTime.Now.Year; x < DateTime.Now.Year + 10; x++)
+            {
+                SchoolYearModel s = new SchoolYearModel();
+                s.Name = x.ToString() + " - " + (x + 1).ToString();
+                s.StartYear = x;
+                s.EndYear = x + 1;
+                schoolyears.Add(s);
+            }
+            foreach (SchoolYearModel s in schoolyears)
+            {
+                if (!db.SchoolYears.Any(x => x.Name == s.Name))
+                {
+                    AddSchoolYear.Add(s);
+                }
+            }
+            if (AddSchoolYear.Count > 0)
+            {
+                AddSchoolYear.ForEach(s => db.SchoolYears.Add(s));
+                db.SaveChanges();
+            }
+
         }
     }
 }

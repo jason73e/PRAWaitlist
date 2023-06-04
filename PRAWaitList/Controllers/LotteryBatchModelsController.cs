@@ -48,7 +48,7 @@ namespace PRAWaitList.Controllers
             ls.Add(new LotteryBatchModel());
             LotteryBatchViewModel lbvm = new LotteryBatchViewModel();
             lbvm.lbms = ls;
-            lbvm.SchoolYears = Utility.GetSchoolYearSelectList();
+            lbvm.SchoolYears = Utility.GetNextTenSchoolYearList();
             return View(lbvm);
         }
 
@@ -67,11 +67,8 @@ namespace PRAWaitList.Controllers
                     string sField = sKey.Split('.')[1];
                     switch (sField)
                     {
-                        case "BatchName":
-                            lbvm.lbms[0].BatchName = Request.Form.Get(sKey);
-                            break;
-                        case "BatchType":
-                            lbvm.lbms[0].BatchType = (LotteryBatchType)Convert.ToInt32(Request.Form.Get(sKey));
+                        case "BatchGrade":
+                            lbvm.lbms[0].BatchGrade = (Grade)Convert.ToInt32(Request.Form.Get(sKey));
                             break;
                         case "SchoolYearID":
                             lbvm.lbms[0].SchoolYearID = Convert.ToInt32(Request.Form.Get(sKey));
@@ -80,6 +77,9 @@ namespace PRAWaitList.Controllers
                     }
                 }
             }
+            string sYearName = Utility.GetSchoolYear(lbvm.lbms[0].SchoolYearID);
+            string sBatchName = DateTime.Now.ToString("yyyyMMddHHmmss") +"_"+ sYearName +"_"+ lbvm.lbms[0].BatchGrade.ToString();
+            lbvm.lbms[0].BatchName = sBatchName;
             lbvm.lbms[0] = Utility.AddLotteryBatch(lbvm.lbms[0]);
 
             return RedirectToAction("Index");
@@ -171,15 +171,7 @@ namespace PRAWaitList.Controllers
             LotteryBatchModel lbm = db.LotteryBatches.Find((int)id);
             string sApplyYear = db.SchoolYears.Find(lbm.SchoolYearID).Name;
             List<StudentModel> students = new List<StudentModel>();
-            if (lbm.BatchType == LotteryBatchType.KindergartenLottery)
-            {
-                students = db.Students.Where(x => x.ApplyYear == sApplyYear && x.ApplyGrade == Grade.Kindergarten && x.isActive == true && x.Status=="Verified").ToList();
-            }
-            else
-            {
-                students = db.Students.Where(x => x.ApplyYear == sApplyYear && x.ApplyGrade != Grade.Kindergarten && x.isActive == true && x.Status == "Verified").ToList();
-            }
-
+            students = db.Students.Where(x => x.ApplyYear == sApplyYear && x.ApplyGrade == lbm.BatchGrade && x.isActive == true && x.Status=="Verified").ToList();
             List<LotteryModel> lsLottery = new List<LotteryModel>();
             string sHomeState = db.ConfigurationSettings.Find("HomeState").value.ToString();
             string sHomeDistrict = db.ConfigurationSettings.Find("HomeDistrict").value.ToString();
@@ -256,7 +248,7 @@ namespace PRAWaitList.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,BatchName,SchoolYearID,BatchType,CreateDate,UpdateDate,UpdateUserID")] LotteryBatchModel lotteryBatchModel)
+        public ActionResult Edit([Bind(Include = "Id,BatchName,SchoolYearID,Grade,CreateDate,UpdateDate,UpdateUserID")] LotteryBatchModel lotteryBatchModel)
         {
             if (ModelState.IsValid)
             {

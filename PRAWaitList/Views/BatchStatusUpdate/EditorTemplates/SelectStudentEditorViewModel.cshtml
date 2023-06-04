@@ -28,6 +28,10 @@
         @Html.DisplayFor(model => model.Status)
     </td>
     <td nowrap="nowrap">
+        @{string sDistrict = Model.LocalDistrict == "0803450" ? "ID" : "OD";}
+        @Html.DisplayFor(model => sDistrict)
+    </td>
+    <td nowrap="nowrap">
         @Html.DisplayFor(model => model.isPRASibling)
         @Html.HiddenFor(model => model.Id)
     </td>

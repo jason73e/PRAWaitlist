@@ -171,6 +171,7 @@ namespace PRAWaitList.Controllers
                     ApplyYear = student.ApplyYear,
                     Status = student.Status,
                     isPRASibling = student.isPRASibling,
+                    LocalDistrict = student.LocalDistrict,
                     Selected = false
                 };
                 model.Students.Add(editorViewModel);

@@ -132,6 +132,9 @@
                         @Html.ActionLink("Status", "Index", new { sortOrder = ViewBag.StatusSortParm, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, currentApplyYear = ViewBag.CurrentApplyYear, PageSize = ViewBag.PageSize })
                     </th>
                     <th nowrap="nowrap">
+                        District
+                    </th>
+                    <th nowrap="nowrap">
                         @Html.ActionLink("Is PRA Sibling", "Index", new { sortOrder = ViewBag.IsPRASibling, currentFilter = ViewBag.CurrentFilter, currentGrade = ViewBag.CurrentGrade, currentStatus = ViewBag.CurrentStatus, currentApplyYear = ViewBag.CurrentApplyYear, PageSize = ViewBag.PageSize })
                     </th>
                     <th nowrap="nowrap">
@@ -172,6 +175,10 @@
                         </td>
                         <td nowrap="nowrap">
                             @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td nowrap="nowrap">
+                            @{string sDistrict = item.LocalDistrict == "0803450" ? "ID" : "OD";}
+                            @Html.DisplayFor(modelItem => sDistrict)
                         </td>
                         <td nowrap="nowrap">
                             @Html.DisplayFor(modelItem => item.isPRASibling)

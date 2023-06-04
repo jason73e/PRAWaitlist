@@ -275,6 +275,14 @@
     <Compile Include="Migrations\202111020437190_StudentHearAboutPRALinkModel.designer.cs">
       <DependentUpon>202111020437190_StudentHearAboutPRALinkModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306031841410_LotteryBatchupdate.cs" />
+    <Compile Include="Migrations\202306031841410_LotteryBatchupdate.designer.cs">
+      <DependentUpon>202306031841410_LotteryBatchupdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306032230371_LotteryBatchupdate1.cs" />
+    <Compile Include="Migrations\202306032230371_LotteryBatchupdate1.designer.cs">
+      <DependentUpon>202306032230371_LotteryBatchupdate1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdAuthenticationService.cs" />
     <Compile Include="Models\ConfigurationSettingsModel.cs" />
@@ -680,6 +688,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111020437190_StudentHearAboutPRALinkModel.resx">
       <DependentUpon>202111020437190_StudentHearAboutPRALinkModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306031841410_LotteryBatchupdate.resx">
+      <DependentUpon>202306031841410_LotteryBatchupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306032230371_LotteryBatchupdate1.resx">
+      <DependentUpon>202306032230371_LotteryBatchupdate1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

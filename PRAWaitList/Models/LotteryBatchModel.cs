@@ -6,13 +6,6 @@ using System.Web;
 
 namespace PRAWaitList.Models
 {
-    public enum LotteryBatchType
-    {
-        [Display(Name ="Kindergarten Lottery")]
-        KindergartenLottery = 1,
-        [Display(Name = "Primary Lottery")]
-        PrimaryLottery = 2 
-    }
     public class LotteryBatchModel
     {
         [Key]
@@ -24,9 +17,9 @@ namespace PRAWaitList.Models
         [Display(Name = "School Year")]
         public int SchoolYearID { get; set; }
         [Required]
-        [Range(1, 2, ErrorMessage = "Please select a batch type.")]
-        [Display(Name = "Batch Type")]
-        public LotteryBatchType BatchType { get; set; }
+        [Display(Name = "Grade")]
+        [RegularExpression("^[1-8]|1[1-2]$", ErrorMessage = "Please select a grade.")]
+        public Grade? BatchGrade { get; set; }
         [Display(Name = "Create Date")]
         public DateTime CreateDate { get; set; }
         public DateTime UpdateDate { get; set; }

@@ -18,6 +18,7 @@ namespace PRAWaitList.Models
         public string ApplyYear { get; set; }
         public string Status { get; set; }
         public bool isPRASibling { get; set; }
+        public string LocalDistrict { get; set; }
 
     }
 }

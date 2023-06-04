@@ -678,3 +678,5 @@ C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.B
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.Bcl.HashCode.dll
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\bin\Microsoft.Bcl.HashCode.xml
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\obj\Debug\PRAWaitList.Migrations.LotteryBatchupdate.resources
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\PRAWaitList\obj\Debug\PRAWaitList.Migrations.LotteryBatchupdate1.resources

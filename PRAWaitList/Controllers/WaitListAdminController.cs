@@ -21,6 +21,7 @@ namespace PRAWaitList.Controllers
 
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, string currentStatus, string SearchStatus, Grade? currentGrade, Grade? SearchGrade, string currentApplyYear, string SearchYear, int? page, int? PageSize)
         {
+            Utility.AutoSeed();
             WaitlistAdminViewModel m = IndexProcess(sortOrder, currentFilter, searchString, currentStatus, SearchStatus, currentGrade, SearchGrade, currentApplyYear, SearchYear, page, PageSize);
             return View(m);
         }

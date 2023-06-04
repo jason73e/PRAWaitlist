@@ -119,31 +119,10 @@ namespace PRAWaitList.Controllers
 
         public ActionResult Seed()
         {
-            var AddSchoolYear = new List<SchoolYearModel>();
-            var schoolyears = new List<SchoolYearModel>();
-
-            for (int x = DateTime.Now.Year; x < DateTime.Now.Year + 10; x++)
-            {
-                SchoolYearModel s = new SchoolYearModel();
-                s.Name = x.ToString() + " - " + (x + 1).ToString();
-                s.StartYear = x;
-                s.EndYear = x + 1;
-                schoolyears.Add(s);
-            }
-            foreach (SchoolYearModel s in schoolyears)
-            {
-                if (!db.SchoolYears.Any(x => x.Name == s.Name))
-                {
-                    AddSchoolYear.Add(s);
-                }
-            }
-            if (AddSchoolYear.Count > 0)
-            {
-                AddSchoolYear.ForEach(s => db.SchoolYears.Add(s));
-                db.SaveChanges();
-            }
+            Utility.AutoSeed();
             return RedirectToAction("Index");
         }
+
 
 
         protected override void Dispose(bool disposing)
