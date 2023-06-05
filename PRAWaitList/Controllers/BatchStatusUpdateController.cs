@@ -21,7 +21,7 @@ namespace PRAWaitList.Controllers
         private PRAWaitListContext db = new PRAWaitListContext();
 
         // GET: RenewStudents
-        public ActionResult Index(string sortOrder, string currentStatus, string SearchStatus, string currentApplyYear, string SearchApplyYear, int? page, int? PageSize)
+        public ActionResult Index(string sortOrder, string currentStatus, string SearchStatus, string currentApplyYear, string SearchApplyYear,Grade? currentApplyGrade, Grade? SearchApplyGrade, int? page, int? PageSize)
         {
             TempData["MyRSModel"] = null;
             ViewBag.CurrentSort = sortOrder;
@@ -56,6 +56,15 @@ namespace PRAWaitList.Controllers
                 SearchApplyYear = currentApplyYear;
             }
 
+            if (SearchApplyGrade != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchApplyGrade = currentApplyGrade;
+            }
+            ViewBag.CurrentApplyGrade = SearchApplyGrade;
             ViewBag.CurrentApplyYear = SearchApplyYear;
             ViewBag.CurrentStatus = SearchStatus;
 
@@ -69,6 +78,11 @@ namespace PRAWaitList.Controllers
             if (!String.IsNullOrEmpty(SearchApplyYear))
             {
                 students = students.Where(s => s.ApplyYear == SearchApplyYear);
+            }
+
+            if (SearchApplyGrade != null)
+            {
+                students = students.Where(s => s.ApplyGrade == SearchApplyGrade);
             }
 
             switch (sortOrder)
@@ -184,6 +198,7 @@ namespace PRAWaitList.Controllers
             m.ApplyYearList = Utility.GetFullSchoolYearList();
             m.SearchApplyYear = SearchApplyYear;
             m.SearchStatus = SearchStatus;
+            m.SearchApplyGrade = SearchApplyGrade;
             TempData["MyBSUModel"] = m;
             return View(m);
         }
@@ -203,6 +218,12 @@ namespace PRAWaitList.Controllers
             {
                 students = students.Where(s => s.ApplyYear == bsuvm.SearchApplyYear);
             }
+
+            if (bsuvm.SearchApplyGrade!=null)
+            {
+                students = students.Where(s => s.ApplyGrade == bsuvm.SearchApplyGrade);
+            }
+
             StudentSelectionViewModel ssvm = new StudentSelectionViewModel();
             if (bsuvm.displayForPaginglsStudents != null && bsuvm.displayForPaginglsStudents.Count > 0)
             {

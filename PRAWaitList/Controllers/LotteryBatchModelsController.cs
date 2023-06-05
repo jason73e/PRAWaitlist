@@ -22,6 +22,26 @@ namespace PRAWaitList.Controllers
         {
             LotteryBatchViewModel lbvm = new LotteryBatchViewModel();
             lbvm.lbms = db.LotteryBatches.OrderByDescending(x => x.CreateDate).ToList();
+            lbvm.lslvm = new List<LotteryViewModel>();
+            lbvm.lsCount = new List<int>();
+            lbvm.lsNotify = new List<int>();
+            lbvm.lsExpired = new List<int>();
+            lbvm.lsAccepted = new List<int>();
+            lbvm.lsDeclined = new List<int>();
+            foreach(LotteryBatchModel lbm in lbvm.lbms)
+            {
+                LotteryViewModel a = Utility.GetLotteryViewModel(lbm.Id);
+                lbvm.lslvm.Add(a);
+                lbvm.lsCount.Add(a.lsLotteryModel.Count);
+                int iNotify = a.lsLotteryModel.Where(x => x.Status == "Notified").Count();
+                lbvm.lsNotify.Add(iNotify);
+                int iExpired = a.lsLotteryModel.Where(x => x.Status == "Expired").Count();
+                lbvm.lsExpired.Add(iExpired);
+                int iAccepted = a.lsLotteryModel.Where(x => x.Status == "Accepted").Count();
+                lbvm.lsAccepted.Add(iAccepted);
+                int iDeclined = a.lsLotteryModel.Where(x => x.Status == "Declined").Count();
+                lbvm.lsDeclined.Add(iDeclined);
+            }
             lbvm.SchoolYears = Utility.GetSchoolYearSelectList();
             return View(lbvm);
         }
@@ -93,33 +113,7 @@ namespace PRAWaitList.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             LotteryViewModel lvm = new LotteryViewModel();
-            List<LotteryModel> lslm = new List<LotteryModel>();
-            lslm = db.Lotteries.Where(x => x.LotteryBatchId == (int)id).OrderBy(x => x.RandomID).ToList();
-            List<int> lsIDs = lslm.Select(x => x.StudentId).ToList();
-            List<StudentModel> lssm = new List<StudentModel>();
-            lssm = db.Students.Where(x => lsIDs.Contains(x.Id)).ToList();
-            lslm = (from l in lslm
-                    join s in lssm on l.StudentId equals s.Id
-                    orderby s.ApplyGrade, l.RandomID
-                    select new LotteryModel
-                    {
-                        CreateDate = l.CreateDate,
-                        Id = l.Id,
-                        LotteryBatchId = l.LotteryBatchId,
-                        RandomID = l.RandomID,
-                        StudentId = l.StudentId,
-                        UpdateDate = l.UpdateDate,
-                        UpdateUserID = l.UpdateUserID,
-                        AcceptDate = l.AcceptDate,
-                        DeclineDate = l.DeclineDate,
-                        Notes = l.Notes,
-                        NotifyDate = l.NotifyDate,
-                        Status = l.Status,
-                        ApplyGrade = l.ApplyGrade,
-                        ApplyYear = l.ApplyYear
-                        
-                    }).ToList();
-
+            lvm = Utility.GetLotteryViewModel((int)id);
             int DefaultPageSize = 10;
             int currentPageIndex = page.HasValue ? page.Value - 1 : 0;
             if (PageSize != null)
@@ -128,8 +122,7 @@ namespace PRAWaitList.Controllers
             }
             ViewBag.PageSize = DefaultPageSize; 
             int pageNumber = (page ?? 1);
-            lvm.lsLM = lslm.ToPagedList(pageNumber, DefaultPageSize);
-            lvm.lsSM = lssm;
+            lvm.lsLM = lvm.lsLotteryModel.ToPagedList(pageNumber, DefaultPageSize);
             lvm.LotteryBatchID = (int)id;
             lvm.NotifyExpireHours = Convert.ToInt32(db.ConfigurationSettings.Find("NotifyExpireHours").value) * (-1);
             return View(lvm);

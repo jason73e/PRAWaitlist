@@ -87,6 +87,42 @@ namespace PRAWaitList.DAL
             return (sl);
         }
 
+        public static LotteryViewModel GetLotteryViewModel(int id)
+        {
+            PRAWaitListContext db = new PRAWaitListContext();
+            LotteryViewModel lvm = new LotteryViewModel();
+            List<LotteryModel> lslm = new List<LotteryModel>();
+            lslm = db.Lotteries.Where(x => x.LotteryBatchId == (int)id).OrderBy(x => x.RandomID).ToList();
+            List<int> lsIDs = lslm.Select(x => x.StudentId).ToList();
+            List<StudentModel> lssm = new List<StudentModel>();
+            lssm = db.Students.Where(x => lsIDs.Contains(x.Id)).ToList();
+            lslm = (from l in lslm
+                    join s in lssm on l.StudentId equals s.Id
+                    orderby s.ApplyGrade, l.RandomID
+                    select new LotteryModel
+                    {
+                        CreateDate = l.CreateDate,
+                        Id = l.Id,
+                        LotteryBatchId = l.LotteryBatchId,
+                        RandomID = l.RandomID,
+                        StudentId = l.StudentId,
+                        UpdateDate = l.UpdateDate,
+                        UpdateUserID = l.UpdateUserID,
+                        AcceptDate = l.AcceptDate,
+                        DeclineDate = l.DeclineDate,
+                        Notes = l.Notes,
+                        NotifyDate = l.NotifyDate,
+                        Status = l.Status,
+                        ApplyGrade = l.ApplyGrade,
+                        ApplyYear = l.ApplyYear
+
+                    }).ToList();
+            lvm.lsSM = lssm;
+            lvm.lsLotteryModel = lslm;
+            return lvm;
+
+        }
+
         public static SelectList GetSchoolDistrictListForFamily(int iFamilyID)
         {
             PRAWaitListContext db = new PRAWaitListContext();

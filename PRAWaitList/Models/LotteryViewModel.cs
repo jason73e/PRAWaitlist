@@ -14,5 +14,7 @@ namespace PRAWaitList.Models
         public PagedList.IPagedList<LotteryModel> lsLM { get; set; }
 
         public List<StudentModel> lsSM { get; set; }
+
+        public List<LotteryModel> lsLotteryModel { get; set; }
     }
 }

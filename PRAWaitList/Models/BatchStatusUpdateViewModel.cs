@@ -11,6 +11,7 @@ namespace PRAWaitList.Models
         public IList<SelectStudentEditorViewModel> lsStudents { get; set; }
         public IList<SelectStudentEditorViewModel> displayForPaginglsStudents { get; set; }
         public string SearchApplyYear { get; set; }
+        public Grade? SearchApplyGrade { get; set; }
         public SelectList ApplyYearList { get; set; }
 
         public string SearchStatus { get; set; }
