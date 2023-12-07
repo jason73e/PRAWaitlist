@@ -89,8 +89,6 @@
         @Html.LabelFor(model => model.sm.LearnAboutPRA, htmlAttributes: new { @class = "control-label col-md-4" })
         <div class="col-md-8">
             @Html.Partial("HearAboutPRA", new ViewDataDictionary(ViewData) { TemplateInfo = new TemplateInfo() { HtmlFieldPrefix = "Student" } })
-            @Html.EditorFor(model => model.sm.LearnAboutPRA, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.sm.LearnAboutPRA, "", new { @class = "text-danger" })
         </div>
     </div>
 

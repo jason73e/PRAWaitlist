@@ -93,11 +93,11 @@ namespace PRAWaitList.Controllers
             using (StreamReader reader = new StreamReader(sPath, Encoding.UTF8))
             {
                 SendProgress("Reading File " + Path.GetFileName(sPath) + " ...", 0, 3);
-                var config = new CsvConfiguration(CultureInfo.InvariantCulture)
-                {
-                    BadDataFound = null
-                };
-                CsvReader csvReader = new CsvReader(reader, config);
+                //var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+                //{
+                //    BadDataFound = null
+                //};
+                CsvReader csvReader = new CsvReader(reader);
                 IEnumerable<SchoolRecord> record = csvReader.GetRecords<SchoolRecord>();
                 //csvReader.Configuration.BadDataFound = null;
                 foreach (var rec in record) // Each record will be fetched and printed on the screen

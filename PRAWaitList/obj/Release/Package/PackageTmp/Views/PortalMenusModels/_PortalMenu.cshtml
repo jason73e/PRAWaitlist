@@ -13,7 +13,7 @@
             else
             {
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">@item.MenuName<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">@item.MenuName<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         @{ var childmenus = Model.Where(x => x.ParentID == item.ID).OrderBy(x => x.Sortorder).ToList();}
                         @foreach (var menu in childmenus)
@@ -48,7 +48,7 @@
                 else
                 {
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@item.MenuName<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">@item.MenuName<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                         @{ var childmenus = Model.Where(x => x.ParentID == item.ID).OrderBy(x => x.Sortorder).ToList();}
                         @foreach (var menu in childmenus)

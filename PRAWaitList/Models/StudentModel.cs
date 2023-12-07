@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace PRAWaitList.Models
 {
@@ -11,7 +12,6 @@ namespace PRAWaitList.Models
     {
         First=1, Second=2, Third=3, Fourth=4, Fifth=5, Sixth=6, Seventh=7, Eighth=8, None = 9, PreSchool = 10, Kindergarten = 11
     }
-
 
     public class StudentModel
     {

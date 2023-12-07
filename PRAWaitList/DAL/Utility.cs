@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Security.Principal;
 using Microsoft.AspNet.Identity;
 using System.Net.Mail;
+using System.Web.WebPages.Html;
 
 namespace PRAWaitList.DAL
 {
@@ -59,6 +60,16 @@ namespace PRAWaitList.DAL
             //states.Insert(0, new StateModel() { Name = "- Select a State -", StateID = "" });
             db.Dispose();
             return (new SelectList(schoolyears, "ID", "Name"));
+        }
+        public static SelectList GetSearchByStrings()
+        {
+            List<System.Web.Mvc.SelectListItem> list = new List<System.Web.Mvc.SelectListItem>();
+            list.Add(new System.Web.Mvc.SelectListItem { Text = "Student Name", Value = "StudentName" });
+            list.Add(new System.Web.Mvc.SelectListItem { Text = "Parent Name", Value = "ParentName" });
+            list.Add(new System.Web.Mvc.SelectListItem { Text = "Parent Email", Value = "ParentEmail" });
+            list.Add(new System.Web.Mvc.SelectListItem { Text = "Parent Phone", Value = "ParentPhone" });
+            return new SelectList(list, "Value", "Text");
+
         }
         public static SelectList GetSchoolYearList()
         {

@@ -34,7 +34,7 @@
 </div>
 
 <p>
-    @Html.ActionLink("Create New", "Create",null, new { @class = "btn btn-primary btn-success" })
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-success" })
 </p>
 <table class="table">
     <tr>
@@ -45,15 +45,31 @@
             @Html.DisplayNameFor(model => model.lbms[0].SchoolYearID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.lbms[0].BatchType)
+            @Html.DisplayNameFor(model => model.lbms[0].BatchGrade)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.lbms[0].CreateDate)
         </th>
+        <th>
+            Student Count
+        </th>
+        <th>
+            Notified
+        </th>
+        <th>
+            Expired
+        </th>
+        <th>
+            Accepted
+        </th>
+        <th>
+            Declined
+        </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model.lbms) {
+@{int iCount = 0; }
+@foreach (var item in Model.lbms)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.BatchName)
@@ -65,16 +81,32 @@
             @Html.DisplayFor(modelItem => sSchoolYearText)
         </td>
         <td>
-                @Html.DisplayFor(modelItem => item.BatchType)
+                @Html.DisplayFor(modelItem => item.BatchGrade)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CreateDate)
         </td>
         <td>
-            @Html.ActionLink("Batch Details", "BatchDetails", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @(Model.lsCount[iCount].ToString())
+        </td>
+        <td>
+            @(Model.lsNotify[iCount].ToString())
+        </td>
+        <td>
+            @(Model.lsExpired[iCount].ToString())
+        </td>
+        <td>
+            @(Model.lsAccepted[iCount].ToString())
+        </td>
+        <td>
+            @(Model.lsDeclined[iCount].ToString())
+        </td>
+        <td>
+            @Html.ActionLink("Batch Details", "BatchDetails", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
     </tr>
+    @(iCount++)
 }
 
 </table>

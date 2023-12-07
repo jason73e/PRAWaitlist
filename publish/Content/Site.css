@@ -267,3 +267,6 @@ a:hover, a:focus {
 .table > tbody > tr.no-border > th {
     border-top: none;
 }
+.validation-summary-valid {
+    display: none;
+}

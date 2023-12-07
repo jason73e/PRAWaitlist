@@ -1,10 +1,10 @@
 ﻿@model PRAWaitList.Models.HearAboutPRAModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Add New Option";
 }
 
-<h2>Create</h2>
+<h2>Add New Option</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -32,6 +32,31 @@
             </div>
         </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.bExtraText, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.bExtraText)
+                    @Html.ValidationMessageFor(model => model.bExtraText, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.bOtherText, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.bOtherText)
+                    @Html.ValidationMessageFor(model => model.bOtherText, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.iSortOrder, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                    @Html.EditorFor(model => model.iSortOrder)
+                    @Html.ValidationMessageFor(model => model.iSortOrder, "", new { @class = "text-danger" })
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-primary btn-success" />

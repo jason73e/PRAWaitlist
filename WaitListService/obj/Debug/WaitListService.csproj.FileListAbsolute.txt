@@ -19,4 +19,5 @@ C:\Users\jengel\Documents\CodeLines\WaitListService\obj\Debug\WaitListService.cs
 C:\Users\jengel\Documents\CodeLines\WaitListService\obj\Debug\WaitListService.csproj.CoreCompileInputs.cache
 C:\Users\jengel\Documents\CodeLines\WaitListService\obj\Debug\WaitListService.exe
 C:\Users\jengel\Documents\CodeLines\WaitListService\obj\Debug\WaitListService.pdb
-C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\obj\Debug\WaitListService.csprojResolveAssemblyReference.cache
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\obj\Debug\WaitListService.csprojAssemblyReference.cache
+C:\Users\jason\Documents\Git\PRAWaitlist\PRAWaitlist\WaitListService\obj\Debug\WaitListService.csproj.CopyComplete

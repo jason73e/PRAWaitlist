@@ -1,17 +1,17 @@
 ﻿@model PRAWaitList.Models.HearAboutPRAModel
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit an Option";
 }
 
-<h2>Edit</h2>
+<h2>Edit an Option</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>HearAboutPRAModel</h4>
+        <h4>Hear About PRA</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Value)
@@ -31,6 +31,32 @@
                     @Html.EditorFor(model => model.IsChecked)
                     @Html.ValidationMessageFor(model => model.IsChecked, "", new { @class = "text-danger" })
                 </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.bExtraText, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.bExtraText)
+                    @Html.ValidationMessageFor(model => model.bExtraText, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.bOtherText, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.bOtherText)
+                    @Html.ValidationMessageFor(model => model.bOtherText, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.iSortOrder, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.iSortOrder)
+                @Html.ValidationMessageFor(model => model.iSortOrder, "", new { @class = "text-danger" })
             </div>
         </div>
 

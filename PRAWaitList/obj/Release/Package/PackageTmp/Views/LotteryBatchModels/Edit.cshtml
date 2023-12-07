@@ -33,10 +33,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.BatchType, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.BatchGrade, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.BatchType, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BatchType, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.BatchGrade, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BatchGrade, "", new { @class = "text-danger" })
             </div>
         </div>
 
